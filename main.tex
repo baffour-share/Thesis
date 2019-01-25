@@ -17,52 +17,52 @@
 \usepackage{listings}
 \usepackage{amsmath}
 
-% Python style for highlighting
-\newcommand\pythonstyle{\lstset{
-language=Python,
-basicstyle=\ttm,
-otherkeywords={self},             % Add keywords here
-keywordstyle=\ttb\color{deepblue},
-emph={MyClass,__init__},          % Custom highlighting
-emphstyle=\ttb\color{deepred},    % Custom highlighting style
-stringstyle=\color{deepgreen},
-frame=tb,                         % Any extra options here
-showstringspaces=false            % 
-}}
+% % Python style for highlighting
+% \newcommand\pythonstyle{\lstset{
+% language=Python,
+% basicstyle=\ttm,
+% otherkeywords={self},             % Add keywords here
+% keywordstyle=\ttb\color{deepblue},
+% emph={MyClass,__init__},          % Custom highlighting
+% emphstyle=\ttb\color{deepred},    % Custom highlighting style
+% stringstyle=\color{deepgreen},
+% frame=tb,                         % Any extra options here
+% showstringspaces=false            % 
+% }}
 
 
-% Python environment
-\lstnewenvironment{python}[1][]
-{
-\pythonstyle
-\lstset{#1}
-}
-{}
+% % Python environment
+% \lstnewenvironment{python}[1][]
+% {
+% \pythonstyle
+% \lstset{#1}
+% }
+% {}
 
-% Python for external files
-\newcommand\pythonexternal[2][]{{
-\pythonstyle
-\lstinputlisting[#1]{#2}}}
+% % Python for external files
+% \newcommand\pythonexternal[2][]{{
+% \pythonstyle
+% \lstinputlisting[#1]{#2}}}
 
-% Python for inline
-\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+% % Python for inline
+% \newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
 
 % \usepackage{listings}
 
-\title{REAL-TIME FACIAL EMOTION RECOGNITION RESEARCH BASED ON DEEP LEARNING AND AN APPLICATION FRAMEWORK IMPLEMENTATION}
+% \title{REAL-TIME FACIAL EMOTION RECOGNITION RESEARCH BASED ON DEEP LEARNING AND AN APPLICATION FRAMEWORK IMPLEMENTATION}
 
-\author{BAFFOUR ADU ASARE}
+% \author{BAFFOUR ADU ASARE}
 
-\advisor{PROFESSOR\chinesespace JIANDONG GUO}
+% \advisor{PROFESSOR\chinesespace JIANDONG GUO}
 
-\school{SCHOOL OF INFORMATION AND SOFTWARE ENGINEERING}
+% \school{SCHOOL OF INFORMATION AND SOFTWARE ENGINEERING}
 
-\major{SOFTWARE ENGINEERING}
+% \major{SOFTWARE ENGINEERING}
 
-\studentid{201724220103}
+% \studentid{201724220103}
 
 \begin{document}
-\makecover
+%\makecover
 \begin{chineseabstract}
 近年来，在人工智能领域面部表情识别备受关注。许多研究工作使用具有数百万可训练参数的大型卷积神经网络获得了最先进的结果，当然这要求很高的计算能力, 但是这些深度学习模型对于实时应用是不可行的，尤其是运行在例如移动电话等功率受限的设备上。
 在本论文中，提出了一种新的，高效的“轻量级”卷积神经网络，用于实时情感识别。我们提出的模型架构基于深度可分离2D卷积的实现，这大大减少了网络参数，从而加快了整体性能速度，使其适用于实时应用。通过在Kaggle面部表情识别竞赛和日本女性面部表情（JAFFE）数据库中提供的FER-2013数据集上评估模型表现。模型以极低的参数实现了极具竞争力的结果，并且为实时应用提供了比最先进模型更好的选择。最后，通过将实时视频流连接到面部检测器以将图像提供给我们训练的模型来证明模型可以满足实时需求。该模型最终将面部表情分为七种情绪：愤怒、厌恶、恐惧、快乐、中立、悲伤和惊喜。
@@ -71,7 +71,8 @@ showstringspaces=false            %
 \end{chineseabstract}
 
 \begin{englishabstract}
-Facial expression recognition has gained much attention in recent years in the field of artificial intelligence. Many research works achieved state-of-the-art results using large convolutional neural network with millions of trainable parameters requiring high computing power. These kinds of deep learning models are not feasible for real-time application, especially running on power constrained devices like mobile phones. In this thesis, we present a new and efficient `lightweight' Convolutional Neural Network for real-time emotion recognition. Our proposed model architecture is based on the implementation of depthwise separable 2D convolution which reduces the network parameters drastically thereby accelerating the overall performance speed making it suitable for real-time applications. We evaluate our model performance on FER-2013 dataset provided on the Kaggle facial expression recognition competition and the Japanese Female Facial Expression (JAFFE) database. Our model achieves very competitive results with few parameters and presents itself a better choice over state-of-the-art models for real-time applications. Finally, we demonstrate that our model can meet real-time needs by connecting a live video stream to a face detector to feed images to our trained model. The model classifies facial expressions into one of the seven emotions (Anger, Disgust, Fear, Happy, Neutral, Sad and Surprise).
+Facial expression recognition has gained much attention in recent years in the field of artificial intelligence. Many research works achieved state-of-the-art results using large convolutional neural network with millions of trainable parameters requiring high computing power. These kinds of deep learning models are not feasible for real-time application, especially running on power constrained devices like mobile phones. In this thesis, we present a new and efficient `lightweight' Convolutional Neural Network for real-time emotion recognition. Our proposed model architecture is based on the implementation of depthwise separable 2D convolution which reduces the network parameters drastically thereby accelerating the overall performance speed making it suitable for real-time applications. The total number of parameters contained in our proposed depthwise separable convolutional model is about 474 thousand. The basic operations of the model include: depthwise separable convolution, batch normalization, max-pooing, global average pooling and softmax. These basic operations are carefully put together to create a twenty-one layer CNN architecture. We experiment our model on FER-2013 dataset provided on the Kaggle facial expression recognition competition, the Japanese Female Facial Expression (JAFFE) database and the Extended Cohn-Kanade Dataset (CK+). Our model obtained accuracy of 68\% and 69\% on FER-2013 private test and public test respectively. For JAFFE dataset, our model achieved 88\% accuracy on test data. The model achieved an outstanding accuracy of 99\% accuracy for the CK+ test dataset. It is evident that our model achieves very competitive results with few parameters and presents itself a better choice over state-of-the-art models for real-time applications. Finally, we demonstrate that our model can meet real-time needs by connecting a live video stream to a face detector to feed images to our trained model. The model classifies facial expressions into one of the seven emotions (Anger, Disgust, Fear, Happy, Neutral, Sad and Surprise).
+
 
 \englishkeyword{Facial Expression recognition, Depthwise Separable Convolution, Deep learning, Convolutional Neural network, Real-time}
 \end{englishabstract}
@@ -679,8 +680,9 @@ parameters:
 computation cost:
 \[(3 \times 3 \times 3 \times 128 \times 128 \times) + (128 \times 128 \times 3 \times 16) = \sim1.2e6 \]
 
-We can evidently see the computational cost advantages depthwise separable convolution have over regular convolution. In the example above, depthwise separable convolution have about $\sim5.5e6$ fewer parameters than regular convolution for the same convolutional operation. 
+We can evidently see the computational cost advantages depthwise separable convolution have over regular convolution. In the example above, depthwise separable convolution have about $\sim5.5e6$ fewer parameters than regular convolution for the same convolutional operation.
 
+\section{Conclusion}
 
 \chapter{Chapter 3 - Proposed Method and Experiments}
 In this section, we will describe our proposed CNN model based on depthwise separable convolution for facial expression recognition problem and provide details of the layers that constituents the model. This chapter also presents the computation cost of the model and describes the various experiments conducted.
@@ -832,7 +834,9 @@ For training and testing we implemented our network architecture using Keras Dee
 \end{itemize}
 We maintained a batch size of 32 across all datasets to feed input into the network. We trained the network using Adam Optimizer \cite{DBLP:journals/corr/KingmaB14} with learning rate of 0.001 for both datasets. Training results are presented in chapter \ref{chp4}. Finally, we implemented our model with OpenCV on an Intel Dual Core i3-7100U 2.4GHz Processor laptop in real-time by connecting a live video stream to a face detector to feed images to our trained model to recognise the 7 basic emotions.
 
-\chapter{Chapter 4 - Results and Discussion}\label{chp4}
+\section{Conclusion}
+
+\chapter{Chapter 4 - Results and Analysis}\label{chp4}
 In this chapter we present the results and analysis of the experiments on the three dataset: FER-2013 dataset, JAFFE dataset and CK+ dataset. We also present the results metrics used to evaluate the model performance.
 \section{Results Metrics}
 We evaluated the model by calculating the accuracy, precision, recall, f1-score and confusion matrix \cite{FAWCETT2006861} for all three datasets. We perform the calculations based on the following parameters: True Positives (TP), True Negatives (TN), False Positives (FP) and False Negatives (FN). TP are the correctly predicted positive values, thus, when target label is `yes' and the predicted label is also `yes'. TN are correctly predicted negative values, thus, when target label is `no' and the predicted label is also `no'. FP are the predicted values where target label is `no' but the predicted label is `yes'. FN are the values where target label is `yes' but the predicted label is `no'.
@@ -861,57 +865,8 @@ F1-score=2\frac{Precision \times Recall}
  {Precision + Recall}
 \end{equation}
 
-\section{Discussion}
+\section{Analysis}
 For the FER-2013 dataset, the model achieved 68\% on precision, recall and f1-score on the public test examples. During the private test, the model obtained 69\% performance on precision, recall and f1-score. Table \ref{table_fer2013_scores_public} and Table \ref{table_fer2013_scores_private} shows the model accuracy details on the public and private test respectively. It was observed that the model performed worst in recognizing fear and sad expressions. From the confusion matrix in Fig \ref{fig_ferpr_cm_scores} and Fig \ref{fig_ferpub_cm_scores}, the model often confused fear for sad and also confused sad for neutral and anger. We also observed from the dataset that fear and sad expressions exhibits similar facial movements with the forehead been squeezed and the mouth tightly closed. Additionally, many sad expression samples looked similar to neutral and anger, both expressions have the mouth closed and steady facial contour. However, among the seven emotions, the model performance on happy emotion was the highest, obtaining up to 87\% and 88\% for public and private test respectively. This result can be explained by observing the total sample distribution of the emotion classes in the dataset as shown in Fig. \ref{fer2013_distribution}. The happy emotion contains the largest samples (25.05\%) among all the other emotion classes. Consequently, the model is exposed to larger number of happy emotion samples and learns more optimal features to distinguish happy emotion from other emotions. In order to avoid the model memorizing the training data and not generalization well on unseen data, we stop training after 200 epochs. As shown in Fig. \ref{fer_accuracy}, the model did not significantly improve the validation accuracy from epoch 150. This is evident from training and validation loss as shown in Fig. \ref{fer_loss}, the validation loss did not further reduce after epoch 150. Training on FER-2013 dataset spanned a period of approximately 7 hours.
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/model_accuracy_fer.png}
-\caption{Model training and validation accuracy.}
-\label{fer_accuracy}
-\end{figure}
-
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/model_loss_fer.png}
-\caption{Model training and validation loss}
-\label{fer_loss}
-\end{figure}
-
-For the JAFFE dataset, the model achieved 88\% accuracy on test samples. From Table \ref{table_jaffe_scores}, we can see that the only emotion category the model obtained a 100\% f1-score is the \textit{happy} emotion. Taking a closer look at the image samples in the JAFFE dataset, we observed that \textit{happy} emotion examples are quite distinct from the other emotion examples. The \textit{happy} emotion samples do not have the forehead and mouth region tightly squeezed like most other emotion expressions (fear, sad, disgust and anger). Hence, the model is able to learn these distinct features to obtain the 100\% f1-score for the \textit{happy} emotion. From the generated confusion matrix in Fig.\ref{fig_jaffe_cm_scores}, we also observed that the model often confused fear and sad for disgust. Taking a look at the training samples , all the 3 expressions are very similar with the forehead and mouth region (sad expression) tightly squeezed.
-
-For CK+ dataset, our model achieved 98\% test accuracy and $0.03941$ for validation loss.  
-% \begin{table}[ht]
-% \renewcommand{\arraystretch}{1.3}
-% \caption{Model test accuracy on Precision, Recall and F1-score for CK+ dataset. The first column contains the seven emotion classes (Anger, Contempt, Disgust, Fear, Happy, Sadness and Surprise), the second, third and fourth column contain the Precision, Recall, F1-score for each emotion respectively. The fifth column contains the number of samples observed for each emotion class. The last row contains the averaged Precision, Recall, F1-score and the total samples observed.}
-% \label{table_ck+_scores}
-% \begin{center}
-% \begin{tabular}{|c|c|c|c|c|}
-
-% \hline
-%  & Precision & Recall & F1-score & Support\\ \hline
-
-% Anger & 0.20 & 0.07 & 0.11 & 14\\ \hline
-% Contempt & 0.40 & 0.40 & 0.40 & 5\\ \hline
-% Disgust & 0.17 & 0.17 & 0.17 & 18\\ \hline
-% Fear & 0.11 & 0.12 & 0.12 & 8\\ \hline
-% Happy & 0.32 & 0.30 & 0.31 & 20\\ \hline
-% Sadness & 0.12 & 0.25 & 0.16 & 8\\ \hline
-% Surprise & 0.32 & 0.32 & 0.32 & 25\\ \hline
-
-% \textbf{avg / total} & \textbf{0.24} & \textbf{0.23} & \textbf{0.23} & \textbf{98}\\ \hline
-% \end{tabular}
-% \end{center}
-% \end{table}
-
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/ck+_accuracy_graph.jpg}
-\caption{Model training and validation accuracy. The image on the left is the training accuracy and the image on the right is the validation accuracy}
-\label{ck+accuracy}
-\end{figure}
-
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/ck+_loss_graph.jpg.jpg}
-\caption{Model training and validation loss. The image on the left is the training loss and the image on the right is the validation loss}
-\label{ck+loss}
-\end{figure}
 
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.3}
@@ -936,7 +891,6 @@ Surprise & 0.78 & 0.81 & 0.79 & 415\\ \hline
 \end{tabular}
 \end{center}
 \end{table}
-
 
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.3}
@@ -973,6 +927,41 @@ Surprise & 0.77 & 0.81 & 0.79 & 416\\ \hline
 \label{fig_ferpub_cm_scores}
 \end{figure}
 
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/model_accuracy_fer.png}
+\caption{Model training and validation accuracy.}
+\label{fer_accuracy}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/model_loss_fer.png}
+\caption{Model training and validation loss}
+\label{fer_loss}
+\end{figure}
+
+For the JAFFE dataset, the model achieved 88\% accuracy on test samples. From Table \ref{table_jaffe_scores}, we can see that the only emotion category the model obtained a 100\% f1-score is the \textit{happy} emotion. Taking a closer look at the image samples in the JAFFE dataset, we observed that \textit{happy} emotion examples are quite distinct from the other emotion examples. The \textit{happy} emotion samples do not have the forehead and mouth region tightly squeezed like most other emotion expressions (fear, sad, disgust and anger). Hence, the model is able to learn these distinct features to obtain the 100\% f1-score for the \textit{happy} emotion. From the generated confusion matrix in Fig.\ref{fig_jaffe_cm_scores}, we also observed that the model often confused fear and sad for disgust. Taking a look at the training samples , all the 3 expressions are very similar with the forehead and mouth region (sad expression) tightly squeezed. 
+% \begin{table}[ht]
+% \renewcommand{\arraystretch}{1.3}
+% \caption{Model test accuracy on Precision, Recall and F1-score for CK+ dataset. The first column contains the seven emotion classes (Anger, Contempt, Disgust, Fear, Happy, Sadness and Surprise), the second, third and fourth column contain the Precision, Recall, F1-score for each emotion respectively. The fifth column contains the number of samples observed for each emotion class. The last row contains the averaged Precision, Recall, F1-score and the total samples observed.}
+% \label{table_ck+_scores}
+% \begin{center}
+% \begin{tabular}{|c|c|c|c|c|}
+
+% \hline
+%  & Precision & Recall & F1-score & Support\\ \hline
+
+% Anger & 0.20 & 0.07 & 0.11 & 14\\ \hline
+% Contempt & 0.40 & 0.40 & 0.40 & 5\\ \hline
+% Disgust & 0.17 & 0.17 & 0.17 & 18\\ \hline
+% Fear & 0.11 & 0.12 & 0.12 & 8\\ \hline
+% Happy & 0.32 & 0.30 & 0.31 & 20\\ \hline
+% Sadness & 0.12 & 0.25 & 0.16 & 8\\ \hline
+% Surprise & 0.32 & 0.32 & 0.32 & 25\\ \hline
+
+% \textbf{avg / total} & \textbf{0.24} & \textbf{0.23} & \textbf{0.23} & \textbf{98}\\ \hline
+% \end{tabular}
+% \end{center}
+% \end{table}
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.3}
 \caption{Model test accuracy on Precision, Recall and F1-score for JAFFE dataset. The first column contains the seven emotion classes (Anger, Disgust, Fear, Happy, Neutral, Sad and Surprise), the second, third and fourth column contain the Precision, Recall, F1-score for each emotion respectively. The fifth column contains the number of samples observed for each emotion class. The last row contains the averaged Precision, Recall, F1-score and the total samples observed.}
@@ -995,17 +984,87 @@ Surprise & 1.00 & 0.90 & 0.95 & 10\\ \hline
 \end{tabular}
 \end{center}
 \end{table}
-
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/JAFFE_CM_normalized.png}
 \caption{Normalized confusion matrix on model test accuracy for JAFFE dataset. The major diagonal of the matrix contains the correctly predicted labels, thus \textbf{TP} and \textbf{TN} values. The values outside the major diagonal represent the wrongly predicted labels. The values above the major diagonal are the \textbf{FP} values. The values below the major diagonal are the \textbf{FN} values}
 \label{fig_jaffe_cm_scores}
 \end{figure}
 
+For CK+ dataset, our model achieved $99\%$ test accuracy and $0.03941$ for test loss. We present details accuracy for each of the seven emotion category in Table \ref{table_ck+_scores}. As shown in Fig. \ref{ck+_cm}, the model obtained prediction accuracy up to $100\%$ for all emotion classes except contempt emotion. The model confused contempt emotion for fear emotion. This cause can be associated to the nature of the dataset. We observed that few contempt emotions expressed in the dataset are similar to some fear expressions. Such similar expression both have the eyes fairly opened wide, no forehead contractions and mouth closed or slightly opened. Fig. \ref{ck+_similarity} shows few of such similar samples.
+
+\begin{table}[ht]
+\renewcommand{\arraystretch}{1.3}
+\caption{Model test accuracy on Precision, Recall and F1-score for CK+ dataset. The first column contains the seven emotion classes (Anger, Contempt, Disgust, Fear, Happy, Sadness and Surprise), the second, third and fourth column contain the Precision, Recall, F1-score for each emotion respectively. The fifth column contains the number of samples observed for each emotion class. The last row contains the averaged Precision, Recall, F1-score and the total samples observed.}
+\label{table_ck+_scores}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+
+\hline
+ & Precision & Recall & F1-score & Support\\ \hline
+
+Anger & 1.00 & 1.00 & 1.00 & 14\\ \hline
+Contempt & 1.00 & 0.80 & 0.89 & 5\\ \hline
+Disgust & 1.00 & 1.00 & 1.00 & 18\\ \hline
+Fear & 0.89 & 1.00 & 0.94 & 8\\ \hline
+Happy & 1.00 & 1.00 & 1.00 & 20\\ \hline
+Sadness & 1.00 & 1.00 & 1.00 & 8\\ \hline
+Surprise & 1.00 & 1.00 & 1.00 & 24\\ \hline
+
+\textbf{avg / total} & \textbf{0.99} & \textbf{0.99} & \textbf{0.99} & \textbf{98}\\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/XK+_accuracy_and_loss.png}
+\caption{Model training and validation accuracy and loss on CK+ dataset. The graph on the left is the accuracy increase for 200 epochs and the graph on the right is the loss reduction for 200 epochs}
+\label{ck+accuracy_loss}
+\end{figure}
+
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/ck+_cm.png}
-\caption{Confusion matrix generated from CK+ dataset testing}
+\caption{Confusion matrix generated from CK+ dataset testing. The major diagonal of the matrix contains the correctly predicted labels, thus \textbf{TP} and \textbf{TN} values. The values outside the major diagonal represent the wrongly predicted labels. The values above the major diagonal are the \textbf{FP} values. The values below the major diagonal are the \textbf{FN} values}
 \label{ck+_cm}
+\end{figure}
+
+\section{Comparison with other works}
+The winner of the Kaggle competition \cite{tang2018} achieved 69.4\% accuracy on FER-2013 public test and 71\% accuracy on the public test with a model containing more than 7 million parameters. Sang et al \cite{sang-2017} also achieved 71\% on FER-2013 public test and 71.9\% on the private test with a model containing 4.19 million parameters. Arriaga et al\cite{DBLP:journals/corr/abs-1710-07557} achieved 66\% accuracy on FER-2013 public test with a model containing approximately 600K parameters. Our proposed model contains $474K$ parameters, nevertheless, we achieved only $2\%$ lower than \cite{tang2018}, 2.9\% lower than \cite{sang-2017} and 3\% higher than \cite{DBLP:journals/corr/abs-1710-07557} on FER-2013 private test. Our proposed model contains approximately 6.5 million fewer parameters compared to \cite{tang2018}, 4.2 million fewer parameters compared to \cite{sang-2017} and 126K fewer parameters compared to \cite{DBLP:journals/corr/abs-1710-07557}.
+
+Duncan et al \cite{duncan2016} achieved 62\% accuracy on JAFFE dataset with a highly parameterized CNN model containing more than 10 million parameters. Additionally, \cite{7988558} achieved 87\% accuracy on JAFFE dataset with a model containing more than 10 million parameters. However, we achieved $88\%$ accuracy on JAFFE dataset with our proposed model containing about a whooping 9 million fewer parameters compared to \cite{duncan2016} and \cite{7988558}.
+
+For CK+ dataset, Pooya et. al. \cite{do_deep_7406361} achieved $96.7\%$ accuracy using quadrant pooling technique on a CNN model containing a little over 4 million parameters. Ghosh et. al. \cite{Ghosh_7344632} achieved accuracy up to $88.14\%$ using a multi-label CNN model containing only about $321K$ total parameters. Table \ref{table_comparison} shows the comparison summary of our proposed model with other models. 
+
+\begin{table}[ht]
+% increase table row spacing, adjust to taste
+\renewcommand{\arraystretch}{1.3}
+\caption{Comparative summary with other methods}
+\label{table_comparison}
+\begin{center}
+% The array package and the MDW tools package offers better commands
+% for making tables than plain LaTeX2e's tabular which is used here.
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Dataset & Method & No. of parameters & Accuracy \\ \hline
+FER-2013 & Y. Tang \cite{tang2018} & 7 million & 71\% \\
+                 & Sang et. al. \cite{sang-2017} & 4.19 million & 71.9\% \\
+	      & Arriaga et. al. \cite{DBLP:journals/corr/abs-1710-07557} & 600K & 66\% \\
+	      & \textbf{Our method} & \textbf{474K} & \textbf{69\%} \\
+\hline
+JAFFE & Duncan et. al. \cite{duncan2016} & 10 million & 62\% \\
+                 & Chen et. al. \cite{7988558} & 10 million & 87\% \\
+	      & \textbf{Our method} & \textbf{474K} & \textbf{88\%} \\
+\hline
+CK+ & Pooya et. al. \cite{do_deep_7406361} & 4 million & 96.7\% \\
+                 & Ghosh et. al. \cite{Ghosh_7344632} & 321K & 88.14\% \\
+	      & \textbf{Our method} & \textbf{474K} & \textbf{99\%} \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/ck+similarity.jpg}
+\caption{Similarity samples of contempt and fear emotion expressed in the CK+ dataset. The top horizontal faces are fear emotions and the bottom horizontal emotions are contempt emotions.}
+\label{ck+_similarity}
 \end{figure}
 
 \begin{figure}%
@@ -1042,38 +1101,16 @@ Surprise & 1.00 & 0.90 & 0.95 & 10\\ \hline
 \label{fig:implementation}%
 \end{figure}
 
-\section{Comparison with other methods}
-The winner of the Kaggle competition \cite{tang2018}  replaced softmax with linear SVMs and achieved 69.4\% accuracy on FER-2013 public test and 71\% accuracy on the public test with a model containing more than 7 million parameters. Sang et al \cite{sang-2017} also achieved 71\% on FER-2013 public test and 71.9\% on the private test with a model containing 4.19 million parameters. Arriaga et al\cite{DBLP:journals/corr/abs-1710-07557} achieved 66\% accuracy on FER-2013 public test with a model containing approximately 600K parameters. Nevertheless, we achieve only 2\% lower than \cite{tang2018}, 2.9\% lower than \cite{sang-2017} and 3\% higher than \cite{DBLP:journals/corr/abs-1710-07557} on FER-2013 private test with our model containing only 474K trainable parameters. Our model contains approximately 6.5 million less parameters compared to \cite{tang2018}, 4.2 million less parameters compared to \cite{sang-2017} and 126K less parameters compared to \cite{DBLP:journals/corr/abs-1710-07557}.
+\section{Conclusion}
 
-Duncan et al \cite{duncan2016} achieved 62\% accuracy on JAFFE dataset with a highly parameterized CNN model containing more than 10 million parameters. Additionally, \cite{7988558} achieved 87\% accuracy on JAFFE dataset with a model containing more than 10 million parameters. However, we achieve 88\% accuracy on JAFFE dataset with our downsized model as shown in Fig. 2 containing only 120K parameters (a whooping 9.8 million less parameters).
+\chapter{Chapter 5 - Conclusions}
+\section{Conclusion Remarks}
+We proposed a new and efficient `light weight' CNN model based on depthwise separable 2D convolution for real-time emotion recognition. We implemented depthwise separable 2D convolution which reduced the network parameters drastically thereby accelerating the overall performance speed making it suitable for real-time application. We evaluated our model performance on FER-2013 dataset provided on the Kaggle facial expression recognition competition, the Japanese Female Facial Expression (JAFFE) database and the Extended Cohn-Kanade Dataset (CK+). Our model containing only 474K parameters achieved very competitive results of 68\% and 69\% on FER-2013 private test and public test respectively. For JAFFE dataset, our model achieved 88\% accuracy. The model achieved an outstanding accuracy of 99\% accuracy for the CK+ dataset. Thus, we drastically reduced model complexity and eventually speed up computation. We shown that with very minimum parameters our model is a better choice over state-of-the-art models for real-time applications. Finally, as shown in Fig. \ref{fig:implementation}, we demonstrated that our model can meet real-time needs by connecting a live video stream to a face detector to feed images to our trained model. The model subsequently classifies facial expressions into one of the seven emotions (Anger, Disgust, Fear, Happy, Neutral, Sad, and Surprise).
 
-\begin{table}[ht]
-% increase table row spacing, adjust to taste
-\renewcommand{\arraystretch}{1.3}
-\caption{Comparative summary with other methods}
-\label{table_example}
-\begin{center}
-% The array package and the MDW tools package offers better commands
-% for making tables than plain LaTeX2e's tabular which is used here.
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-Dataset & Method & No. of parameters & Accuracy \\ \hline
-FER-2013 & \cite{tang2018} & 7 million & 71\% \\
-                 & \cite{sang-2017} & 4.19 million & 71.9\% \\
-	      & \cite{DBLP:journals/corr/abs-1710-07557} & 600K & 66\% \\
-	      & \textbf{Our method} & \textbf{474K} & \textbf{69\%} \\
-\hline
-JAFFE & \cite{duncan2016} & 10 million & 62\% \\
-                 & \cite{7988558} & 10 million & 87\% \\
-	      & \textbf{Our method} & \textbf{120K} & \textbf{88\%} \\
-\hline
+\section{Future Work}
+A future area to be improved is to provide a mechanism to provide data for imbalance emotion classes. For example, a simple user interface can be created to allow users instantly act out imbalance emotions to be added to the dataset. In this way, the model is even exposed to more real-life data.
 
-\end{tabular}
-\end{center}
-\end{table}
-
-\chapter{Chapter 5 - Conclusion}
-We proposed a new and efficient `light weight' CNN model based on depthwise separable 2D convolution for real-time emotion recognition. We implemented depthwise separable 2D convolution which reduced the network parameters drastically thereby accelerating the overall performance speed making it suitable for real-time application. We evaluated our model performance on FER-2013 dataset provided on the Kaggle facial expression recognition competition and the Japanese Female Facial Expression (JAFFE) database. Our model containing only 474K parameters achieved very competitive results of 68\% and 69\% on FER-2013 private test and public test respectively. For JAFFE dataset, we drastically downsized our model to 120K parameters and achieved 88\%. Thus, we drastically reduced model complexity and eventually speed up computation. We shown that with very minimum parameters our model is a better choice over state-of-the-art models for real-time applications. Finally, as shown in Fig 6, we demonstrated that our model can meet real-time needs by connecting a live video stream to a face detector to feed images to our trained model. The model subsequently classifies facial expressions into one of the seven emotions (Anger, Disgust, Fear, Happy, Neutral, Sad, and Surprise).
+Another future work is to improve the model accuracy. The model sometimes confuse certain emotions for others and miss-classifies them. We can investigate how to build a model that will be more robust for continuous emotion recognition guided by some knowledge from specific domains like psychology, social science, etc. This will make models more useful into solving specific problems.
 
 \thesisacknowledgement
 This work was supported by the Intelligence Engineering Lab (IELAB), University of Electronic Science and Technology of China.
@@ -1090,441 +1127,441 @@ This work was supported by the Intelligence Engineering Lab (IELAB), University 
 % \bibliography{reference}
 %
 
-\thesisappendix
-\section{External listing highlighting}
-\begin{python}
-# import libraries
-import itertools
-import random as rn
-import smtplib
-import warnings
-import matplotlib.pyplot as plt
-import numpy as np
-import tensorflow as tf
-from keras import optimizers, Input, Model
-from keras.callbacks import ModelCheckpoint, TensorBoard
-from keras.layers import Activation, Dropout, Dense, GlobalAveragePooling2D, Conv2D, Flatten,
-    ReLU, DepthwiseConv2D, MaxPool2D, AveragePooling2D
-from keras.layers import MaxPooling2D, SeparableConv2D, BatchNormalization
-from keras.models import Sequential
-from keras.preprocessing.image import ImageDataGenerator
-from sklearn.metrics import classification_report, confusion_matrix
-
-# seed ramdomnly generated numbers
-np.random.seed(42)
-rn.seed(12345)
-tf.set_random_seed(1234)
-
-# ignore warnings
-warnings.filterwarnings('ignore')
-
-train_data_dir = './fer2013/Training'
-validation_data_dir = './fer2013/PublicTest'
-private_test_data_dir = './fer2013/PrivateTest'
-
-epochs = 300
-batch_size = 32
-num_labels = 7
-lr = 0.001
-MODEL_PATH = './models/fer2013_model.h5'
-class_label_names = ['Anger', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise']
-
-img_width, img_height = 48, 48
-image_shape = (img_width, img_height, 1)
-
-def fer_model():
-    kernel_height, kernel_width = 3, 3
-    depth_multiplier = 3
-
-    my_model = Sequential()
-
-    #  1st layer
-    my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-                                 padding='same', strides=(1, 1), depth_multiplier=
-                                 depth_multiplier, use_bias=True, data_format=
-                                 'channels_last',input_shape=image_shape,activation='relu'))
-    my_model.add(BatchNormalization())
-
-    #  2nd layer
-    my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-                                 padding='same', strides=(1, 1), depth_multiplier=
-                                 depth_multiplier, use_bias=True, data_format=
-                                 'channels_last', activation='relu'))
-    my_model.add(MaxPooling2D(2, 2))
-    my_model.add(BatchNormalization())
-
-    #  5th layer
-    my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-                                 padding='same', strides=(1, 1), depth_multiplier=
-                                 depth_multiplier,use_bias=True, data_format=
-                                 'channels_last', activation='relu'))
-    my_model.add(BatchNormalization())
-
-    #  6th layer
-    my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-                                 padding='same', strides=(1, 1), depth_multiplier=
-                                 depth_multiplier,use_bias=True, data_format=
-                                 'channels_last', activation='relu'))
-    my_model.add(AveragePooling2D(2, 2))
-    my_model.add(BatchNormalization())
-
-    #  7th layer
-    my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-                                 padding='same', depth_multiplier=depth_multiplier,
-                                 use_bias=True, data_format='channels_last',
-                                 activation='relu'))
-    my_model.add(BatchNormalization())
-
-    #  8th layer
-    my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-                                 padding='same', depth_multiplier=depth_multiplier,
-                                 use_bias=True,data_format='channels_last',activation='relu'))
-    my_model.add(AveragePooling2D(2, 2))
-    my_model.add(BatchNormalization())
-
-    #  10th layer
-    my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-                                 padding='same', strides=(1, 1), depth_multiplier=
-                                 depth_multiplier,use_bias=True, data_format='channels_last',
-                                 activation='relu'))
-    my_model.add(BatchNormalization())
-
-    #  11th layer
-    my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-                                 padding='same', strides=(1, 1), depth_multiplier=
-                                 depth_multiplier,use_bias=True, data_format=
-                                 'channels_last', activation='relu'))
-    my_model.add(AveragePooling2D(2, 2))
-    my_model.add(BatchNormalization())
-
-    my_model.add(Flatten())
-
-    my_model.add(Dense(512, activation='relu'))
-    my_model.add(BatchNormalization())
-    my_model.add(Dropout(0.10))
-
-    # softmax layer
-    my_model.add(Dense(num_labels, activation='softmax'))
-
-    return my_model
-
-
-def small_fer_model():
-    kernel_height, kernel_width = 3, 3
-    depth_multiplier = 3
-
-    my_model = Sequential()
-
-    #  1st layer
-    my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-                                 padding='same', strides=(1, 1), depth_multiplier=
-                                 depth_multiplier, use_bias=True, data_format=
-                                 'channels_last',input_shape=image_shape,activation='relu'))
-    my_model.add(BatchNormalization())
-
-    #  2nd layer
-    my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-                                 padding='same', strides=(1, 1), depth_multiplier=
-                                 depth_multiplier, use_bias=True, data_format=
-                                 'channels_last', activation='relu'))
-    my_model.add(MaxPooling2D(2, 2))
-    my_model.add(BatchNormalization())
-
-    #  5th layer
-    my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-                                 padding='same', strides=(1, 1), depth_multiplier=
-                                 depth_multiplier,use_bias=True, data_format=
-                                 'channels_last', activation='relu'))
-    my_model.add(BatchNormalization())
-
-    #  6th layer
-    my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-                                 padding='same', strides=(1, 1), depth_multiplier=
-                                 depth_multiplier,use_bias=True, data_format=
-                                 'channels_last', activation='relu'))
-    my_model.add(AveragePooling2D(2, 2))
-    my_model.add(BatchNormalization())
-
-    #  7th layer
-    my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-                                 padding='same', depth_multiplier=depth_multiplier,
-                                 use_bias=True, data_format='channels_last',
-                                 activation='relu'))
-    my_model.add(BatchNormalization())
-
-    #  8th layer
-    my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-                                 padding='same', depth_multiplier=depth_multiplier,
-                                 use_bias=True,data_format='channels_last',activation='relu'))
-    my_model.add(AveragePooling2D(2, 2))
-    my_model.add(BatchNormalization())
-
-    #  10th layer
-    my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-                                 padding='same', strides=(1, 1), depth_multiplier=
-                                 depth_multiplier,use_bias=True, data_format='channels_last',
-                                 activation='relu'))
-    my_model.add(BatchNormalization())
-
-    #  11th layer
-    my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-                                 padding='same', strides=(1, 1), depth_multiplier=
-                                 depth_multiplier,use_bias=True, data_format=
-                                 'channels_last', activation='relu'))
-    my_model.add(AveragePooling2D(2, 2))
-    my_model.add(BatchNormalization())
-
-    my_model.add(Flatten())
-
-    my_model.add(Dense(512, activation='relu'))
-    my_model.add(BatchNormalization())
-    my_model.add(Dropout(0.10))
-
-    # softmax layer
-    my_model.add(Dense(num_labels, activation='softmax'))
-
-    return my_model
-
-def send_report():
-    server = smtplib.SMTP(host='smtp-mail.outlook.com', port=587)
-    server.starttls()
-    server.login("baffour205@outlook.com", "**************")
-
-    msg = "Training finished!"
-    server.sendmail("baffour205@outlook.com", "asarebaffour700@gmail.com", msg)
-    server.quit()
-
-model = trial_model_best()
-model.summary()
-model.compile(loss='categorical_crossentropy',
-              optimizer=optimizers.Adam(lr=lr),
-              metrics=['accuracy'])
-
-# this is the augmentation configuration we will use for training
-train_datagen = ImageDataGenerator(
-    rescale=1. / 255,
-    shear_range=0.2,
-    zoom_range=0.2,
-    rotation_range=40,
-    width_shift_range=0.2,
-    height_shift_range=0.2,
-    horizontal_flip=True)
-
-# this is the augmentation configuration we will use for testing:
-# only rescaling
-test_datagen = ImageDataGenerator(rescale=1. / 255)
-
-train_generator = train_datagen.flow_from_directory(
-    train_data_dir,
-    target_size=(img_width, img_height),
-    batch_size=batch_size,
-    color_mode='grayscale',
-    class_mode='categorical')
-number_of_train_samples = len(train_generator.filenames)
-
-validation_generator = test_datagen.flow_from_directory(
-    validation_data_dir,
-    target_size=(img_width, img_height),
-    batch_size=batch_size,
-    color_mode='grayscale',
-    class_mode='categorical')
-number_of_test_samples = len(validation_generator.filenames)
-
-private_test_generator = test_datagen.flow_from_directory(
-    private_test_data_dir,
-    target_size=(img_width, img_height),
-    batch_size=batch_size,
-    color_mode='grayscale',
-    class_mode='categorical')
-number_of_private_test_samples = len(private_test_generator.filenames)
-
-# record model history
-tensor_board = TensorBoard(log_dir='./logs', histogram_freq=0,
-                            write_graph=True, write_images=True)
-# save model
-check_pointer = ModelCheckpoint(MODEL_PATH, monitor='val_loss', verbose=1,
-                                save_best_only=True)
-
-history = model.fit_generator(train_generator, epochs=epochs, validation_data=
-                            validation_generator,callbacks=[tensor_board,
-                            check_pointer], validation_steps=112, verbose=1,
-                            steps_per_epoch=897)
-send_report()
-
-# list all data in history
-print(history.history.keys())
-
-# summarize history for accuracy
-plt.plot(history.history['acc'])
-plt.plot(history.history['val_acc'])
-plt.title('model accuracy')
-plt.ylabel('accuracy')
-plt.xlabel('epoch')
-plt.legend(['train', 'test'], loc='upper left')
-plt.show()
-
-# summarize history for loss
-plt.plot(history.history['loss'])
-plt.plot(history.history['val_loss'])
-plt.title('model loss')
-plt.ylabel('loss')
-plt.xlabel('epoch')
-plt.legend(['train', 'test'], loc='upper left')
-plt.show()
-
-model.save(MODEL_PATH)
-
-model_json = model.to_json()
-with open("./models/fer2013_model_.json", "w") as json_file:
-    json_file.write(model_json)
-
-# evaluate model
-scores = model.evaluate_generator(validation_generator, steps=112,
-                                workers=1, verbose=1)
-print("Loss: " + str(scores[0]))
-print("Accuracy: " + str(scores[1]))
-
-# make predictions
-test_labels = []
-private_test_labels = []
-
-number_of_generator_calls = np.math.ceil(
-                            number_of_test_samples / (1.0 * batch_size))
-for i in range(0, int(number_of_generator_calls)):
-    test_labels.extend(np.array(validation_generator[i][1]))
-
-number_of_private_test_generator_calls = np.math.ceil(
-                            number_of_private_test_samples / (1.0 * batch_size))
-for i in range(0, int(number_of_private_test_generator_calls)):
-    private_test_labels.extend(np.array(private_test_generator[i][1]))
-
-predictions = model.predict_generator(validation_generator,steps=112,verbose=0)
-private_test_predictions = model.predict_generator(
-                                private_test_generator, steps=112, verbose=0)
-
-y_pred = np.argmax(predictions, axis=1)
-y_pred_private = np.argmax(private_test_predictions, axis=1)
-
-# print recall, precision, and f1-score
-print(classification_report(np.argmax(test_labels, axis=1), 
-                            y_pred,target_names=class_label_names))
-print(classification_report(np.argmax(private_test_labels, axis=1), 
-                            y_pred_private, target_names=class_label_names))
-
-# print confusion matrix
-print(confusion_matrix(np.argmax(test_labels, axis=1), y_pred))
-print(confusion_matrix(np.argmax(private_test_labels,axis=1),y_pred_private))
-
-# define confusion matrix
-def plot_confusion_matrix(cm, classes,
-                          normalize=False,
-                          title='Confusion matrix',
-                          cmap=plt.cm.Blues):
-    plt.imshow(cm, interpolation='nearest', cmap=cmap)
-    plt.title(title)
-    plt.colorbar()
-    tick_marks = np.arange(len(classes))
-    plt.xticks(tick_marks, classes, rotation=45)
-    plt.yticks(tick_marks, classes)
-
-    if normalize:
-        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-        cm = np.round(cm, 2)
-        print("Normalized confusion matrix")
-    else:
-        print('Confusion matrix, without normalization')
-
-    print(cm)
-
-    thresh = cm.max() / 2.
-    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-        plt.text(j, i, cm[i, j],
-                 horizontalalignment="center",
-                 color="white" if cm[i, j] > thresh else "black")
-
-    plt.tight_layout()
-    plt.ylabel('True label')
-    plt.xlabel('Predicted label')
-
-
-# Compute confusion matrix
-cnf_matrix = (confusion_matrix(np.argmax(test_labels, axis=1), y_pred))
-np.set_printoptions(precision=2)
-plt.figure()
-
-# Plot non-normalized confusion matrix
-plot_confusion_matrix(cnf_matrix, classes=class_label_names,
-                        title='Public test Confusion matrix')
-plt.figure()
-plt.show()
-
-# Plot non-normalized confusion matrix
-plot_confusion_matrix(cnf_matrix, classes=class_label_names, normalize=True,
-                      title='Public test normalized Confusion matrix')
-plt.figure()
-plt.show()
-
-# Compute confusion matrix
-cnf_matrix = (confusion_matrix(np.argmax(private_test_labels, axis=1), y_pred_private))
-np.set_printoptions(precision=2)
-plt.figure()
-
-# Plot non-normalized confusion matrix
-plot_confusion_matrix(cnf_matrix, classes=class_label_names,
-                        title='Private Test Confusion matrix')
-plt.figure()
-plt.show()
-
-# Plot non-normalized confusion matrix
-plot_confusion_matrix(cnf_matrix, classes=class_label_names, normalize=True,
-                      title='Private test Normalized Confusion matrix')
-plt.figure()
-plt.show()
-\end{python}
-
-Definition \pythoninline{class MyClass} means \dots
-
-\begin{python}
-import os
-import cv2
-import numpy as np
-from keras.engine.saving import load_model
-
-MODEL_PATH = os.getcwd() + '/models/jaffe_model.h5'
-emotion_dict = {0: "Angry", 1: "Disgust", 2: "Fear", 3: "Happy", 4: "Sad",
-                5: "Surprise", 6: "Neutral"}
-
-model = load_model(MODEL_PATH)
-
-cap = cv2.VideoCapture(0)
-
-while True:
-    ret, frame = cap.read()
-
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-
-    for (x, y, w, h) in faces:
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 1)
-        roi_gray = gray[y:y + h, x:x + w]
-        cropped_img = np.expand_dims(np.expand_dims(cv2.resize(roi_gray, (48, 48)), -1), 0)
-        cv2.normalize(cropped_img, cropped_img, alpha=0, beta=1, norm_type=cv2.NORM_L2,
-        dtype=cv2.CV_32F)
-        prediction = model.predict(cropped_img)
-        cv2.putText(frame, emotion_dict[int(np.argmax(prediction))], (x, y),
-        cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0),1, cv2.LINE_AA)
-
-    cv2.imshow('frame', frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-cap.release()
-cv2.destroyAllWindows()
-\end{python}
-
-Definition \pythoninline{class MyClass} means \dots
+% \thesisappendix
+% \section{External listing highlighting}
+% \begin{python}
+% # import libraries
+% import itertools
+% import random as rn
+% import smtplib
+% import warnings
+% import matplotlib.pyplot as plt
+% import numpy as np
+% import tensorflow as tf
+% from keras import optimizers, Input, Model
+% from keras.callbacks import ModelCheckpoint, TensorBoard
+% from keras.layers import Activation, Dropout, Dense, GlobalAveragePooling2D, Conv2D, Flatten,
+%     ReLU, DepthwiseConv2D, MaxPool2D, AveragePooling2D
+% from keras.layers import MaxPooling2D, SeparableConv2D, BatchNormalization
+% from keras.models import Sequential
+% from keras.preprocessing.image import ImageDataGenerator
+% from sklearn.metrics import classification_report, confusion_matrix
+
+% # seed ramdomnly generated numbers
+% np.random.seed(42)
+% rn.seed(12345)
+% tf.set_random_seed(1234)
+
+% # ignore warnings
+% warnings.filterwarnings('ignore')
+
+% train_data_dir = './fer2013/Training'
+% validation_data_dir = './fer2013/PublicTest'
+% private_test_data_dir = './fer2013/PrivateTest'
+
+% epochs = 300
+% batch_size = 32
+% num_labels = 7
+% lr = 0.001
+% MODEL_PATH = './models/fer2013_model.h5'
+% class_label_names = ['Anger', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise']
+
+% img_width, img_height = 48, 48
+% image_shape = (img_width, img_height, 1)
+
+% def fer_model():
+%     kernel_height, kernel_width = 3, 3
+%     depth_multiplier = 3
+
+%     my_model = Sequential()
+
+%     #  1st layer
+%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
+%                                  padding='same', strides=(1, 1), depth_multiplier=
+%                                  depth_multiplier, use_bias=True, data_format=
+%                                  'channels_last',input_shape=image_shape,activation='relu'))
+%     my_model.add(BatchNormalization())
+
+%     #  2nd layer
+%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
+%                                  padding='same', strides=(1, 1), depth_multiplier=
+%                                  depth_multiplier, use_bias=True, data_format=
+%                                  'channels_last', activation='relu'))
+%     my_model.add(MaxPooling2D(2, 2))
+%     my_model.add(BatchNormalization())
+
+%     #  5th layer
+%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
+%                                  padding='same', strides=(1, 1), depth_multiplier=
+%                                  depth_multiplier,use_bias=True, data_format=
+%                                  'channels_last', activation='relu'))
+%     my_model.add(BatchNormalization())
+
+%     #  6th layer
+%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
+%                                  padding='same', strides=(1, 1), depth_multiplier=
+%                                  depth_multiplier,use_bias=True, data_format=
+%                                  'channels_last', activation='relu'))
+%     my_model.add(AveragePooling2D(2, 2))
+%     my_model.add(BatchNormalization())
+
+%     #  7th layer
+%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
+%                                  padding='same', depth_multiplier=depth_multiplier,
+%                                  use_bias=True, data_format='channels_last',
+%                                  activation='relu'))
+%     my_model.add(BatchNormalization())
+
+%     #  8th layer
+%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
+%                                  padding='same', depth_multiplier=depth_multiplier,
+%                                  use_bias=True,data_format='channels_last',activation='relu'))
+%     my_model.add(AveragePooling2D(2, 2))
+%     my_model.add(BatchNormalization())
+
+%     #  10th layer
+%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
+%                                  padding='same', strides=(1, 1), depth_multiplier=
+%                                  depth_multiplier,use_bias=True, data_format='channels_last',
+%                                  activation='relu'))
+%     my_model.add(BatchNormalization())
+
+%     #  11th layer
+%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
+%                                  padding='same', strides=(1, 1), depth_multiplier=
+%                                  depth_multiplier,use_bias=True, data_format=
+%                                  'channels_last', activation='relu'))
+%     my_model.add(AveragePooling2D(2, 2))
+%     my_model.add(BatchNormalization())
+
+%     my_model.add(Flatten())
+
+%     my_model.add(Dense(512, activation='relu'))
+%     my_model.add(BatchNormalization())
+%     my_model.add(Dropout(0.10))
+
+%     # softmax layer
+%     my_model.add(Dense(num_labels, activation='softmax'))
+
+%     return my_model
+
+
+% def small_fer_model():
+%     kernel_height, kernel_width = 3, 3
+%     depth_multiplier = 3
+
+%     my_model = Sequential()
+
+%     #  1st layer
+%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
+%                                  padding='same', strides=(1, 1), depth_multiplier=
+%                                  depth_multiplier, use_bias=True, data_format=
+%                                  'channels_last',input_shape=image_shape,activation='relu'))
+%     my_model.add(BatchNormalization())
+
+%     #  2nd layer
+%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
+%                                  padding='same', strides=(1, 1), depth_multiplier=
+%                                  depth_multiplier, use_bias=True, data_format=
+%                                  'channels_last', activation='relu'))
+%     my_model.add(MaxPooling2D(2, 2))
+%     my_model.add(BatchNormalization())
+
+%     #  5th layer
+%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
+%                                  padding='same', strides=(1, 1), depth_multiplier=
+%                                  depth_multiplier,use_bias=True, data_format=
+%                                  'channels_last', activation='relu'))
+%     my_model.add(BatchNormalization())
+
+%     #  6th layer
+%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
+%                                  padding='same', strides=(1, 1), depth_multiplier=
+%                                  depth_multiplier,use_bias=True, data_format=
+%                                  'channels_last', activation='relu'))
+%     my_model.add(AveragePooling2D(2, 2))
+%     my_model.add(BatchNormalization())
+
+%     #  7th layer
+%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
+%                                  padding='same', depth_multiplier=depth_multiplier,
+%                                  use_bias=True, data_format='channels_last',
+%                                  activation='relu'))
+%     my_model.add(BatchNormalization())
+
+%     #  8th layer
+%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
+%                                  padding='same', depth_multiplier=depth_multiplier,
+%                                  use_bias=True,data_format='channels_last',activation='relu'))
+%     my_model.add(AveragePooling2D(2, 2))
+%     my_model.add(BatchNormalization())
+
+%     #  10th layer
+%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
+%                                  padding='same', strides=(1, 1), depth_multiplier=
+%                                  depth_multiplier,use_bias=True, data_format='channels_last',
+%                                  activation='relu'))
+%     my_model.add(BatchNormalization())
+
+%     #  11th layer
+%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
+%                                  padding='same', strides=(1, 1), depth_multiplier=
+%                                  depth_multiplier,use_bias=True, data_format=
+%                                  'channels_last', activation='relu'))
+%     my_model.add(AveragePooling2D(2, 2))
+%     my_model.add(BatchNormalization())
+
+%     my_model.add(Flatten())
+
+%     my_model.add(Dense(512, activation='relu'))
+%     my_model.add(BatchNormalization())
+%     my_model.add(Dropout(0.10))
+
+%     # softmax layer
+%     my_model.add(Dense(num_labels, activation='softmax'))
+
+%     return my_model
+
+% def send_report():
+%     server = smtplib.SMTP(host='smtp-mail.outlook.com', port=587)
+%     server.starttls()
+%     server.login("baffour205@outlook.com", "**************")
+
+%     msg = "Training finished!"
+%     server.sendmail("baffour205@outlook.com", "asarebaffour700@gmail.com", msg)
+%     server.quit()
+
+% model = trial_model_best()
+% model.summary()
+% model.compile(loss='categorical_crossentropy',
+%               optimizer=optimizers.Adam(lr=lr),
+%               metrics=['accuracy'])
+
+% # this is the augmentation configuration we will use for training
+% train_datagen = ImageDataGenerator(
+%     rescale=1. / 255,
+%     shear_range=0.2,
+%     zoom_range=0.2,
+%     rotation_range=40,
+%     width_shift_range=0.2,
+%     height_shift_range=0.2,
+%     horizontal_flip=True)
+
+% # this is the augmentation configuration we will use for testing:
+% # only rescaling
+% test_datagen = ImageDataGenerator(rescale=1. / 255)
+
+% train_generator = train_datagen.flow_from_directory(
+%     train_data_dir,
+%     target_size=(img_width, img_height),
+%     batch_size=batch_size,
+%     color_mode='grayscale',
+%     class_mode='categorical')
+% number_of_train_samples = len(train_generator.filenames)
+
+% validation_generator = test_datagen.flow_from_directory(
+%     validation_data_dir,
+%     target_size=(img_width, img_height),
+%     batch_size=batch_size,
+%     color_mode='grayscale',
+%     class_mode='categorical')
+% number_of_test_samples = len(validation_generator.filenames)
+
+% private_test_generator = test_datagen.flow_from_directory(
+%     private_test_data_dir,
+%     target_size=(img_width, img_height),
+%     batch_size=batch_size,
+%     color_mode='grayscale',
+%     class_mode='categorical')
+% number_of_private_test_samples = len(private_test_generator.filenames)
+
+% # record model history
+% tensor_board = TensorBoard(log_dir='./logs', histogram_freq=0,
+%                             write_graph=True, write_images=True)
+% # save model
+% check_pointer = ModelCheckpoint(MODEL_PATH, monitor='val_loss', verbose=1,
+%                                 save_best_only=True)
+
+% history = model.fit_generator(train_generator, epochs=epochs, validation_data=
+%                             validation_generator,callbacks=[tensor_board,
+%                             check_pointer], validation_steps=112, verbose=1,
+%                             steps_per_epoch=897)
+% send_report()
+
+% # list all data in history
+% print(history.history.keys())
+
+% # summarize history for accuracy
+% plt.plot(history.history['acc'])
+% plt.plot(history.history['val_acc'])
+% plt.title('model accuracy')
+% plt.ylabel('accuracy')
+% plt.xlabel('epoch')
+% plt.legend(['train', 'test'], loc='upper left')
+% plt.show()
+
+% # summarize history for loss
+% plt.plot(history.history['loss'])
+% plt.plot(history.history['val_loss'])
+% plt.title('model loss')
+% plt.ylabel('loss')
+% plt.xlabel('epoch')
+% plt.legend(['train', 'test'], loc='upper left')
+% plt.show()
+
+% model.save(MODEL_PATH)
+
+% model_json = model.to_json()
+% with open("./models/fer2013_model_.json", "w") as json_file:
+%     json_file.write(model_json)
+
+% # evaluate model
+% scores = model.evaluate_generator(validation_generator, steps=112,
+%                                 workers=1, verbose=1)
+% print("Loss: " + str(scores[0]))
+% print("Accuracy: " + str(scores[1]))
+
+% # make predictions
+% test_labels = []
+% private_test_labels = []
+
+% number_of_generator_calls = np.math.ceil(
+%                             number_of_test_samples / (1.0 * batch_size))
+% for i in range(0, int(number_of_generator_calls)):
+%     test_labels.extend(np.array(validation_generator[i][1]))
+
+% number_of_private_test_generator_calls = np.math.ceil(
+%                             number_of_private_test_samples / (1.0 * batch_size))
+% for i in range(0, int(number_of_private_test_generator_calls)):
+%     private_test_labels.extend(np.array(private_test_generator[i][1]))
+
+% predictions = model.predict_generator(validation_generator,steps=112,verbose=0)
+% private_test_predictions = model.predict_generator(
+%                                 private_test_generator, steps=112, verbose=0)
+
+% y_pred = np.argmax(predictions, axis=1)
+% y_pred_private = np.argmax(private_test_predictions, axis=1)
+
+% # print recall, precision, and f1-score
+% print(classification_report(np.argmax(test_labels, axis=1), 
+%                             y_pred,target_names=class_label_names))
+% print(classification_report(np.argmax(private_test_labels, axis=1), 
+%                             y_pred_private, target_names=class_label_names))
+
+% # print confusion matrix
+% print(confusion_matrix(np.argmax(test_labels, axis=1), y_pred))
+% print(confusion_matrix(np.argmax(private_test_labels,axis=1),y_pred_private))
+
+% # define confusion matrix
+% def plot_confusion_matrix(cm, classes,
+%                           normalize=False,
+%                           title='Confusion matrix',
+%                           cmap=plt.cm.Blues):
+%     plt.imshow(cm, interpolation='nearest', cmap=cmap)
+%     plt.title(title)
+%     plt.colorbar()
+%     tick_marks = np.arange(len(classes))
+%     plt.xticks(tick_marks, classes, rotation=45)
+%     plt.yticks(tick_marks, classes)
+
+%     if normalize:
+%         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+%         cm = np.round(cm, 2)
+%         print("Normalized confusion matrix")
+%     else:
+%         print('Confusion matrix, without normalization')
+
+%     print(cm)
+
+%     thresh = cm.max() / 2.
+%     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+%         plt.text(j, i, cm[i, j],
+%                  horizontalalignment="center",
+%                  color="white" if cm[i, j] > thresh else "black")
+
+%     plt.tight_layout()
+%     plt.ylabel('True label')
+%     plt.xlabel('Predicted label')
+
+
+% # Compute confusion matrix
+% cnf_matrix = (confusion_matrix(np.argmax(test_labels, axis=1), y_pred))
+% np.set_printoptions(precision=2)
+% plt.figure()
+
+% # Plot non-normalized confusion matrix
+% plot_confusion_matrix(cnf_matrix, classes=class_label_names,
+%                         title='Public test Confusion matrix')
+% plt.figure()
+% plt.show()
+
+% # Plot non-normalized confusion matrix
+% plot_confusion_matrix(cnf_matrix, classes=class_label_names, normalize=True,
+%                       title='Public test normalized Confusion matrix')
+% plt.figure()
+% plt.show()
+
+% # Compute confusion matrix
+% cnf_matrix = (confusion_matrix(np.argmax(private_test_labels, axis=1), y_pred_private))
+% np.set_printoptions(precision=2)
+% plt.figure()
+
+% # Plot non-normalized confusion matrix
+% plot_confusion_matrix(cnf_matrix, classes=class_label_names,
+%                         title='Private Test Confusion matrix')
+% plt.figure()
+% plt.show()
+
+% # Plot non-normalized confusion matrix
+% plot_confusion_matrix(cnf_matrix, classes=class_label_names, normalize=True,
+%                       title='Private test Normalized Confusion matrix')
+% plt.figure()
+% plt.show()
+% \end{python}
+
+% Definition \pythoninline{class MyClass} means \dots
+
+% \begin{python}
+% import os
+% import cv2
+% import numpy as np
+% from keras.engine.saving import load_model
+
+% MODEL_PATH = os.getcwd() + '/models/jaffe_model.h5'
+% emotion_dict = {0: "Angry", 1: "Disgust", 2: "Fear", 3: "Happy", 4: "Sad",
+%                 5: "Surprise", 6: "Neutral"}
+
+% model = load_model(MODEL_PATH)
+
+% cap = cv2.VideoCapture(0)
+
+% while True:
+%     ret, frame = cap.read()
+
+%     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+%     face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+%     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+
+%     for (x, y, w, h) in faces:
+%         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 1)
+%         roi_gray = gray[y:y + h, x:x + w]
+%         cropped_img = np.expand_dims(np.expand_dims(cv2.resize(roi_gray, (48, 48)), -1), 0)
+%         cv2.normalize(cropped_img, cropped_img, alpha=0, beta=1, norm_type=cv2.NORM_L2,
+%         dtype=cv2.CV_32F)
+%         prediction = model.predict(cropped_img)
+%         cv2.putText(frame, emotion_dict[int(np.argmax(prediction))], (x, y),
+%         cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0),1, cv2.LINE_AA)
+
+%     cv2.imshow('frame', frame)
+%     if cv2.waitKey(1) & 0xFF == ord('q'):
+%         break
+
+% cap.release()
+% cv2.destroyAllWindows()
+% \end{python}
+
+% Definition \pythoninline{class MyClass} means \dots
 \printglossary
 
 \thesisloadachievement{publications}
