@@ -63,12 +63,12 @@
 
 \begin{document}
 %\makecover
-\begin{chineseabstract}
-近年来，在人工智能领域面部表情识别备受关注。许多研究工作使用具有数百万可训练参数的大型卷积神经网络获得了最先进的结果，当然这要求很高的计算能力, 但是这些深度学习模型对于实时应用是不可行的，尤其是运行在例如移动电话等功率受限的设备上。
-在本论文中，提出了一种新的，高效的“轻量级”卷积神经网络，用于实时情感识别。我们提出的模型架构基于深度可分离2D卷积的实现，这大大减少了网络参数，从而加快了整体性能速度，使其适用于实时应用。通过在Kaggle面部表情识别竞赛和日本女性面部表情（JAFFE）数据库中提供的FERC-2013数据集上评估模型表现。模型以极低的参数实现了极具竞争力的结果，并且为实时应用提供了比最先进模型更好的选择。最后，通过将实时视频流连接到面部检测器以将图像提供给我们训练的模型来证明模型可以满足实时需求。该模型最终将面部表情分为七种情绪：愤怒、厌恶、恐惧、快乐、中立、悲伤和惊喜。
+% \begin{chineseabstract}
+% 近年来，在人工智能领域面部表情识别备受关注。许多研究工作使用具有数百万可训练参数的大型卷积神经网络获得了最先进的结果，当然这要求很高的计算能力, 但是这些深度学习模型对于实时应用是不可行的，尤其是运行在例如移动电话等功率受限的设备上。
+% 在本论文中，提出了一种新的，高效的“轻量级”卷积神经网络，用于实时情感识别。我们提出的模型架构基于深度可分离2D卷积的实现，这大大减少了网络参数，从而加快了整体性能速度，使其适用于实时应用。通过在Kaggle面部表情识别竞赛和日本女性面部表情（JAFFE）数据库中提供的FERC-2013数据集上评估模型表现。模型以极低的参数实现了极具竞争力的结果，并且为实时应用提供了比最先进模型更好的选择。最后，通过将实时视频流连接到面部检测器以将图像提供给我们训练的模型来证明模型可以满足实时需求。该模型最终将面部表情分为七种情绪：愤怒、厌恶、恐惧、快乐、中立、悲伤和惊喜。
 
-\chinesekeyword{面部表情识别，深度可分卷积，深度学习，卷积神经网络，实时}
-\end{chineseabstract}
+% \chinesekeyword{面部表情识别，深度可分卷积，深度学习，卷积神经网络，实时}
+% \end{chineseabstract}
 
 \begin{englishabstract}
 Facial expression recognition has gained much attention in recent years in the field of artificial intelligence. Many research works have achieved state-of-the-art results using large convolutional neural network with millions of trainable parameters requiring high computing power. Such deep learning models involve much computation, thus, making them not feasible for real-time application, especially running on power constrained devices like mobile phones. In this thesis, we present a new and efficient `lightweight' Convolutional Neural Network for real-time emotion recognition. Our proposed model architecture is based on the implementation of depthwise separable 2D convolution which reduces the network parameters drastically thereby accelerating the overall performance speed making it suitable for real-time applications. The total number of parameters contained in our proposed depthwise separable convolutional model is about only 474 thousand. The basic operations of the model include: depthwise separable convolution, batch normalization, max-pooing, global average pooling and softmax. These basic operations are carefully put together to create a twenty-one layer CNN architecture. We experiment our model on FERC-2013 dataset provided on the Kaggle facial expression recognition competition, the Japanese Female Facial Expression (JAFFE) database and the Extended Cohn-Kanade Dataset (CK+). Our model obtained accuracy of 68\% and 69\% on FERC-2013 private test and public test respectively. For JAFFE dataset, our model achieved 88\% accuracy on test data. The model achieved an outstanding accuracy of 99\% accuracy for the CK+ test dataset. It is evident that our model achieves very competitive results with few parameters and presents itself a better choice over state-of-the-art models for real-time applications. Finally, we demonstrate that our model can meet real-time needs by connecting a live video stream to a face detector to feed images to our trained model. The model classifies facial expressions into one of the seven emotions (Anger, Disgust, Fear, Happy, Neutral, Sad and Surprise).
@@ -145,7 +145,7 @@ Yu and Zhang\citing{Yu:2015:IBS:2818346.2830595} proposed a method similar in fa
 
 Due to small datasets available for training deep learning networks, Hong-Wei et al.\citing{Ng:2015:DLE:2818346.2830593} employed a transfer learning approach for deep convolution neural network architecture for the 2015 Emotion Recognition in the Wild contest, in the sub-challenge of Static Facial Expression Recognition in the Wild. Beginning from a network pre-trained on the generic ImageNet dataset, they conducted supervised fine-tuning on the network in a two-stage process. The first fine-tune was on datasets relevant to facial expressions, the second fine-tuned by dataset provided by the contest. This cascading fine-tuning method achieves better results with overall accuracy of 48.5\% in validation set and 55.6\% in the test set compared to a single stage fine tuning with the combined datasets.
 
-Ding et al.\citing{7961731} proposed a distribution function to model the high-level neurons of the deep learning network. They performed two-stage training; the first is the pre-training stage where they trained convolutional layers of the deep learning network, regularized by the face net. The second stage is refining stage; they appended fully-connected layers to the pre-trained convolutional layers and trained the whole network jointly. This method was experimented on four public datasets, CK+, Oulu-CASIA\citing{Zhao_Oulu-CASIA}, TFD, and SFEW with accuracy up to 96.8\%, 87.71\%, 88.9\% and 55.15\% respectively.
+Ding et al.\citing{7961731} proposed a distribution function to model the high-level neurons of the deep learning network. They performed two-stage training; the first is the pre-training stage where they trained convolutional layers of the deep learning network, regularized by the face net. The second stage is refining stage; they appended fully-connected layers to the pre-trained convolutional layers and trained the whole network jointly. This method was experimented on four public datasets, CK+, Oulu-CASIA\citing{Zhao_Oulu-CASIA}, TFD, and SFEW\citing{6130508} with accuracy up to 96.8\%, 87.71\%, 88.9\% and 55.15\% respectively.
 
 Jie et al\citing{8373844} proposed an island loss to enhance the discriminating power of the deeply learned features by convolutional neural networks. The island loss was designed to reduce the intra-class variations while enlarging the inter-class differences simultaneously. The proposed method was evaluated on three popular facial expression datasets; CK+\citing{5543262}, Oulu-CASIA, and MMI dataset with accuracy up to 94.35\%, 77.29\% and 70.67\% respectively.
 
@@ -156,16 +156,16 @@ Taheri et al\citing{6837526} proposed a dictionary-based approach for facial exp
 Zhao et al\citing{7780738} proposed a Deep Region and Multi-label Learning (DRML), a unified deep network that simultaneously identified Action Unit (AU) and multi-label learning (ML). This method was a complete end-to-end network that identified more specific regions for different AUs than conventional convolutional patch-based methods. The proposed region layer was experimented BP4D \citing{6553788} and DISFA\citing{10.1007/978-3-642-33783-3_58} benchmarks.
 
 \section{Contents and Innovation of Thesis}
-The purpose of the thesis is about finding efficient convolutional neural network architecture for facial emotion recognition task. The convolutional neural network will be constructed with real-time application in mind. The complete network will be end-to-end trainable and automatically learns representations robust to variations embedded with facial expressions. The thesis shall be implemented in real-time to solve real world problems to demonstrate its real-time ability. In an innovative way, this thesis seeks to bridge the gap between laboratory-constructed deep learning models and implementation for higher accuracy and performance in real-time for the task of recognizing facial emotion expressions.
+The purpose of the thesis is about finding efficient convolutional neural network architecture for facial emotion recognition task. The convolutional neural network will be constructed with real-time application in mind. The complete network will be end-to-end trainable and automatically learns representations robust to variations embedded with facial expressions. This thesis shall be implemented in real-time to solve real world problems to demonstrate its real-time feasibility. In an innovative way, this thesis seeks to bridge the gap between laboratory-constructed deep learning models and implementation for higher accuracy and performance in real-time for the task of recognizing facial emotion expressions.
 
 \section{Outline of Thesis}
 The thesis is organized as follows:
 \begin{itemize}
-    \item Chapter 1 gives the background and significance of the thesis. This chapter also provides the state of the art in the area of research for this thesis. Finally, this chapter outlines the innovative idea of the thesis.
-    \item Chapter 2 explains all theoretical basics underlining the proposed idea in the thesis.
-    \item Chapter 3 discusses the proposed method and the various experiments carried out in the laboratory.
-    \item Chapter 4 discusses the results of the experiments carried out. Also, the chapter presents the results metrics used to evaluate the experiments. Finally, this chapter analyses in details the results obtained on experiments and real-time testing.
-    \item Chapter 5 provides the concluding remarks and some future works.
+    \item \textbf{Chapter 1} presents the background and significance of the thesis. This chapter also provides the state of the art in the area of research for this thesis. Finally, this chapter outlines the innovative idea of the thesis.
+    \item \textbf{Chapter 2} explains all theoretical basics underlining the proposed idea in the thesis.
+    \item \textbf{Chapter 3} discusses the proposed method and the various experiments carried out in the laboratory.
+    \item \textbf{Chapter 4} discusses the results of the experiments carried out. Also, the chapter presents the results metrics used to evaluate the experiments. Finally, this chapter analyses in details the results obtained on experiments and real-time testing.
+    \item \textbf{Chapter 5} provides the concluding remarks and some suggested future works.
 \end{itemize}
 
 
@@ -173,12 +173,18 @@ The thesis is organized as follows:
 In this chapter, we introduce the underlying theories for the proposed method. We will introduce machine learning, deep learning and artificial neural networks, convolutional neural network and separable convolutions.
 
 \section{Machine Learning}
-Machine learning uses statistical methods to learn patterns from data without programming the patterns explicitly. Here, \citing{mitchell1997} defines learning as ``A computer program is said to learn from experience $E$ with respect to some class of tasks $T$ and performance measure $P$, if it performs the tasks at $T$, as measured by $P$, improves the experience $E$''. Thus, programs perform tasks with some sort of their own intelligence (artificial intelligence). There are many kinds of tasks that can be solved with machine learning. Some popular machine learning tasks include classification\citing{Goodfellow-et-al-2016}, regression, transcription\citing{Goodfellow-et-al-2016}, machine translation\citing{DBLP:journals/corr/AbadiABBCCCDDDG16}\citing{DBLP:journals/corr/BahdanauCB14}, anomaly detection\citing{Chandola:2009:ADS:1541880.1541882}, synthesis and sampling \citing{pmlr-v31-luo13a}, inputting of missing values, density estimation or probability mass function estimation, denoising, and many more. In order to assess the capabilities of a machine learning algorithm, we must construct a quantitative measure of it's performance. Most often, the performance measure $P$ is determined by the task $T$ that is been executed by the program. We usually measure \textbf{accuracy} of the algorithm for tasks such as classification, transcription and classification with missing inputs. To measure the \textbf{accuracy}, we compute the proportion of dataset samples for which the algorithm produces the correct output. Alternatively, we can achieve this by computing the \textbf{error rate}, i.e. the proportion of dataset samples for which the algorithm produces incorrect output. The evaluation of the algorithm is carried out on dataset samples not seen before by the algorithm, termed \textbf{test set}.
+Machine learning uses statistical methods to learn patterns from data without programming the patterns explicitly. T. Mitchell\citing{mitchell1997} defines learning as ``A computer program is said to learn from experience $E$ with respect to some class of tasks $T$ and performance measure $P$, if it performs the tasks at $T$, as measured by $P$, improves the experience $E$''. Thus, programs perform tasks with some sort of their own intelligence (artificial intelligence). There are many kinds of tasks that can be solved with machine learning. Some popular machine learning tasks include classification, regression, transcription\citing{Goodfellow-et-al-2016}, machine translation\citing{DBLP:journals/corr/AbadiABBCCCDDDG16, DBLP:journals/corr/BahdanauCB14}, anomaly detection\citing{Chandola:2009:ADS:1541880.1541882}, synthesis and sampling \citing{pmlr-v31-luo13a}, inputting of missing values, density estimation or probability mass function estimation, denoising, and many more. In order to assess the capabilities of a machine learning algorithm, we must construct a quantitative measure of it's performance. Most often, the performance measure $P$ is determined by the task $T$ that is been executed by the program. We usually measure \textbf{accuracy} of the algorithm for tasks such as classification, transcription and classification with missing inputs. To measure the \textbf{accuracy}, we compute the proportion of dataset samples for which the algorithm produces the correct output. Alternatively, we can achieve this by computing the \textbf{error rate}, i.e. the proportion of dataset samples for which the algorithm produces incorrect output. The evaluation of the algorithm is carried out on dataset samples not seen before by the algorithm, termed \textbf{test set}.
 
 Machine learning is different from traditional computer software. Let us take a classic example of how to classify handwritten digits. In a traditional computer software, a human developer will have to write code to instruct the system on how to tell the difference between all the digits from zero to nine. However, a machine learning model will have to learn how to solidly differentiate between all ten digits through training on a large number of data, in this case obviously a large number of labelled handwritten images containing numbers from zero to nine. Machine learning has achieved huge success in recent years, however it is only one way for accomplishing artificial intelligence in systems. Apart from machine learning, there exist many different approaches to construct artificial intelligence (AI) systems. An example of an AI approach is evolutionary computation; this is where algorithms go through random mutations and combinations of generations in effort to produce highly optimal solutions. Another example of an AI approach is expert systems; this is an approach in AI that seeks to program computers with rules in order to mimic a human expert in decision making in a specific domain, for example an auto mechanic diagnosing automobile expert system. The main goal of machine learning is to allow computers to learn automatically without the human moderation or assistance and adapt to perform actions accordingly. There are typically two types of machine learning experience $E$; namely: supervised learning and non-supervised learning.
 
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/neuron.png}
+\caption{Directed graph showing ANN with input units \textbf{A, B,} and \textbf{C} into the neuron \textbf{S} to perform computation on weights \textbf{W ($w_1, w_2, w_3$)} with output \textbf{$Y$}: Source:\citing{McGonagle}}
+\label{fig_neuron}
+\end{figure}
+
 \subsection{Supervised learning}
-This type of machine learning approach basically learns the computer by examples. The algorithm is subjected to a dataset containing features corresponding to \textbf{label} or \textbf{target}. For the sake of our earlier example, let's say the labelled dataset are images of handwritten digits annotated to show the corresponding number. With enough training examples, we will train a supervised learning algorithm to recognize the patterns of pixels, edges, corners and shapes related to each digit and ultimately be capable of recognizing handwritten digits and accurately differentiate between digits 3 and 4 or 8 and 0. We can model every supervised learning problem as follows:
+This type of machine learning approach basically learns the computer by examples. The algorithm is subjected to a dataset containing features corresponding to \textbf{labels} or \textbf{targets}. For the sake of our earlier example, let's say the labelled dataset are images of handwritten digits annotated to show the corresponding number. With enough training examples, we will train a supervised learning algorithm to recognize the patterns of pixels, edges, corners and shapes related to each digit and ultimately be capable of recognizing handwritten digits and accurately differentiate between digits 3 and 4 or 8 and 0. We can model every supervised learning problem as follows:
 \begin{equation}
 y = f (X),
 \end{equation}
@@ -197,6 +203,12 @@ Supervised learning technique can be further grouped into two types. Namely: reg
 \end{itemize}
 Some popular supervised learning algorithms include: Decision Trees, Linear SVC (Support Vector Classifier), Logistic Regression, Naive Bayes, Neural Networks, Linear Regression, Support Vector Regression (SVR), Gradient boosting and Fisher linear discriminant. 
 
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/ANN.png}
+\caption{A simple ANN consisting of an input layer (Layer 0) with inputs $x_1, x_2, x_3$ and weights $w_{x_1s_1}, w_{x_2s_1}, w_{x_2s_2}, w_{x_3s_2}$; and an output layer (Layer 3) with inputs $s_3, s_4, s_5$ and weights $w_{s_3y_1}, w_{s_4y_1}, w_{s_5y_2}$ and two hidden layers (Layer 1 and Layer 2) in between. Source:\citing{McGonagle}}
+\label{fig_ANN}
+\end{figure}
+
 \subsection{Unsupervised Learning}
 Unsupervised learning is exactly what it sounds. We do not supervise the model but let the model work on its own to discover information from dataset that may not be visible to the human eye. Unsupervised learning uses machine learning algorithms that draw conclusions on unlabeled data. Thus, unsupervised learning studies the way systems can deduce a function to explain the hidden information and structure from unlabelled data. The algorithms in unsupervised learning work to achieve accurate clustering – finding patterns and groupings from unlabeled data. Some popular unsupervised learning algorithms include: K-means clustering, K-NN (K nearest neighbors), Dimensionality Reduction, Neural Networks, Principal Component Analysis, Singular Value Decomposition, Independent Component Analysis, Distribution models and Hierarchical clustering.
 
@@ -205,7 +217,7 @@ Many machine learning technologies can be used to perform both unsupervised lear
     p(x) = {\displaystyle \prod_{i=1}^{n}}\,p(X_i\,|\,X_1,\dots,X_{i-1}).
     \label{eq_unsupervised}
 \end{equation}
-From equation \ref{eq_unsupervised}, we can solve the seemingly unsupervised problem of modeling $p(x)$ by dividing it into $n$ supervised learning problems. Instead, we can also solve the supervised problem of learning $p(y\,|\,x)$ by using traditional unsupervised learning methods to learn the joint distribution $p(x,\,y)$, then we infer
+From \ref{eq_unsupervised}, we can solve the seemingly unsupervised problem of modeling $p(x)$ by dividing it into $n$ supervised learning problems. Instead, we can also solve the supervised problem of learning $p(y\,|\,x)$ by using traditional unsupervised learning methods to learn the joint distribution $p(x,\,y)$, then we infer
 \begin{equation}
     p(y\,|\,x) = \frac{p(x,\,y)}{\sum_y\,p(x,\,y^1)}.
 \end{equation}
@@ -214,7 +226,7 @@ The biggest difference between supervised and unsupervised learning is that supe
 
 \begin{center}
 \begin{table}
-\caption{Summary difference between supervised learning and unsupervised learning}
+\caption{Summary of differences between supervised learning and unsupervised learning}
 \begin{tabular}{ | m{10em} | m{5cm}| m{5cm} | } 
 \hline
 \textbf{Criteria} & \textbf{Supervised} & \textbf{Unsupervised} \\ 
@@ -245,33 +257,6 @@ The biggest difference between supervised and unsupervised learning is that supe
 \subsection{Semi-supervised Learning}
 Semi-supervised learning uses both labelled and unlabelled data. We can say semi-supervised learning lies between supervised and unsupervised learning. In semi-supervised learning, we use some small amount of labelled data to help discover hidden patterns in the rest of the data and improves accuracy. Semi-supervised learning seeks to solve the high cost problem involved in supervised learning. Thus, the cost involved in the process of labelling very large dataset for training is highly reduced in semi-supervised learning. Only few data needs to be labelled to guide a semi-supervised learning model to learn from the rest of the unlabelled data. Semi-supervised approach is very useful in practice as fully labelled data is very difficult and costly to produce compared to unlabelled data. Usually, we use semi-supervised learning when the data acquired needs some special and relevant information or resources in order to be able to achieve training or learning from the data. Some of the methods used in semi-supervised learning include: Generative models, Co-training and multiview models, semi-supervised support vector machines and Graph-based models.
 
-Since semi-supervised learning has the same aim of achieving prediction as supervised learning, it can be applied to any problem applicable to supervised learning. For example, semi-supervised learning has been applied in natural language processing (tasks like word sense disambiguation\citing{yarowsky13}, machine translation, sentiment analysis), computer vision, bioinformatics and cognitive psychology.
-
-\section{Deep Learning}
-Deep learning is one of the approaches in machine learning that is based on learning the representations in data as compared to other task-specific algorithms. The term deep learning simply means training neural networks or sometimes deep neural networks to learn a general representation of data. The aim of a deep learning network is to estimate some function $f^*$. For instance, for a deep learning classifier, $y = f^*(x)$ tries to map an input $x$ to its corresponding category $y$. A deep learning network defines a mapping $y = f\,(x;\theta)$ and learns the appropriate value of the parameters $\theta$ in order to get the best estimation function. Many deep learning architectures such as \citing{Ivanovsky-2017}\citing{Kri12}\citing{Chr14}, recurrent neural networks\citing{7914752}\citing{7801769}, and deep belief networks\citing{7111524}\citing{7539822} have been used to solve problems in diverse fields including speech recognition, computer vision, natural language processing, machine translation, etc. However, deep learning can be supervised or unsupervised.
-
-\subsection{Artificial Neural Network}
-Artificial Neural networks (ANN) are inspired by the biological neural networks of the animal brain that simply connects many neurons together to form a network. However, in ANN a neuron is simply a function that takes in input and spits out an output. More formally,
-\begin{equation}
-    z = \vec{w} \cdot \vec{x} + b,
-\end{equation}
-where $\vec{w} = (w_1, w_2, \dots, w_n)$ are the weight vectors from previous neurons, $\vec{x} = (x_1, x_2, \dots, x_n)$ are the input units from previous neurons and $b$ is a bias term. Figure \ref{fig_neuron} shows a directed graph of a simple ANN.
-
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/neuron.png}
-\caption{Directed graph showing ANN with input units \textbf{A, B,} and \textbf{C} into the neuron \textbf{S} to perform computation on weights \textbf{W ($w_1, w_2, w_3$)} with output \textbf{$Y$}: Source:\citing{McGonagle}}
-\label{fig_neuron}
-\end{figure}
-
-Let's go back to our example of recognizing handwritten digits; say our dataset contains grayscale images with size $28 \times 28$ pixels. The network starts with a bunch of neurons corresponding to each of the $28 \times 28$ pixels of the input image which is 784 neurons $(28 \times 28 = 784)$ in total. Each one of these neuron holds a number that represents the grayscale value of the corresponding pixel, ranging from $0$ for black pixels, up to $1$ for white pixels. This number inside the neuron is called its activation. Therefore, all of the 784 neurons form the first layer in the ANN. This ANN will contain a last layer consisting of 10 neurons, with each of the 10 neurons representing one of the digits. The activations (between 1 and 0) in these neurons in the last layer represent how much the network thinks that a given image corresponds with a given digit. There will also be couple layers between the first and last layer called the hidden layers. Figure \ref{fig_ANN} shows a simple ANN with two hidden layers. In a trained ANN, activations in one layer determine activations in the next layer. Meaning, if you feed in an image to the network lighting up all 784 neurons of the input according to the brightness of each pixel in the input image, that pattern of activations causes some specific pattern in the next layer, which causes some pattern in the one after it and so on, which finally gives some pattern in the output layer. In the output layer, the brightest neuron is the network's choice for what digit the input image represents.
-
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/ANN.png}
-\caption{A simple ANN consisting of an input layer (Layer 0) with inputs $x_1, x_2, x_3$ and weights $w_{x_1s_1}, w_{x_2s_1}, w_{x_2s_2}, w_{x_3s_2}$; and an output layer (Layer 3) with inputs $s_3, s_4, s_5$ and weights $w_{s_3y_1}, w_{s_4y_1}, w_{s_5y_2}$ and two hidden layers (Layer 1 and Layer 2) in between. Source:\citing{McGonagle}}
-\label{fig_ANN}
-\end{figure}
-
-In the human eye, when we recognize digits, we piece together various components. The digit `9' has a loop up top and a line on the right as shown in figure \ref{fig_digit}. The digit `8' also has a loop up top but paired with another loop down low as shown in figure \ref{fig_digit}. In a perfect ANN, we hope that each neuron from the second to last layer corresponds to one of these sub-components of a handwritten digit. In this way, anytime you feed the network with an image containing a loop up top like `9' or `8', there is some specific neuron whose activation is going to be close to $1$. In that way, going from the third layer to the last one, it requires learning which combination of the sub-components corresponds to which digits. However, recognizing a loop can also be broken down into sub problems. One reasonable way to do this is to first recognize the various little edges that makes it up as shown in figure \ref{fig_digit_sub}.
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/digits.PNG}
 \caption{An intuitive breakdown of the digit 8 and 9. The digit `8' has a loop up top and paired with another loop down low. The digit `9' has a loop up top and a line on the right}
@@ -282,15 +267,38 @@ In the human eye, when we recognize digits, we piece together various components
 \caption{A further breakdown of loops into little edges}
 \label{fig_digit_sub}
 \end{figure}
+
+Since semi-supervised learning has the same aim of achieving prediction as supervised learning, it can be applied to any problem applicable to supervised learning. For example, semi-supervised learning has been applied in natural language processing (tasks like word sense disambiguation\citing{yarowsky13}, machine translation, sentiment analysis), computer vision, bioinformatics and cognitive psychology.
+
+\section{Deep Learning}
+Deep learning is one of the approaches in machine learning that is based on learning the representations in data as compared to other task-specific algorithms. The term deep learning simply means training neural networks or sometimes deep neural networks to learn a general representation of data. The aim of a deep learning network is to estimate some function $f^*$. For instance, for a deep learning classifier, $y = f^*(x)$ tries to map an input $x$ to its corresponding category $y$. A deep learning network defines a mapping $y = f\,(x;\theta)$ and learns the appropriate value of the parameters $\theta$ in order to get the best estimation function. Many deep learning architectures such as \citing{Ivanovsky-2017, Kri12, Chr14}, recurrent neural networks\citing{7914752, 7801769}, and deep belief networks\citing{7111524, 7539822} have been used to solve problems in diverse fields including speech recognition, computer vision, natural language processing, machine translation, etc. However, deep learning can be supervised or unsupervised.
+
+\subsection{Artificial Neural Network}
+Artificial Neural networks (ANN) are inspired by the biological neural networks of the animal brain that simply connects many neurons together to form a network. However, in ANN, a neuron is simply a function that takes in input and spits out an output. More formally,
+\begin{equation}
+    z = \vec{w} \cdot \vec{x} + b,
+\end{equation}
+where $\vec{w} = (w_1, w_2, \dots, w_n)$ are the weight vectors from previous neurons, $\vec{x} = (x_1, x_2, \dots, x_n)$ are the input units from previous neurons and $b$ is a bias term. Figure \ref{fig_neuron} shows a directed graph of a simple ANN.
+
+Let's go back to our example of recognizing handwritten digits; say our dataset contains grayscale images with size $28 \times 28$ pixels. The network starts with a bunch of neurons corresponding to each of the $28 \times 28$ pixels of the input image which is 784 neurons $(28 \times 28 = 784)$ in total. Each one of these neuron holds a number that represents the grayscale value of the corresponding pixel, ranging from $0$ for black pixels, up to $1$ for white pixels. This number inside the neuron is called its activation. Therefore, all of the 784 neurons form the first layer in the ANN. This ANN will contain a last layer consisting of 10 neurons, with each of the 10 neurons representing one of the digits. The activations (between 1 and 0) in these neurons in the last layer represent how much the network thinks that a given image corresponds with a given digit. There will also be couple layers between the first and last layer called the hidden layers. Figure \ref{fig_ANN} shows a simple ANN with two hidden layers. In a trained ANN, activations in one layer determine activations in the next layer. Meaning, if you feed in an image to the network lighting up all 784 neurons of the input according to the brightness of each pixel in the input image, that pattern of activations causes some specific pattern in the next layer, which causes some pattern in the one after it and so on, which finally gives some pattern in the output layer. In the output layer, the brightest neuron is the network's choice for what digit the input image represents.
+
+In the human eye, when we recognize digits, we piece together various components. The digit `9' has a loop up top and a line on the right as shown in Figure \ref{fig_digit}. The digit `8' also has a loop up top but paired with another loop down low as shown in Figure \ref{fig_digit}. In a perfect ANN, we hope that each neuron from the second to last layer corresponds to one of these sub-components of a handwritten digit. In this way, anytime you feed the network with an image containing a loop up top like `9' or `8', there is some specific neuron whose activation is going to be close to $1$. In that way, going from the third layer to the last one, it requires learning the appropriate combination of the sub-components that corresponds to which digits. However, recognizing a loop can also be broken down into sub problems. One reasonable way to do this is to first recognize the various little edges that makes it up as shown in Figure \ref{fig_digit_sub}.
+
 Similarly, a long line that you might see in digit one, four or seven is just a long edge or a pattern of several smaller edges. So maybe our hope is that each neuron in the second layer of the network corresponds with the various relevant little edges. We can see that been able to detect edges and patterns like this will be very useful to other image recognition tasks. And even beyond image recognition, there are all sorts of intelligent things we can do that can be broken down into several layers of abstraction. For example speech recognition involves taking raw audios and picking out distinct sounds, which combines to make certain syllabus, which combine to form words, which further combines to make up phrases, and so on.
 
-The goal of a neural network in this example is to have some mechanism that can conceivably combine pixels into edges or edges into patterns or patterns into digits. Now to zoom in on one very specific example, let's say the hope of one particular neuron in the second layer of this network \ref{fig_ANN} is to recognize or not an image has an edge in the middle upper region of the image. The question at hand is what parameters should the network have in order to detect an edge in a said image. To achieve this, we assign a weight to each one of the connections between our neuron and the neurons from the first layer. These weights are just numbers. Then we take all those activations from the first layer and compute their weighted sum according to these weights. We can think about weights as organized in a vector. Let's say green pixels indicate positive weights and the red pixels indicate negative weights with the brightness of the pixel a loose depiction of the weights’ value. If we made the weights associated with almost all of the pixels zero except for some positive weights in the region that we care about; then taking the weighted sum of all the pixel values really just amounts to adding up the values of the pixel in just the region we care about. When we compute the weighted sum we might come up with any number; but for ANN what we want is for activations to be some value between zero and one. So the common thing to do is to push this weighted sum into some function that squashes the number into the range that is between zero and one. There are many functions that do this. Some these functions include: Sigmoid, Tanh, Rectified linear unit (ReLU), Leaky rectified linear unit (Leaky ReLU), Parametric rectified linear unit (PReLU), Exponential linear unit (ELU), etc. At this stage, we can rewrite our neuron equation with the activation function $H$ as:
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/gradient_descent.PNG}
+\caption{An illustration of how gradient descent algorithm minimizes the function to the downhill. Source: \citing{Goodfellow-et-al-2016}}
+\label{fig_gradient_descent}
+\end{figure}
+
+The goal of a neural network in this example is to have some mechanism that can conceivably combine pixels into edges or edges into patterns or patterns into digits. Now to zoom in on one very specific example, let's say the hope of one particular neuron in the second layer of this network shown in Figure \ref{fig_ANN} is to recognize or not if an image has an edge in the middle upper region of the image. The question at hand is what parameters should the network have in order to detect an edge in a said image. To achieve this, we assign a weight to each one of the connections between our neuron and the neurons from the first layer. These weights are just numbers. Then we take all those activations from the first layer and compute their weighted sum according to these weights. We can think about weights as organized in a vector. Let's say green pixels indicate positive weights and the red pixels indicate negative weights with the brightness of the pixel a loose depiction of the weights’ value. If we made the weights associated with almost all of the pixels zero except for some positive weights in the region that we care about; then taking the weighted sum of all the pixel values really just amounts to adding up the values of the pixel in just the region we care about. When we compute the weighted sum we might come up with any number; but for ANN what we want is for activations to be some value between zero and one. So the common thing to do is to push this weighted sum into some function that squashes the number into the range that is between zero and one. There are many functions that do this. Some these functions include: Sigmoid, Tanh, Rectified linear unit (ReLU), Leaky rectified linear unit (Leaky ReLU), Parametric rectified linear unit (PReLU), Exponential linear unit (ELU), etc. At this stage, we can rewrite our neuron equation with the activation function $H$ as:
 \begin{equation}
     H(\vec{w} \cdot \vec{x} + b)
 \end{equation}
 Hence, activation of the neuron is basically a measure of how positive the relevant weighted sum is. But maybe we don't want a neuron to light up when the weighted sum is bigger than zero. Maybe we only want a neuron to be active when the weighted sum is bigger than say 10. That is, we want some bias for it to be active. What we can do is to add some number say $-10$ to the weighted sum before plugging into the squashing function. That additional number is called the bias term, $b$. Therefore, the weights tells us what pixel pattern the neuron in the second layer is picking up on and the bias tells us how high the weighted sum needs to be before the neurons start getting meaningfully active. And this whole process is for just one neuron. Every other neuron in the second layer is going to be connected to all $784$ neurons from the first layer. And each of the $784$ connections has its own weight associated with it. Also, each one has some bias. So if this hidden layer has $16$ neurons, that's a total of $784 \times 16$ weights along $16$ biases. All of that are just the connections from the first layer to the second. The connections between the other layers also have a bunch of weights and biases associated with them. All said and done, this network has bunch of weights and biases that can tweaked and turned to make this network behave in different ways. In essence, learning or training an ANN is getting the network to find the right weights and biases so that it can actually make accurate classification from given data. It is obviously impractical to set all these weights and biases by hand.
 
-We write down the equation of an ANN in a more compact notational way in equation \ref{ANN_equation}, we can organize all activations from one layer into a column as a vector. We can also organize all the weights as a matrix, where each row of the matrix corresponds to the connections between one layer and a particular neuron in the next layer. Thus, taking the weighted sum of the activations in the first layer corresponds to one of the terms in the matrix vector product. Furthermore, instead of adding the bias to each of these values independently, we represent it by organizing all those biases into a vector and adding the vector to the previous matrix vector product. Then in the final step, we wrap a squashing function around the entire expression. What that's supposed to represent is that we will apply the squashing function to each specific component of the resulting vector inside. In summary, the entire network is just a function that takes in 784 numbers as an input and spits out 10 numbers as an output. It is absurdly complicated function that involves so many parameters in the form of weights and biases that pick up on certain patterns, and which involves iterating many matrix vector products and a squashing function.
+We write down the equation of an ANN in a more compact notational way in \ref{ANN_equation}, we can organize all activations from one layer into a column as a vector. We can also organize all the weights as a matrix, where each row of the matrix corresponds to the connections between one layer and a particular neuron in the next layer. Thus, taking the weighted sum of the activations in the first layer corresponds to one of the terms in the matrix vector product. Furthermore, instead of adding the bias to each of these values independently, we represent it by organizing all those biases into a vector and adding the vector to the previous matrix vector product. Then in the final step, we wrap a squashing function around the entire expression. What that's supposed to represent is that we will apply the squashing function to each specific component of the resulting vector inside. In summary, the entire network is just a function that takes in 784 numbers as an input and spits out 10 numbers as an output. It is absurdly complicated function that involves so many parameters in the form of weights and biases that pick up on certain patterns, and which involves iterating many matrix vector products and a squashing function.
 \begin{equation}
     a^1 = 
 H\begin{pmatrix}\begin{bmatrix}
@@ -315,26 +323,32 @@ H\begin{pmatrix}\begin{bmatrix}
 \end{equation}
 
 \subsection{Cost function - how neural networks get punished}
-Conceptually, we think of each neuron as been connected to all of the neurons in the previous layer, with the weights and weighted sum defining its activation whiles the bias is some indication of whether the neuron is active or inactive. In ANN, we will start by initializing all the weights and biases totally randomly. That is, the network is going to perform pretty bad on some given examples since it is just doing something random. For example, if we feed in an input image of a $3$, the output layer gets confused and utters out trash. So what we will do is to define a cost function $E_{total}$, a way of telling the computer that the output should have activations which are $0$ for most neurons but $1$ for the image class neuron. In a mathematical language, we’ll add up the squares of the differences between each of those trash output activations and the value that we want them to have as shown in equation \ref{cost_function}.
+Conceptually, we think of each neuron as been connected to all of the neurons in the previous layer, with the weights and weighted sum defining its activation whiles the bias is some indication of whether the neuron is active or inactive. In ANN, we will start by initializing all the weights and biases totally randomly. That is, the network is going to perform pretty bad on some given examples since it is just doing something random. For example, if we feed in an input image of a $3$, the output layer gets confused and utters out trash. So what we will do is to define a cost function $E_{total}$, a way of telling the computer that the output should have activations which are $0$ for most neurons but $1$ for the image class neuron. In a mathematical language, we'll add up the squares of the differences between each of those trash output activations and the value that we want them to have as shown in \ref{cost_function}.
 \begin{equation}
     E_{total} = \frac{1}{n}\sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2
     \label{cost_function}
 \end{equation}
-In this sense, the sum is small when the network confidently classifies the image correctly but it is large when the network seems like it does not really know what it is doing. Furthermore, we consider the average cost over all the dataset samples at our disposal. This average cost is our measure of how good or bad the network is performing. The ANN itself is basically a function; taking in 748 pixels as input and outputs 10 numbers and parameterized by so many weights and biases. Here, the cost function is a layer of complexity on top of that. It takes as input those many weights and biases and outputs a single number describing how bad or good those weights and biases are; and its defined based on the network's behaviour over all the tens of thousands of pieces of training data. There are many forms of cost functions such as Cross-entropy cost\citing{deBoer2005} for multi-class classification, Hellinger distance\citing{Nikulin2018}, Kullback–Leibler divergence\citing{kullback1951}, Generalized Kullback–Leibler divergence\citing{4655451}, Itakura–Saito distance\citing{NOZAKI201763}, etc.
+
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/fluctuation.png}
+\caption{Objective function fluctuations caused by high variance of frequent updates}
+\label{SGD}
+\end{figure}
+
+In this sense, the sum, $E_{total}$ is small when the network confidently classifies the image correctly but it is large when the network seems like it does not really know what it is doing. Furthermore, we consider the average cost over all the dataset samples at our disposal. This average cost is our measure of how good or bad the network is performing. The ANN itself is basically a function; taking in 748 pixels as input and outputs 10 numbers and parameterized by so many weights and biases. Here, the cost function is a layer of complexity on top of that. It takes as input those many weights and biases and outputs a single number describing how bad or good those weights and biases are; and its defined based on the network's behaviour over all the tens of thousands of pieces of training data. There are many forms of cost functions such as Cross-entropy cost\citing{deBoer2005} for multi-class classification, Hellinger distance\citing{Nikulin2018}, Kullback–Leibler divergence\citing{kullback1951}, Generalized Kullback–Leibler divergence\citing{4655451}, Itakura–Saito distance\citing{NOZAKI201763}, etc.
 
 \subsection{Gradient Descent - how neural networks are corrected}
 Telling the computer what kind of a bad job it is doing is not really helpful. We want to tell it how to change those weights and biases so that it gets better. At this point let us imagine we have a simple function, which has one number as an input and one number as an output. Our job is to find an input that minimizes the value of this function. In calculus, you can sometimes figure out this minimum number explicitly; but not always feasible for a very complicated function. Certainly not feasible in our very complicated neural network cost function. 
 
-A more flexible tactic is to start out at any input and figure out which direction we should step to make that output lower. Specifically, if we can find out the slope of the function where we are then shift to the left if that slope is positive and shift to the right if the slope is negative. If we do this repeatedly, at each point checking the new slope and taking the appropriate step, we are going to approach some local minimum of the function. An image we might have in mind here is a ball rolling down a hill. We must mention that even for this really simplified input function, there are many possible values that you might land in depending on which random input you start at. Hence, there is no guarantee that the local minimum you land in is going to be the smallest possible value of the cost function. Furthermore, if we make our step sizes proportional to the slope, then when the slope is flattening out towards the minimum, our steps gets smaller and smaller. And this will help us from over shooting.
-Imaging a function instead of two inputs and one output; we might think of the input space as a $xy$ plane; and the cost function as been graphed as a surface above it. Instead of finding the slope of the function, we will find the direction to step in this input space so as to decrease the output of the function most quickly. In other words what is the downhill direction? And again, it is helpful to think of a ball rolling down that hill. In multi-variable calculus, the gradient of a function gives us the direction of steepest ascent. Basically, which direction should you step to increase the function most quickly. Naturally, taking the negative of that gradient gives you the direction to step that decreases the function most quickly. And even more than that, the length of this gradient vector is actually an indication for just how steep that steepest slope is. In summary, the algorithm for minimizing the function is to compute this gradient direction, then take a small step downhill and repeat that over and over.
-Figure \ref{fig_gradient_descent} shows a demonstration of the gradient descent.
 \begin{figure}[ht]
-\includegraphics[width=5in]{pic/gradient_descent.PNG}
-\caption{An illustration of how gradient descent algorithm minimizes the function to the downhill. Source: \citing{Goodfellow-et-al-2016}}
-\label{fig_gradient_descent}
+\includegraphics[width=5in]{pic/mini-batch.PNG}
+\caption{Mini-batch gradient descent variance of objective function (cost function). There is little bit of fluctuations due to some difficult mini-batch examples.}
+\label{mini-batch}
 \end{figure}
 
-We summarize gradient descent algorithm as follows:\\
+A more flexible tactic is to start out at any input and figure out which direction we should step to make that output lower. Specifically, if we can find out the slope of the function where we are then shift to the left if that slope is positive and shift to the right if the slope is negative. If we do this repeatedly, at each point checking the new slope and taking the appropriate step, we are going to approach some local minimum of the function. An image we might have in mind here is a ball rolling down a hill. We must mention that even for this really simplified input function, there are many possible values that you might land in depending on which random input you start at. Hence, there is no guarantee that the local minimum you land in is going to be the smallest possible value of the cost function. Furthermore, if we make our step sizes proportional to the slope, then when the slope is flattening out towards the minimum, our steps gets smaller and smaller. And this will help us from over shooting.
+Imaging a function instead of two inputs and one output; we might think of the input space as a $xy$ plane; and the cost function as been graphed as a surface above it. Instead of finding the slope of the function, we will find the direction to step in this input space so as to decrease the output of the function most quickly. In other words what is the downhill direction? And again, it is helpful to think of a ball rolling down that hill. In multi-variable calculus, the gradient of a function gives us the direction of steepest ascent. Basically, which direction should you step to increase the function most quickly. Naturally, taking the negative of that gradient gives you the direction to step that decreases the function most quickly. And even more than that, the length of this gradient vector is actually an indication for just how steep that steepest slope is. In summary, the algorithm for minimizing the function is to compute this gradient direction, then take a small step downhill and repeat that over and over.
+Figure \ref{fig_gradient_descent} shows a demonstration of the gradient descent. We summarize gradient descent algorithm as follows:
 We begin with iteration as $i = 0$ and a starting position on the hill, $x_i$.
 \begin{algorithm}[H]
 \SetAlgoLined
@@ -358,6 +372,12 @@ Therefore, with our cost function, changing the weights and biases to decrease t
 
 Gradient Descent is one of the most popular ways to train and optimize a neural network. There are mainly three forms of gradient descent algorithm with difference in how much data is used to update the gradient of the relating function.
 
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/network_example2.png}
+\caption{Structure of a neural network with two input $i_1, i_2$,  two hidden neurons $h_1, h_2$, two output neurons $o_1, o_2$, two biases $b_1, b_2$ and eight weights $w_1, \cdots, w_8$.}
+\label{neural_net_example}
+\end{figure}
+
 \subsubsection{Batch gradient descent}
 Batch gradient descent is a form of gradient descent algorithm that calculates the gradient of the cost function with respect to the the parameters $\theta$ for the entire training dataset:
 \begin{equation}
@@ -370,12 +390,18 @@ Unlike batch gradient descent, stochastic gradient descent updates the parameter
 \begin{equation}
     \theta = \theta - \eta \cdot\nabla_\theta J(\theta;x^{(i)};y^{(i)}).
 \end{equation}
-Stochastic gradient descent (SGD) solves the problems of slow training and online training in batch gradient descent. As each dataset example is fed to the model at a time, we can compute the gradient faster and update the parameters at a time. The algorithm is also suitable for online model training, we fed new dataset examples to the model as and when they arrive. However, with the frequent update performed on every single dataset example, SGD has high variance in updates and causes fluctuations in the objective function as shown in figure \ref{SGD}.
+Stochastic gradient descent (SGD) solves the problems of slow training and online training in batch gradient descent. As each dataset example is fed to the model at a time, we can compute the gradient faster and update the parameters at a time. The algorithm is also suitable for online model training, we feed new dataset examples to the model as and when they arrive. However, with the frequent update performed on every single dataset example, SGD has high variance in updates and causes fluctuations in the objective function as shown in Figure \ref{SGD}.
 
 \begin{figure}[ht]
-\includegraphics[width=5in]{pic/fluctuation.png}
-\caption{Objective function fluctuations caused by high variance of frequent updates}
-\label{SGD}
+\includegraphics[width=5in]{pic/output_1_backprop-4.png}
+\caption{Back propagation of the error for $o_1$ and $o_2$}
+\label{output_1_backprop}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/nn-calculation.png}
+\caption{Back propagation the error of $o_1$ and $o_2$}
+\label{fig_nn-calculation}
 \end{figure}
 
 \subsubsection{Mini-batch gradient descent}
@@ -383,32 +409,51 @@ Mini-batch gradient descent combines the advantages of batch gradient descent an
 \begin{equation}
     \theta = \theta - \eta \cdot \nabla_\theta J(\theta; x^{(i:i+n)}; y^{(i:i+n)}).
 \end{equation}
-For mini-batch gradient descent, the cost function is calculated over some small number of training examples (usually between 10 - 500). This is in contrast with batch gradient descent of the entire training examples and SGD of $1$ training example. Also, mini-batch gradient descent do not cause fluctuations in the objective function as update is done over reasonable amount of training examples as shown in figure \ref{mini-batch}.
-
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/mini-batch.PNG}
-\caption{Mini-batch gradient descent variance of objective function (cost function). There is little bit of fluctuations due to some difficult mini-batch examples.}
-\label{mini-batch}
-\end{figure}
+For mini-batch gradient descent, the cost function is calculated over some small number of training examples (usually between 10 - 500). This is in contrast with batch gradient descent of the entire training examples and SGD of one training example. Also, mini-batch gradient descent do not cause fluctuations in the objective function as update is done over reasonable amount of training examples as shown in Figure \ref{mini-batch}.
 
 \subsection{Back propagation - how neural networks learn}
-Back propagation is the core algorithm behind how neural networks learn. Back propagation is an algorithm for minimizing the cost function. Because the cost function involves averaging a certain cost per example over all the tens of thousands of training examples, the way that we adjust the weights and biases for a single gradient descent step also depends on every single example. Let's take for example feeding an image of digit $2$ into an ANN that is not trained yet. Since the network is not trained yet, the activations in the output layer are going to be pretty random. Here, we cannot directly change the activations in the output layer; instead we can only change the weights and biases of the network. But it is helpful to keep track of which adjustments we wish to take place to that output layer. And since we want it to classify the image as a digit $2$, we will want say the value in the third output layer neuron be nudged up whiles all of the others get nudged down. Moreover, the sizes of these nudges should be proportional to how far away each current value is from its target value. For example, the increase to the number two's neuron activation is in essence more important than the decrease in the number eight's neuron; which is already pretty close to where it should be. Let's zoom in further and focus on just the digit $2$ neuron. We already know that activations are made up of the weighted sum of all the activations in the previous layer plus a bias which is all then plugged into some squash function as stated in equation \ref{ANN_equation}. Hence, there are three different avenues that team up together to help increase that activation; we can increase the bias, we can increase the weight, and we can change the activations of the previous layers.
+Back propagation is the core algorithm behind how neural networks learn. Back propagation is an algorithm for minimizing the cost function. Because the cost function involves averaging a certain cost per example over all the tens of thousands of training examples, the way that we adjust the weights and biases for a single gradient descent step also depends on every single example. Let's take for example feeding an image of digit \textit{2}  into an ANN that is not trained yet. Since the network is not trained yet, the activations in the output layer are going to be pretty random. Here, we cannot directly change the activations in the output layer; instead we can only change the weights and biases of the network. But it is helpful to keep track of which adjustments we wish to take place to that output layer. And since we want it to classify the image as a digit \textit{2} , we will want say the value in the third output layer neuron be nudged up whiles all of the others get nudged down. Moreover, the sizes of these nudges should be proportional to how far away each current value is from its target value. For example, the increase to the number two's neuron activation is in essence more important than the decrease in the number eight's neuron. Let's zoom in further and focus on just the digit \textit{2} neuron. We already know that activations are made up of the weighted sum of all the activations in the previous layer plus a bias which is all then plugged into some squash function as stated in \ref{ANN_equation}. Hence, there are three different avenues that team up together to help increase that activation; we can increase the bias, we can increase the weight, and we can change the activations of the previous layers.
 
-Focusing on how the weights should be adjusted, the weights actually have different levels of influence. The connection with the brightest neurons from the preceding layer, have the biggest effect since those weights are multiplied by larger activation values. So if we increase those weights, it actually has a strong influence on the ultimate cost function than increasing the weights of connections with dimmer neurons as far as this training example is concern. Remember, when we talked about gradient descent, we don't just care about whether each component should get nudged up or down. We care about which components have the most effect on cost function. This by the way is at least going to get someone reminiscing of the theory in neural science for how biological neurons learn, called Hebbian theory\citing{Donald1949}. This theory is often summed up in the phrase ``Neurons that fire together wire together''. Here, the biggest strengthening of connections happens between neurons which are the most active and the ones which we wish to become more active. In essence, the neurons which are firing whiles seeing a digit $2$ gives more strongly linked to those firing whiles thinking about a digit $2$. To be clear, really we are not in a position to be making statements one way or another about whether artificial networks of neurons behaves any a thing like biological brains. But taking as a very loose analogy, we do find it interesting to note.
+Focusing on how the weights should be adjusted, the weights actually have different levels of influence. The connection with the brightest neurons from the preceding layer, have the biggest effect since those weights are multiplied by larger activation values. So if we increase those weights, it actually has a strong influence on the ultimate cost function than increasing the weights of connections with dimmer neurons as far as this training example is concern. Remember, when we talked about gradient descent, we don't just care about whether each component should get nudged up or down. We care about which components have the most effect on cost function. This by the way is at least going to get someone reminiscing of the theory in neural science for how biological neurons learn, called Hebbian theory\citing{Donald1949}. This theory is often summed up in the phrase ``Neurons that fire together wire together''. Here, the biggest strengthening of connections happens between neurons which are the most active and the ones which we wish to become more active. In essence, the neurons which are firing whiles seeing a digit \textit{2} gives more strongly linked to those firing whiles thinking about a digit \textit{2}. To be clear, really we are not in a position to be making statements one way or another about whether artificial networks of neurons behaves any a thing like biological brains. But taking as a very loose analogy, we do find it interesting to note.
 
-The third way is that we can help increasing the activation of the output neuron corresponding to the digit $2$ is by changing all the activations in the previous layer. Namely, if everything connected to that digit $2$ neuron with a positive weight got brighter; and everything connected with a negative weight got dimmer; then that digit $2$ neuron will become more active. Similar to the weight changes, there is stronger effect by seeking changes that are proportional to the size of the corresponding weights. Of course, we cannot directly influence those activations, we only have control over the weights and biases. Let us keep in mind that what we actually want is the output layer to have all other neurons be less active except the digit two neuron to be highly active. However, each of those output neurons have their own thoughts about what should happen to that second to last layer. Hence, the desire of the digit two neuron is added together to the desires of all the other output neurons for what should happen to this second to last layer; this should be done in proportion to the corresponding weights and in proportion to how much each of those neurons needs to change.
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/CNN_example.PNG}
+\caption{ConvNet recognizing scenes and accurately suggesting important captions: Source \citing{densecap}}
+\label{cnn_example}
+\end{figure}
 
-This is where the idea of propagating backwards comes in. When adding together all these desired effects, we basically give a list of nudges that we want to happen to the second to last layer. And once we have those, we can recursively apply the same process to the relevant weights and biases that determines those values, repeating the same process that we just walked through and moving backwards through the network. Zooming out a bit further, this is all what a single training step wishes to nudge each one of those weights and biases. If we only feed the network with a digit $2$ image, the network will ultimately be incentivized to classify all images as a $2$. So what we do is to go through this same back propagation routine for every other training example recording how each of them will like to change the weights and the biases; then we average together those changes. This collection here of the average nudges to each weights and biases is loosely speaking the negative gradient of the cost function or something proportional to it. In practice it takes computers a very long time to add up the influence of every single training example and every single gradient descent step. So here is what is commonly done instead, we randomly shuffle the training data and divided it into a whole bunch of mini-batches. Say each batch containing a hundred training examples. Then we compute the gradient descent step using back propagation according to the mini-batch. That is not going to be the actual gradient of the cost function because it does not depend on all the training data but a single subset and not the most efficient step downhill. But each mini-batch does give a pretty good approximation and more importantly gives a significant computational speed up. If you plot the trajectory of the network under the relevant cost surface, it will be more like a drunk man stumbling in a slay down a hill but taking quick steps rather than a carefully calculated man taking the exact downhill direction of each step before taking a very slow and careful step in that direction.
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/everyday_objects.PNG}
+\caption{ConvNet recognizing everyday objects with bounding boxes: Source \citing{DBLP:journals/corr/RenHG015}}
+\label{everyday_objects}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/ConvNet_Arch.png}
+\caption{A simple ConvNet architecture: Source \citing{intuitiveCNN}}
+\label{ConvNet_arch}
+\end{figure}
+
+The third way is that we can help increasing the activation of the output neuron corresponding to the digit \textit{2} is by changing all the activations in the previous layer. Namely, if everything connected to that digit \textit{2} neuron with a positive weight got brighter; and everything connected with a negative weight got dimmer; then that digit \textit{2} neuron will become more active. Similar to the weight changes, there is stronger effect by seeking changes that are proportional to the size of the corresponding weights. Of course, we cannot directly influence those activations, we only have control over the weights and biases. Let us keep in mind that what we actually want is the output layer to have all other neurons be less active except the digit two neuron to be highly active. However, each of those output neurons have their own thoughts about what should happen to that second to last layer. Hence, the desire of the digit two neuron is added together to the desires of all the other output neurons for what should happen to this second to last layer; this should be done in proportion to the corresponding weights and in proportion to how much each of those neurons needs to change.
+
+This is where the idea of propagating backwards comes in. When adding together all these desired effects, we basically give a list of nudges that we want to happen to the second to last layer. And once we have those, we can recursively apply the same process to the relevant weights and biases that determines those values, repeating the same process that we just walked through and moving backwards through the network. Zooming out a bit further, this is all what a single training step wishes to nudge each one of those weights and biases. If we only feed the network with a digit \textit{2} image, the network will ultimately be incentivized to classify all images as a \textit{2}. So what we do is to go through this same back propagation routine for every other training example recording how each of them will like to change the weights and the biases; then we average together those changes. This collection here of the average nudges to each weights and biases is loosely speaking the negative gradient of the cost function or something proportional to it. In practice it takes computers a very long time to add up the influence of every single training example and every single gradient descent step. So here is what is commonly done instead, we randomly shuffle the training data and divided it into a whole bunch of mini-batches. Say each batch containing a hundred training examples. Then we compute the gradient descent step using back propagation according to the mini-batch. That is not going to be the actual gradient of the cost function because it does not depend on all the training data but a single subset and not the most efficient step downhill. But each mini-batch does give a pretty good approximation and more importantly gives a significant computational speed up. If you plot the trajectory of the network under the relevant cost surface, it will be more like a drunk man stumbling in a slay down a hill but taking quick steps rather than a carefully calculated man taking the exact downhill direction of each step before taking a very slow and careful step in that direction.
 
 In summary, back propagation is the algorithm for determining how a single training step would like to update the weights and biases; not only in terms of whether the weights and biases should go up or down but also in terms of what relative proportions to those changes causes the most rapid decrease to the cost. A true gradient descent step will involve repeating a back propagation for all the tens and thousands of training examples and averaging the desired changes. But that is computationally slow, so instead we randomly sub divide the data into mini-batches and compute each step with respect to a mini-batch. Repeatedly going through all of the mini-batches, and making the weights and biases adjustments, we will converge towards a local minimum of the cost function. Thus, the network will end up doing a really good job on the training examples.
 
-\section{Putting all together}
-We will consider a neural network with two inputs $i_1, i_2$, two hidden neurons $h_1, h_2$ and two output neurons $o_1, o_2$. Also, we apply bias $b_1, b_2$ to the hidden and output neurons respectively. The neural network has eight weights $w_1, \cdots, w_8$ as shown in figure \ref{neural_net_example}. We randomly initialize the inputs/outputs, weights and biases. The aim of the network to output $0.01$ and $0.99$ corresponding to some given arbitrary input $0.05$ and $0.10$.
 \begin{figure}[ht]
-\includegraphics[width=5in]{pic/network_example2.png}
-\caption{Structure of a neural network with two input $i_1, i_2$,  two hidden neurons $h_1, h_2$, two output neurons $o_1, o_2$, two biases $b_1, b_2$ and eight weights $w_1, \cdots, w_8$.}
-\label{neural_net_example}
+\includegraphics[width=7in]{pic/padding.png}
+\caption{Padding a 32$\times$32$\times$3 input image into a 36$\times$36$\times$3}
+\label{fig_padding}
 \end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/rgb_image.png}
+\caption{An RGB image with volume of size: 4 x 4 x 3. It comprises of the 3 Colour channel matrices: Source \citing{Abhineet}}
+\label{rgb_image}
+\end{figure}
+
+\section{Putting all together}
+We will consider a neural network with two inputs $i_1, i_2$, two hidden neurons $h_1, h_2$ and two output neurons $o_1, o_2$. Also, we apply bias $b_1, b_2$ to the hidden and output neurons respectively. The neural network has eight weights $w_1, \cdots, w_8$ as shown in Figure \ref{neural_net_example}. We randomly initialize the inputs/outputs, weights and biases. The aim of the network is to output $0.01$ and $0.99$ corresponding to some given arbitrary input $0.05$ and $0.10$.
 We begin training by forward pass with the randomly initialized parameters. We compute the net input for $h_1$ and $h_2$ as follows:\\
 \textbf{Compute weights} \\
 To compute net input for $h_1$, we have:
@@ -426,7 +471,7 @@ for $o_1$:
 repeating same process for $o_2$, we have:
 \[output_{o_2} = 0.772928465 \]
 \textbf{Compute error} \\
-we calculate the network error using the mean squared error function, given in equation in \ref{cost_function}\\
+We calculate the network error using the mean squared error function, given in \ref{cost_function}\\
 For $o_1$ with predicted output, $\hat{Y}$ as $0.75136507$ and target $Y$ as 0.01, we compute the error as follows:
 \[E_{o_1} = \frac{1}{n}(Y_{o_1} - \hat{Y}_{o_1})^2 = \frac{1}{2}(0.01 - 0.75136507)^2 = 0.274811083\]
 applying same process for $o_2$ with predicted output, $\hat{Y}$ as $0.772928465$ and target $Y$ as 0.99, we have:
@@ -436,7 +481,7 @@ we compute total network error as:
 \textbf{Back propagation} \\
 We take the weight $w_5$ and compute how much effect it has on the total error, we apply the chain rule to get:
 \[\frac{\partial E_{total}}{\partial w_5} = \frac{\partial E_{total}}{\partial output_{o_1}} * \frac{\partial output_{o_1}}{\partial net_{o_1}} * \frac{\partial net_{o_1}}{\partial w_5}\]
-we can visualize this operation in figure \ref{output_1_backprop}. We compute the effect of the total error $E_{total}$ w.r.t. the outputs $o_1$ and $o_2$.
+we can visualize this operation in Figure \ref{output_1_backprop}. We compute the effect of the total error $E_{total}$ w.r.t. the outputs $o_1$ and $o_2$.
 \[ E_{total} = \frac{1}{2}(Y_{o_1} - \hat{Y}_{o_1})^2 + \frac{1}{2}(Y_{o_2} - \hat{Y}_{o_2})^2 \]
 \[ \frac{\partial E_{total}}{\partial output_{o_1}} = 2 * \frac{1}{2}(Y_{o_1} - \hat{Y}_{o_1})^{2-1} * -1 + 0 \]
 \[ \frac{\partial E_{total}}{\partial output_{o_1}} = -(Y_{o_1} - \hat{Y}_{o_1}) = (0.01 - 0.7513607) = 0.74136507 \]
@@ -490,49 +535,22 @@ we repeat same process to obtain $w_{2}^{\prime}, w_{3}^{\prime}$ and $w_{4}^{\p
 
 Eventually, we have updated all the weights in our neural network. Initially, the network error was 0.298371109 for inputs 0.05 and 0.1. After the first epoch we reduce the network error to 0.291027924. We didn't achieve much error reduction after the first epoch, but after iterating this procedure 10,000 times, we reduce the network error drastically to 0.0000351085. At this moment, when we feed our network with the input 0.05 and 0.1, the network outputs 0.015912196 for the 0.01 ground-truth and 0.984065734 for 0.99 ground-truth.
 
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/output_1_backprop-4.png}
-\caption{Back propagation of the error for $o_1$ and $o_2$}
-\label{output_1_backprop}
-\end{figure}
-
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/nn-calculation.png}
-\caption{Back propagation the error of $o_1$ and $o_2$}
-\label{fig_nn-calculation}
-\end{figure}
-
 \section{Convolutional Neural Networks}
-A Convolutional Neural Network (CNN or ConvNets) is a type of artificial neural network that uses filters or kernels to perform convolution on inputs to extract useful information. In recent years, ConvNets have been very successful in solving computer vision problems such as image recognition and classification. Apart from empowering the vision of robots and self driving cars, ConvNets have been very effective in recognizing faces, detecting objects, etc. Figure \ref{cnn_example} shows ConvNet recognizing scenes and accurately suggesting important captions ("a small elephant standing in a fenced in area"). In figure \ref{everyday_objects}, ConvNet is used to recognize objects that appear in everyday life with very high accuracy. Therefore, ConvNets are relevant tool to use in many machine learning problems, especially in the field of computer vision. A ConvNet normally include number of convolutional layer plus non linearity (ReLU) and pooling layers that may be followed by some fully connected layers. These processes are the main building blocks of every ConvNet architecture. Figure \ref{ConvNet_arch} depicts a ConvNet architecture that learns to classify images into four categories: dog, cat, boat or bird. A ConvNet normally takes as input an order 3 tensor, thus, an input image with \textit{H} rows, \textit{W} columns, and 3 channels (R, G, B image color channels). The input image is then passed through series of processes (convolution, ReLU, fully connected layers). We can abstract the whole ConvNet structure as illustrated in equation \ref{ConvNet_structure}
+A Convolutional Neural Network (CNN or ConvNets) is a type of artificial neural network that uses filters or kernels to perform convolution on inputs to extract useful information. In recent years, ConvNets have been very successful in solving computer vision problems such as image recognition and classification. Apart from empowering the vision of robots and self driving cars, ConvNets have been very effective in recognizing faces, detecting objects, etc. Figure \ref{cnn_example} shows ConvNet recognizing scenes and accurately suggesting important captions ("a small elephant standing in a fenced in area"). In Figure \ref{everyday_objects}, ConvNet is used to recognize objects that appear in everyday life with very high accuracy. Therefore, ConvNets are relevant tool to use in many machine learning problems, especially in the field of computer vision. A ConvNet normally include number of convolutional layer plus non linearity (ReLU) and pooling layers that may be followed by some fully connected layers. These processes are the main building blocks of every ConvNet architecture. Figure \ref{ConvNet_arch} depicts a ConvNet architecture that learns to classify images into four categories: dog, cat, boat or bird. A ConvNet normally takes as input an order 3 tensor, thus, an input image with \textit{H} rows, \textit{W} columns, and 3 channels (R, G, B image color channels). The input image is then passed through series of processes (convolution, ReLU, fully connected layers). We can abstract the whole ConvNet structure as illustrated as follows: \ref{ConvNet_structure}
 \begin{equation}
 x^1 \rightarrow \boxed{ w^1 } \rightarrow  x^2 \rightarrow ... \rightarrow  x^{L-1} \rightarrow \boxed{ w^{L-1} } \rightarrow  x^L  \rightarrow \boxed{ w^L }  \rightarrow z
 \label{ConvNet_structure}
 \end{equation}
-In the equation \ref{ConvNet_structure} above, we show how ConvNet process input image in a forward pass. 
-
-
-
+In \ref{ConvNet_structure}, we show how ConvNet process input image in a forward pass.
 
 \begin{figure}[ht]
-\includegraphics[width=5in]{pic/CNN_example.PNG}
-\caption{ConvNet recognizing scenes and accurately suggesting important captions: Source \citing{densecap}}
-\label{cnn_example}
-\end{figure}
-
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/everyday_objects.PNG}
-\caption{ConvNet recognizing everyday objects with bounding boxes: Source \citing{DBLP:journals/corr/RenHG015}}
-\label{everyday_objects}
-\end{figure}
-
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/ConvNet_Arch.png}
-\caption{A simple ConvNet architecture: Source \citing{intuitiveCNN}}
-\label{ConvNet_arch}
+\includegraphics[width=5in]{pic/pooling.png}
+\caption{Max Pooling. We slide a $2 \times 2$ window by 2 strides over a $4 \times 4$ rectified feature map and take the maximum value in each region to obtain a $2 \times 2$ output. This reduces the dimension of our feature map.}
+\label{fig_maxpooling}
 \end{figure}
 
 \subsection{Convolution layer}
-Actually, we can represent every image as a matrix containing pixel values. A standard color image contains three channels - red, green and blue, commonly refered to as RGB. Each of these three channels is a 2d-matrice stacked on top of each other with each containing pixel values ranging from 0 to 255 as shown in figure \ref{rgb_image}. On the other hand, a grayscale image contains only one channel, thus, just one 2d-matrix having pixel values from 0 to 255 with pixel values close to 0 representing black color and pixel values close to 255 representing white color. A convolution operation is an element-wise dot product multiplication of two matrices. Let us take for example convolution of a 5 x 5 matrix and a 3 x 3 matrix as shown in figure \ref{fig:convolution}. Consequently, the convolution computation of the $5 \times $5 matrix and the $3 \times $3 matrix is shown in equation \ref{conv_operation}.
+Actually, we can represent every image as a matrix containing pixel values. A standard color image contains three channels - red, green and blue, commonly refered to as RGB. Each of these three channels is a 2d-matrice stacked on top of each other with each containing pixel values ranging from 0 to 255 as shown in Figure \ref{rgb_image}. On the other hand, a grayscale image contains only one channel, thus, just one 2d-matrix having pixel values from 0 to 255 with pixel values close to 0 representing black color and pixel values close to 255 representing white color. A convolution operation is an element-wise dot product multiplication of two matrices. Let us take for example convolution of a 5 x 5 matrix and a 3 x 3 matrix as shown in Figure \ref{fig:convolution}. Consequently, the convolution computation of the $5 \times $5 matrix and the $3 \times $3 matrix is shown in \ref{conv_operation}.
 
 \begin{equation}
 \begin{bmatrix}
@@ -560,19 +578,6 @@ Actually, we can represent every image as a matrix containing pixel values. A st
 For a typical convolutional layer, it is made up of set of filters that will be learned during training. Every filter is actually a small matrix with equal channel size as the input image depth. For example, an RGB input image of size 128 x 128 x 3 will have corresponding filters of size 5 x 5 x 3 (thus, a square matrix with 5 pixels width and height and 3 channels to correspond to the input image 3 color channels). During feed forward pass, every filter slide or convolve spatially over the entire input image and compute dot products of the corresponding entries of the filter and the input image. The output of the convolve operation is a 2-dimensional feature map or activation map. We expect the convnet to learn appropriate filters that will activate for some type of visual features such as edges, shapes, and even objects.   
 
 After performing convolution computation on an image, the spatial size of the output may shrink and information contained in that part will be lost. To solve this problem, we use padding. Padding is simply wrapping around the input image with additional lines (usually with zeros or some other values). Figure \ref{fig_padding} shows padding of an input image of size 32$\times$32$\times$3 with zeros, the image size now becomes 36$\times$36$\times$3. Performing convolution operation on the new image with a filter of size 5$\times$5$\times$3 and stride 1 will produce a 32$\times$32$\times$3 output shape. Hence, there are two kinds of convolution: same convolution and valid convolution. Same convolution uses padding that results in same output size as the input size. Valid convolution on the other hand results in different output size from the input size.
-
-\begin{figure}[ht]
-\includegraphics[width=7in]{pic/padding.png}
-\caption{Padding a 32$\times$32$\times$3 input image into a 36$\times$36$\times$3}
-\label{fig_padding}
-\end{figure}
-
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/rgb_image.png}
-\caption{An RGB image with volume of size: 4 x 4 x 3. It comprises of the 3 Colour channel matrices: Source \citing{Abhineet}}
-\label{rgb_image}
-\end{figure}
-
 \begin{figure}%
 \centering
 \subfigure[][]{%
@@ -624,12 +629,6 @@ Pooling can be defined as the process of encoding and aggregating feature maps i
 
 Max-pooling is performed by sliding a window (say, 2$\times$2 window) over the input and saving the maximum value of the elements withing the window space. Same process is applied for average-pooling and sum-pooling. However, for sum pooling we take the sum of all elements in that window and we take the average sum for average pooling. Max Pooling has shown better performance so far. Figure \ref{fig_maxpooling} shows an example of max pooling.
 
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/pooling.png}
-\caption{Max Pooling. We slide a $2 \times 2$ window by 2 strides over a $4 \times 4$ rectified feature map and take the maximum value in each region to obtain a $2 \times 2$ output. This reduces the dimension of our feature map.}
-\label{fig_maxpooling}
-\end{figure}
-
 \subsection{Fully-Connected layer}
 In this final layer we connect every neuron in the previous layer to neurons in the next layer. After going through several convolutional and pooling operations, the output is a high-level feature representation of the input image. The fully connected layer takes these high-level features as input and makes classification into one of the classes in the training dataset. Additionally, we use fully connected layer to learn the various feature combinations to help make better classifications. At the final layer of the fully connected is where the actual classification happens by implementing probabilities. We often use softmax activation function in the final output layer of the fully connected layer. We write the softmax activation function as
 \begin{equation*}
@@ -641,71 +640,23 @@ Apart from Softmax, Support Vector Machine (SVM) is another commonly used classi
 \[ f(x) = \beta_{0} + \beta^{T} x \]
 where $\beta$ is the \textit{weight} vector, $\beta_{0}$ as the \textit{bias} term and $x$ is the \textit{training examples}.
 
-\section{Depthwise Separable Convolutions}\label{depthconve}
-Depthwise Separable Convolution is a type of convolution that splits the convolution operation into two steps. It transforms standard convolution by factorizing into a depthwise convolution and a $1 \times 1$ standard convolution termed as pointwise convolution. Depthwise separable convolutions have been used successfully in recent deep neural network models such as \citing{DBLP:journals/corr/HowardZCKWWAA17}, \citing{DBLP:journals/corr/Chollet16a} and \citing{8451339}.
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/fer2013.png}
+\caption{Examples of facial expression images from the FERC-2013 emotion database}
+\label{fer2013_images}
+\end{figure}
 
-In the first operation for depthwise convolution, given an RGB input image of spatial dimension $12 \times 12 \times 3$, we use 3 filters of shape $5 \times 5\times 1$. Each $5 \times 5\times 1$ filter performs convolution on 1 channel of the input image, resulting in scalar products of every 25 pixel group with an output shape of $8\times8\times1$. We stack these output images together to form a $8\times8\times3$ image.
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/total_data_distribution.png}
+\caption{FERC-2013 total sample distribution for Angry, Disgust, Fear, Happy, Sad, Surprise and Neutral emotion}
+\label{fer2013_distribution}
+\end{figure}
 
-In the second operation, we perform pointwise convolution, we use a $1\times1\times n$ filter to perform convolution across all channels. The filter will have the same number of $n$ channels as the input image. In our example, we will use a $1\times1\times3$ filter to perform convolution on our $8\times8\times3$ image. At this point, we use 32 filters of size $1\times1\times3$ to perform convolution on our input image that output a $8\times8\times1$ image for each of our 32 filter of size $1\times1\times3$. We stack all the output together to get our final output image of shape $8\times8\times32$ just like what a standard convolution will achieve.
-
-Depthwise separable convolution provides three main advantages over regular convolutions:
-\begin{itemize}
-    \item Depthwise separable convolutions are less prone to overfitting because they have fewer parameters compared to regular convolutions
-    \item Because they have fewer parameters, computation cost is less and thus speeds up the model execution and time
-    \item Depthwise separable convolution is more attractive for real-time applications and running on mobile devices because of efficiency
-\end{itemize}
-
-\subsection{Regular vs. Depthwise Separable Convolutions: Computational Cost}
-We define the following notations. Let:
-    \[w, h = \text{spatial width, spatial height}\]
-    \[I_w, I_h = \text{input image width, input image height} \]
-    \[F_w, F_h = \text{filter width, filter height}\]
-    \[C_i = \text{number of input channels}\]
-    \[C_o = \text{number of output channels}\]
-Let us assume same padding for every convolution operation such that spatial input size is the same as spatial output size and every filter is a 3D tensor of shape $F_w \times F_h \times C_in$
-
-For regular convolution, parameter computation at each position of the input image can be given as $F_w \times F_h \times C_i$. Performing convolution over the whole input image makes the computation cost $F_w \times F_h \times C_i \times I_w \times I_h$. Considering all output channels $C_o$, our final computational cost becomes $F_w \times F_h \times C_i \times I_w \times I_h \times C_i$
-
-For depthwise separable convolution, $F_w \times F_h \times C_i \times I_w \times I_h$ total cost is required in the depthwise operation. In the pointwise operation, we need $I_w \times I_h \times C_o$ cost. Hence, total computational cost becomes $(F_w \times F_h \times C_i \times I_w \times I_h) + (I_w \times I_h \times C_o)$.
-
-For further illustration, let's consider the following example. Let's assume $I_w = 128, I_h = 128, F_w = 3, F_h = 3, C_o = 16$ \\
-\textbf{For regular convolution:} \\
-parameters:
-\[3 \times 3 \times 16 = 432\]
-computation cost:
-\[3 \times 3 \times 3 \times 128 \times 128 \times 16 = \sim7e6\]
-\textbf{For depthwise separable convolution:}\\
-parameters:
-\[3 \times 3 + 16 = 75 \]
-computation cost:
-\[(3 \times 3 \times 3 \times 128 \times 128 \times) + (128 \times 128 \times 3 \times 16) = \sim1.2e6 \]
-
-We can evidently see the computational cost advantages depthwise separable convolution have over regular convolution. In the example above, depthwise separable convolution have about $\sim5.5e6$ fewer parameters than regular convolution for the same convolutional operation.
-
-\section{Conclusion}
-In this chapter we presented the theoretical basics underlying this research work. We started by discussing what machine learning is and the types or forms of machine learning techniques in existence. We went further to discuss in details one example of the techniques in machine learning, deep learning. Furthermore, we discussed one popular type of deep learning method called convolutional neural network. Finally, we took a look at a type of convolutional neural network called depthwise separable convolutions and analyzed the computation cost of a regular convolution vs depthwise separable convolution.
-
-\chapter{Chapter 3 - Proposed Method and Experiments}
-In this section, we will describe our proposed CNN model based on depthwise separable convolution for facial expression recognition problem and provide details of the layers that constituents the model. This chapter also presents the computation cost of the model and describes the various experiments conducted.
-
-\section{Model Architecture}
-Our proposed model structure is a pure convolutional network (i.e. without any fully-connected layer) that is based on depthwise separable convolutions as explained in section \ref{depthconve}. All depthwise separable layers perform \textit{same convolution} with a filter size of $3 \times 3 \times 1$ and a \textit{depth-multiplier} value of $1$ shifting by $1$ stride. We use ReLU\citing{7410480} activation function in all the separable convolutional layers to help us avoid the vanishing gradient problem\citing{5264952}. All depthwise separable convolutional layers are followed by a batch normalization \citing{DBLP:journals/corr/IoffeS15} operation to normalize the output in each layer in order to avoid varying distributions of the features across the training and test data. For our model to generalize well on unseen data and avoid overfitting on the training data, we apply dropout\citing{JMLR:v15:srivastava14a} as our regularization method in the last three depthwise separable convolutional layers. We apply Max-Pooling of window size $2 \times 2$ and stride $1$ after the $6^{th}$, $9^{th}$, $12^{th}$, and $15^{th}$ depthwise separable convolutional layers in order to down sample input flowing through the network. Instead of the traditional fully connected layer, we output the spatial average of the learned feature maps from the last depthwise separable convolutional layer via a global average pooling layer \citing{DBLP:journals/corr/LinCY13}; and the output feature vector is fed into the softmax layer for classification.  In summary, the entire network contains only $474K$ parameters with 15 separable convolutional layers and four pooling layers. Table \ref{model_arch} shows details of our proposed model architecture.
-
-The model starts by feed forwarding training examples through a continuous $6$ depthwise separable convolution layers. The first three depthwise separable layers have $32$ filters each. Each of the first $3$ depthwise separable layers takes in input shape $48 \times 48 \times 1$ and outputs $48 \times 48 \times 32$ after depthwise separable convolution operation. The next three depthwise separable layers have $64$ filters each. Apart from the $4^{th}$ layer which takes an input shape $48 \times 48 \times 32$, the $5^{th}$ and $6^{th}$ layers receive input shape $48 \times 48 \times 64$ and outputs $48 \times 48 \times 64$.
-
-After the first six depthwise separable layers, we perform the first max-pooling at layer 7 to down-sample the feature map dimension from $48 \times 48 \times 64$ to $24 \times 24 \times 64$. The $8^{th}, 9^{th}$ and $10^{th}$ depthwise separable layers have $92$ filters each. The $8^{th}$ depthwise separable layer takes in input shape $24 \times 24 \times 64$ and output $24 \times 24 \times 92$. The output from the $8^{th}$ layer is fed to the $9^{th}$ layer; the $9^{th}$ layer's output is then fed to the $10^{th}$ layer to produce output shape $24 \times 24 \times 92$ after depthwise separable convolution operation.
-
-After the $10^{th}$ depthwise separable layer, we perform the second max-pooling at layer 11 to further down-sample the feature map dimension from $24 \times 24 \times 92$ to $12 \times 12 \times 92$. The $12^{th}, 13^{th}$ and $14^{th}$ depthwise separable layers have $124$ filters each. The $12^{th}$ depthwise separable layer takes in input shape $12 \times 12 \times 92$ and outputs $12 \times 12 \times 124$. The output from the $12^{th}$ layer is fed to the $13^{th}$ layer; the $13^{th}$ layer's output is then fed to the $14^{th}$ layer to produce output shape $12 \times 12 \times 124$ after depthwise separable convolution operation.
-
-After the $14^{th}$ depthwise separable layer, we perform the third max-pooling at layer 15 to down-sample the feature map dimension furthermore from $12 \times 12 \times 124$ to $6 \times 6 \times 124$. The $16^{th}, 17^{th}$ and $18^{th}$ depthwise separable layers also have $124$ filters each. All three layers ($16^{th}, 17^{th}$ and $18^{th}$) take in input shape $6 \times 6 \times 124$. The output from the $16^{th}$ layer is fed to the $17^{th}$ layer; the $17^{th}$ layer's output is then fed to the $18^{th}$ layer to produce output shape $6 \times 6 \times 124$ after depthwise separable convolution operation.
-
-After the $18^{th}$ depthwise separable layer, we perform the final max-pooling at layer 19 to down-sample the feature map from $6 \times 6 \times 124$ to a final dimension of $3 \times 3 \times 124$. In CNN architectures, it has been the tradition to use fully connected layers to learn feature combinations from the last convolution layer. Instead, we feed the output from the last depthwise separable convolution layer ($18^{th}$ layer) to a global average pooling operation at layer $20$ in order to combine all the various features learned from the convolution operations. At the global average pooling layer, we produce single feature map for every corresponding class of our facial emotion recognition task by computing the average of each feature map. We use Global Average Pooling instead of the traditional fully connected layers because of the following reasons:
-\begin{itemize}
-    \item \textbf{Confidence:} global average pooling is increasingly local to the convolution structure by implementing correspondences between feature maps and classes. In this way, the feature maps can be effortlessly translated as classes certainty maps.
-    \item \textbf{Overfitting:} fully connected layers are highly parameterized and are prone to overfitting. Global average pooling do not involve any parameter optimization, hence, there is no potential of causing overfitting in this layer.
-    \item \textbf{Robustness: } also, global average pooling computes the spatial information from the feature maps, therefore it is very robust to spatial interpretations of the input.
-\end{itemize}
-The output after the global average pooling is fed to the final layer ($21^{th}$), that is the softmax layer for classification. The softmax layer outputs a vector of shape $1 \times 1 \times 7$ with each vector value corresponding to one of the seven facial emotion classes.
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/jaffe.png}
+\caption{Examples of facial expression images from the Japanese Female Facial Expression (JAFFE) database. Source: \citing{Michael-2017}}
+\label{jaffe_images}
+\end{figure}
 
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1}
@@ -750,6 +701,79 @@ The output after the global average pooling is fed to the final layer ($21^{th}$
 \end{center}
 \end{table}
 
+\section{Depthwise Separable Convolutions}\label{depthconve}
+Depthwise Separable Convolution is a type of convolution that splits the convolution operation into two steps. It transforms standard convolution by factorizing into a depthwise convolution and a $1 \times 1$ standard convolution termed as pointwise convolution. Depthwise separable convolutions have been used successfully in recent deep neural network models such as MobileNets\citing{DBLP:journals/corr/HowardZCKWWAA17}, Xception\citing{DBLP:journals/corr/Chollet16a} and Effnet\citing{8451339}.
+
+In the first operation for depthwise convolution, given an RGB input image of spatial dimension $12 \times 12 \times 3$, we use 3 filters of shape $5 \times 5\times 1$. Each $5 \times 5\times 1$ filter performs convolution on 1 channel of the input image, resulting in scalar products of every 25 pixel group with an output shape of $8\times8\times1$. We stack these output images together to form a $8\times8\times3$ image.
+
+In the second operation, we perform pointwise convolution, we use a $1\times1\times n$ filter to perform convolution across all channels. The filter will have the same number of $n$ channels as the input image. In our example, we will use a $1\times1\times3$ filter to perform convolution on our $8\times8\times3$ image. At this point, we use 32 filters of size $1\times1\times3$ to perform convolution on our input image that output a $8\times8\times1$ image for each of our 32 filter of size $1\times1\times3$. We stack all the output together to get our final output image of shape $8\times8\times32$ just like what a standard convolution will achieve.
+
+Depthwise separable convolution provides three main advantages over regular convolutions:
+\begin{enumerate}
+    \item Depthwise separable convolutions are less prone to overfitting because they have fewer parameters compared to regular convolutions
+    \item Because they have fewer parameters, computation cost is less and thus speeds up the model execution and time
+    \item Depthwise separable convolution is more attractive for real-time applications and running on mobile devices because of efficiency
+\end{enumerate}
+
+\subsection{Regular vs. Depthwise Separable Convolutions: Computational Cost}
+We define the following notations. Let:
+    \[w, h = \text{spatial width, spatial height}\]
+    \[I_w, I_h = \text{input image width, input image height} \]
+    \[F_w, F_h = \text{filter width, filter height}\]
+    \[C_i = \text{number of input channels}\]
+    \[C_o = \text{number of output channels}\]
+Let us assume same padding for every convolution operation such that spatial input size is the same as spatial output size and every filter is a 3D tensor of shape $F_w \times F_h \times C_{in}$
+
+For regular convolution, parameter computation at each position of the input image can be given as $F_w \times F_h \times C_i$. Performing convolution over the whole input image makes the computation cost $F_w \times F_h \times C_i \times I_w \times I_h$. Considering all output channels $C_o$, our final computational cost becomes $F_w \times F_h \times C_i \times I_w \times I_h \times C_i$
+
+For depthwise separable convolution, $F_w \times F_h \times C_i \times I_w \times I_h$ total cost is required in the depthwise operation. In the pointwise operation, we need $I_w \times I_h \times C_o$ cost. Hence, total computational cost becomes $(F_w \times F_h \times C_i \times I_w \times I_h) + (I_w \times I_h \times C_o)$.
+
+For further illustration, let's consider the following example. Let's assume $I_w = 128, I_h = 128, F_w = 3, F_h = 3, C_o = 16$ \\
+\textbf{For regular convolution:} \\
+parameters:
+\[3 \times 3 \times 16 = 432\]
+computation cost:
+\[3 \times 3 \times 3 \times 128 \times 128 \times 16 = \sim7e6\]
+\textbf{For depthwise separable convolution:}\\
+parameters:
+\[3 \times 3 + 16 = 75 \]
+computation cost:
+\[(3 \times 3 \times 3 \times 128 \times 128 \times) + (128 \times 128 \times 3 \times 16) = \sim1.2e6 \]
+
+We can evidently see the computational cost advantages depthwise separable convolution have over regular convolution. In the example above, depthwise separable convolution have about $\sim5.5e6$ fewer parameters than regular convolution for the same convolutional operation.
+
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/ck+.PNG}
+\caption{Examples of images from the CK+ database. The top four horizontal grayscale images are taken from the original CK database and the other four horizontal RGB images at the bottom are taken from the CK+ dataset. All together we have 8 emotions and 30 AUs. Examples of the Emotion and AU labels
+are: (a) Disgust - AU 1+4+15+17, (b) Happy - AU 6+12+25, (c) Surprise - AU 1+2+5+25+27, (d) Fear - AU 1+4+7+20, (e) Angry - AU 4+5+15+17, (f) Contempt - AU 14, (g) Sadness - AU 1+2+4+15+17, and (h) Neutral - AU0. Source: \citing{5543262}}
+\label{CK+_images}
+\end{figure}
+
+\section{Conclusion}
+In this chapter we presented the theoretical basics underlying this research work. We started by discussing what machine learning is and the types or forms of machine learning techniques in existence. We went further to discuss in details one example of the techniques in machine learning, deep learning. Furthermore, we discussed one popular type of deep learning method called convolutional neural network. Finally, we took a look at a type of convolutional neural network called depthwise separable convolutions and analyzed the computation cost of a regular convolution vs depthwise separable convolution.
+
+\chapter{Chapter 3 - Proposed Method and Experiments}
+In this section, we will describe our proposed CNN model based on depthwise separable convolution for facial expression recognition problem and provide details of the layers that constituents the model. This chapter also presents the computation cost of the model and describes the various experiments conducted.
+
+\section{Model Architecture}
+Our proposed model structure is a pure convolutional network (i.e. without any fully-connected layer) that is based on depthwise separable convolutions as explained in section \ref{depthconve}. All depthwise separable layers perform \textit{same convolution} with a filter size of $3 \times 3 \times 1$ and a \textit{depth-multiplier} value of $1$ shifting by $1$ stride. We use ReLU\citing{7410480} activation function in all the separable convolutional layers to help us avoid the vanishing gradient problem\citing{5264952}. All depthwise separable convolutional layers are followed by a batch normalization operation\citing{DBLP:journals/corr/IoffeS15} to normalize the output in each layer in order to avoid varying distributions of the features across the training and test data. For our model to generalize well on unseen data and avoid overfitting on the training data, we apply dropout\citing{JMLR:v15:srivastava14a} as our regularization method in the last three depthwise separable convolutional layers. We apply Max-Pooling of window size $2 \times 2$ and stride $1$ after the $6^{th}$, $9^{th}$, $12^{th}$, and $15^{th}$ depthwise separable convolutional layers in order to down sample input flowing through the network. Instead of the traditional fully connected layer, we output the spatial average of the learned feature maps from the last depthwise separable convolutional layer via a global average pooling layer \citing{DBLP:journals/corr/LinCY13}; and the output feature vector is fed into the softmax layer for classification.  In summary, the entire network contains only $474K$ parameters with 15 separable convolutional layers and four pooling layers. Table \ref{model_arch} shows details of our proposed model architecture.
+
+The model starts by feed forwarding training examples through a continuous $6$ depthwise separable convolution layers. The first three depthwise separable layers have $32$ filters each. Each of the first $3$ depthwise separable layers takes in input shape $48 \times 48 \times 1$ and outputs $48 \times 48 \times 32$ after depthwise separable convolution operation. The next three depthwise separable layers have $64$ filters each. Apart from the $4^{th}$ layer which takes an input shape $48 \times 48 \times 32$, the $5^{th}$ and $6^{th}$ layers receive input shape $48 \times 48 \times 64$ and outputs $48 \times 48 \times 64$.
+
+After the first six depthwise separable layers, we perform the first max-pooling at layer 7 to down-sample the feature map dimension from $48 \times 48 \times 64$ to $24 \times 24 \times 64$. The $8^{th}, 9^{th}$ and $10^{th}$ depthwise separable layers have $92$ filters each. The $8^{th}$ depthwise separable layer takes in input shape $24 \times 24 \times 64$ and output $24 \times 24 \times 92$. The output from the $8^{th}$ layer is fed to the $9^{th}$ layer; the $9^{th}$ layer's output is then fed to the $10^{th}$ layer to produce output shape $24 \times 24 \times 92$ after depthwise separable convolution operation.
+
+After the $10^{th}$ depthwise separable layer, we perform the second max-pooling at layer 11 to further down-sample the feature map dimension from $24 \times 24 \times 92$ to $12 \times 12 \times 92$. The $12^{th}, 13^{th}$ and $14^{th}$ depthwise separable layers have $124$ filters each. The $12^{th}$ depthwise separable layer takes in input shape $12 \times 12 \times 92$ and outputs $12 \times 12 \times 124$. The output from the $12^{th}$ layer is fed to the $13^{th}$ layer; the $13^{th}$ layer's output is then fed to the $14^{th}$ layer to produce output shape $12 \times 12 \times 124$ after depthwise separable convolution operation.
+
+After the $14^{th}$ depthwise separable layer, we perform the third max-pooling at layer 15 to down-sample the feature map dimension furthermore from $12 \times 12 \times 124$ to $6 \times 6 \times 124$. The $16^{th}, 17^{th}$ and $18^{th}$ depthwise separable layers also have $124$ filters each. All three layers ($16^{th}, 17^{th}$ and $18^{th}$) take in input shape $6 \times 6 \times 124$. The output from the $16^{th}$ layer is fed to the $17^{th}$ layer; the $17^{th}$ layer's output is then fed to the $18^{th}$ layer to produce output shape $6 \times 6 \times 124$ after depthwise separable convolution operation.
+
+After the $18^{th}$ depthwise separable layer, we perform the final max-pooling at layer 19 to down-sample the feature map from $6 \times 6 \times 124$ to a final dimension of $3 \times 3 \times 124$. In CNN architectures, it has been the tradition to use fully connected layers to learn feature combinations from the last convolution layer. Instead, we feed the output from the last depthwise separable convolution layer ($18^{th}$ layer) to a global average pooling operation at layer $20$ in order to combine all the various features learned from the convolution operations. At the global average pooling layer, we produce single feature map for every corresponding class of our facial emotion recognition task by computing the average of each feature map. We use Global Average Pooling instead of the traditional fully connected layers because of the following reasons:
+\begin{itemize}
+    \item \textbf{Confidence:} global average pooling is increasingly local to the convolution structure by implementing correspondences between feature maps and classes. In this way, the feature maps can be effortlessly translated as classes certainty maps.
+    \item \textbf{Overfitting:} fully connected layers are highly parameterized and are prone to overfitting. Global average pooling do not involve any parameter optimization, hence, there is no potential of causing overfitting in this layer.
+    \item \textbf{Robustness: } also, global average pooling computes the spatial information from the feature maps, therefore it is very robust to spatial interpretations of the input.
+\end{itemize}
+The output after the global average pooling is fed to the final layer ($21^{th}$), that is the softmax layer for classification. The softmax layer outputs a vector of shape $1 \times 1 \times 7$ with each vector value corresponding to one of the seven facial emotion classes.
+
 \begin{comment}
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.3}
@@ -786,43 +810,43 @@ The output after the global average pooling is fed to the final layer ($21^{th}$
 \section{Experiments}
 We experiment our model using supervised learning techniques. That it, we expose the model to large amount of data and we allow it to learn the optimal features and parameters for the underlined task.
 
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/FER-2013_public_test_CM_normalzed.png}
+\caption{Normalized confusion matrix on model test accuracy for FERC-2013 private test.}
+\label{fig_ferpr_cm_scores}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/FER-2013_public_test_CM_normalzed.png}
+\caption{Normalized confusion matrix on model test accuracy for FERC-2013 public test}
+\label{fig_ferpub_cm_scores}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/model_accuracy_fer.png}
+\caption{Model training and validation accuracy.}
+\label{fer_accuracy}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/model_loss_fer.png}
+\caption{Model training and validation loss}
+\label{fer_loss}
+\end{figure}
+
 \subsection{Datasets}
 We experiment our proposed model on three famous dataset for the task of facial expression recognition. The three datasets are FERC-2013\citing{fer2013_cite}, JAFFE database\citing{Michael-2017} and CK+ database\citing{5543262}.
 
 \subsubsection{FERC-2013}
-FERC-2013 was prepared by Pierre-Luc Carrier and Aaron Courville and used by Kaggle during the \textit{Challenges in Representation Learning: Facial Expression Recognition Challenge} in 2013. The dataset is made up of $48\times48$ pixel grayscale images of faces categorized into the seven emotion classes (0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral). The dataset contains uneven distribution of the emotion classes with happy emotion containing the highest with 25.05\%, followed by neutral emotion with 17.27\%, followed by sad emotion with 16.93\%, followed by fear emotion with 14.27\%, followed by anger with 13.8\%, followed by surprise with 11.15\% and disgust emotion contains the smallest examples with only 1.52\%.  All the faces contained in the dataset images are positioned in such a way that it is centered and covers bigger portions of the entire image. The \textit{train.csv} file has two columns, \textit{emotion} and \textit{pixels}. The \textit{emotion} column is made up of digit code inclusively spanning from 0 to 6 corresponding to one of the seven emotions. The \textit{pixels} is made up of strings enclosed in quotes for each image. The strings contain the pixel values in row major order separating each pixel value with a space. The \textit{test.csv} file houses only the the `pixel' values for each test image. There contain 35,896 total samples with 28,709 training samples, 3,589 samples for public test and another 3,589 samples for private test.  Examples of facial expression images from the FERC-2013 emotion database are shown in figure \ref{fer2013_images}.
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/fer2013.png}
-\caption{Examples of facial expression images from the FERC-2013 emotion database}
-\label{fer2013_images}
-\end{figure}
-
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/total_data_distribution.png}
-\caption{FERC-2013 total sample distribution for Angry, Disgust, Fear, Happy, Sad, Surprise and Neutral emotion}
-\label{fer2013_distribution}
-\end{figure}
-
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/jaffe.png}
-\caption{Examples of facial expression images from the Japanese Female Facial Expression (JAFFE) database. Source: \citing{Michael-2017}}
-\label{jaffe_images}
-\end{figure}
+FERC-2013 was prepared by Pierre-Luc Carrier and Aaron Courville and used by Kaggle during the Challenges in Representation Learning: Facial Expression Recognition Challenge in 2013. The dataset is made up of $48\times48$ pixel grayscale images of faces categorized into the seven emotion classes (0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral). The dataset contains uneven distribution of the emotion classes with happy emotion containing the highest with 25.05\%, followed by neutral emotion with 17.27\%, followed by sad emotion with 16.93\%, followed by fear emotion with 14.27\%, followed by anger with 13.8\%, followed by surprise with 11.15\% and disgust emotion contains the smallest examples with only 1.52\%.  All the faces contained in the dataset images are positioned in such a way that it is centered and covers bigger portions of the entire image. The \textit{train.csv} file has two columns, \textit{emotion} and \textit{pixels}. The \textit{emotion} column is made up of digit code inclusively spanning from 0 to 6 corresponding to one of the seven emotions. The \textit{pixels} are made up of strings enclosed in quotes for each image. The strings contain the pixel values in row major order separating each pixel value with a space. The \textit{test.csv} file houses only the the `pixel' values for each test image. There contain 35,896 total samples with 28,709 training samples, 3,589 samples for public test and another 3,589 samples for private test.  Examples of facial expression images from the FERC-2013 emotion database are shown in Figure \ref{fer2013_images}.
 
 \subsubsection{Japanese Female Facial Expression}
 % We validate the effectiveness of our proposed method on FERC-2013 and JAFFE database in order to appropriately generalize our model for facial expression recognition.
 The Japanese Female Facial Expression (JAFFE) database\citing{Michael-2017} contains $256\times256$ pixel 213 grayscale images of the seven facial expressions posed by 10 Japanese female models. Facial expression images were coded using a multi-orientation, multi-resolution set of Gabor filters which were topographically ordered and arranged pretty much with the face. The similarity space
-obtained from this representation was crosschecked with one obtained from semantic ratings of the images by human observers. The Gabor representation demonstrated a notable degree of psychological credibility, a design feature which may be important for human-computer interfaces. Examples of facial expression images from the Japanese Female Facial Expression (JAFFE) database are shown in Figure \ref{jaffe_images} .
-
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/ck+.PNG}
-\caption{Examples of images from the CK+ database. The top four horizontal grayscale images are taken from the original CK database and the other four horizontal RGB images at the bottom are taken from the CK+ dataset. All together we have 8 emotions and 30 AUs. Examples of the Emotion and AU labels
-are: (a) Disgust - AU 1+4+15+17, (b) Happy - AU 6+12+25, (c) Surprise - AU 1+2+5+25+27, (d) Fear - AU 1+4+7+20, (e) Angry - AU 4+5+15+17, (f) Contempt - AU 14, (g) Sadness - AU 1+2+4+15+17, and (h) Neutral - AU0. Source: \citing{5543262}}
-\label{CK+_images}
-\end{figure}
+obtained from this representation was crosschecked with one obtained from semantic ratings of the images by human observers. The Gabor representation demonstrated a notable degree of psychological credibility, a design feature which may be important for human-computer interfaces. Examples of facial expression images from the Japanese Female Facial Expression (JAFFE) database are shown in Figure \ref{jaffe_images}.
 
 \subsubsection{Extended Cohn-Kanade Dataset}
-The Extended Cohn-Kanade Dataset (CK+) dataset\citing{5543262} is a build on the work done by \citing{ck_840611}. In the work done by \citing{ck_840611}, they presented a sequence of 2105 images obtained from 128 adult subjects of different ethnicity. The subjects expressed the various emotions by acting the multiple tokens of many basic Facial Action Coding System (FACS)\citing{ekman_facs} action units. The Extended Cohn-Kanade Dataset (CK+) dataset increased the sequence of images by $22\%$ and the also increased the number of adult subjects by $27\%$. All label expressions for each sequence was fully based on FACS coding. Also, CK+ dataset added non-posed sequences for many kinds of smiles and their corresponding metadata. Examples of facial expression images from the CK+ dataset are shown in figure \ref{CK+_images}
+The Extended Cohn-Kanade Dataset (CK+) dataset\citing{5543262} is a built on the work done by T. Kanade et al.\citing{ck_840611}. In the work done by T. Kanade et al.\citing{ck_840611}, they presented a sequence of 2105 images obtained from 128 adult subjects of different ethnicity. The subjects expressed the various emotions by acting the multiple tokens of many basic Facial Action Coding System (FACS)\citing{ekman_facs} action units. The Extended Cohn-Kanade Dataset (CK+) dataset increased the sequence of images by $22\%$ and the also increased the number of adult subjects by $27\%$. All label expressions for each sequence was fully based on FACS coding. Also, CK+ dataset added non-posed sequences for many kinds of smiles and their corresponding metadata. Examples of facial expression images from the CK+ dataset are shown in Figure \ref{CK+_images}
 
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.3}
@@ -847,8 +871,9 @@ Surprise & 0.78 & 0.81 & 0.79 & 415\\ \hline
 \end{tabular}
 \end{center}
 \end{table}
+
 \subsection{Model Training}
-For training and testing we implemented our network architecture using Keras Deep Learning library\footnote{Keras is a high-level neural networks API, written in Python - https://keras.io/}. We ran the on independent streams on GPU using NVIDIA CUDA parallel computing platform. We conduct training on FERC-2013 dataset, JAFFE dataset and CK+ dataset. For all datasets, we trained for 200 epochs. In order to make our model more robust and speed up training, we implemented the following real-time data augmentation and preprocessing during training:
+For training and testing we implemented our network architecture using Keras Deep Learning library\footnote{Keras is a high-level neural networks API, written in Python - https://keras.io/}. We ran the experiments on independent streams on GPU using NVIDIA CUDA parallel computing platform. We conduct training on FERC-2013 dataset, JAFFE dataset and CK+ dataset. For all datasets, we trained for 200 epochs. In order to make our model more robust and speed up training, we implemented the following real-time data augmentation and preprocessing during training:
 \begin{itemize}
  \item rescaling images to 1./255 in order to transform every pixel value from range [0,255] to [0,1]
  \item image shearing clockwise value of 0.2
@@ -858,7 +883,7 @@ For training and testing we implemented our network architecture using Keras Dee
  \item image cropping of 48 x 48
  \item converting all RGB images to grayscale
 \end{itemize}
-We maintained a batch size of 32 across all datasets to feed input into the network. We trained the network using Adam Optimizer \citing{DBLP:journals/corr/KingmaB14} with learning rate of 0.001 for both datasets. Training results are presented in chapter \ref{chp4}. Finally, we implemented our model with OpenCV on an Intel Dual Core i3-7100U 2.4GHz Processor laptop in real-time by connecting a live video stream to a face detector to feed images to our trained model to recognise the 7 basic emotions.
+We maintained a batch size of 32 across all datasets to feed input into the network. We trained the network using Adam Optimizer \citing{DBLP:journals/corr/KingmaB14} with learning rate of 0.001 for all datasets. Training results are presented in chapter 4 - \ref{chp4}. Finally, we implemented our model with OpenCV on an Intel Dual Core i3-7100U 2.4GHz Processor laptop in real-time by connecting a live video stream to a face detector to feed images to our trained model to recognise the 7 basic emotions.
 
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.3}
@@ -917,33 +942,6 @@ F1-score=2\frac{Precision \times Recall}
 
 For all confusion matrices, the major diagonal of the matrix contains the correctly predicted labels, thus \textbf{TP} and \textbf{TN} values. The values outside the major diagonal represent the wrongly predicted labels. The values above the major diagonal are the \textbf{FP} values.
 
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/FER-2013_public_test_CM_normalzed.png}
-\caption{Normalized confusion matrix on model test accuracy for FERC-2013 private test.}
-\label{fig_ferpr_cm_scores}
-\end{figure}
-
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/FER-2013_public_test_CM_normalzed.png}
-\caption{Normalized confusion matrix on model test accuracy for FERC-2013 public test}
-\label{fig_ferpub_cm_scores}
-\end{figure}
-
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/model_accuracy_fer.png}
-\caption{Model training and validation accuracy.}
-\label{fer_accuracy}
-\end{figure}
-
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/model_loss_fer.png}
-\caption{Model training and validation loss}
-\label{fer_loss}
-\end{figure}
-
-\section{Analysis}
-For the FERC-2013 dataset, the model achieved 68\% on precision, recall and f1-score on the public test examples. During the private test, the model obtained 69\% performance on precision, recall and f1-score. Table \ref{table_fer2013_scores_public} and Table \ref{table_fer2013_scores_private} shows the model accuracy details on the public and private test respectively. It was observed that the model performed worst in recognizing fear and sad expressions. From the confusion matrix in Fig \ref{fig_ferpr_cm_scores} and Fig \ref{fig_ferpub_cm_scores}, the model often confused fear for sad and also confused sad for neutral and anger. We also observed from the dataset that fear and sad expressions exhibits similar facial movements with the forehead been squeezed and the mouth tightly closed. Additionally, many sad expression samples looked similar to neutral and anger, both expressions have the mouth closed and steady facial contour. However, among the seven emotions, the model performance on happy emotion was the highest, obtaining up to 87\% and 88\% for public and private test respectively. This result can be explained by observing the total sample distribution of the emotion classes in the dataset as shown in Fig. \ref{fer2013_distribution}. The happy emotion contains the largest samples (25.05\%) among all the other emotion classes. Consequently, the model is exposed to larger number of happy emotion samples and learns more optimal features to distinguish happy emotion from other emotions. In order to avoid the model memorizing the training data and not generalization well on unseen data, we stop training after 200 epochs. As shown in Fig. \ref{fer_accuracy}, the model did not significantly improve the validation accuracy from epoch 150. This is evident from training and validation loss as shown in Fig. \ref{fer_loss}, the validation loss did not further reduce after epoch 150. Training on FERC-2013 dataset spanned a period of approximately 7 hours.
-
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.3}
 \caption{Model test accuracy on Precision, Recall and F1-score for JAFFE dataset}
@@ -966,13 +964,17 @@ Surprise & 1.00 & 0.90 & 0.95 & 10\\ \hline
 \end{tabular}
 \end{center}
 \end{table}
+
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/JAFFE_CM_normalized.png}
 \caption{Normalized confusion matrix on model test accuracy for JAFFE dataset}
 \label{fig_jaffe_cm_scores}
 \end{figure}
 
-For the JAFFE dataset, the model achieved 88\% accuracy on test samples. From Table \ref{table_jaffe_scores}, we can see that the only emotion category the model obtained a 100\% f1-score is the \textit{happy} emotion. Taking a closer look at the image samples in the JAFFE dataset, we observed that \textit{happy} emotion examples are quite distinct from the other emotion examples. The \textit{happy} emotion samples do not have the forehead and mouth region tightly squeezed like most other emotion expressions (fear, sad, disgust and anger). Hence, the model is able to learn these distinct features to obtain the 100\% f1-score for the \textit{happy} emotion. From the generated confusion matrix in Fig.\ref{fig_jaffe_cm_scores}, we also observed that the model often confused fear and sad for disgust. Taking a look at the training samples , all the 3 expressions are very similar with the forehead and mouth region (sad expression) tightly squeezed. 
+\section{Analysis}
+For the FERC-2013 dataset, the model achieved 68\% on precision, recall and f1-score on the public test examples. During the private test, the model obtained 69\% performance on precision, recall and f1-score. Table \ref{table_fer2013_scores_public} and Table \ref{table_fer2013_scores_private} shows the model accuracy details on the public and private test respectively. It was observed that the model performed worst in recognizing fear and sad expressions. From the confusion matrix in Figure \ref{fig_ferpr_cm_scores} and Figure \ref{fig_ferpub_cm_scores}, the model often confused fear for sad and also confused sad for neutral and anger. We also observed from the dataset that fear and sad expressions exhibits similar facial movements with the forehead been squeezed and the mouth tightly closed. Additionally, many sad expression samples looked similar to neutral and anger, both expressions have the mouth closed and steady facial contour. However, among the seven emotions, the model performance on happy emotion was the highest, obtaining up to 87\% and 88\% for public and private test respectively. This result can be explained by observing the total sample distribution of the emotion classes in the dataset as shown in Figure \ref{fer2013_distribution}. The happy emotion contains the largest samples (25.05\%) among all the other emotion classes. Consequently, the model is exposed to larger number of happy emotion samples and learns more optimal features to distinguish happy emotion from other emotions. In order to avoid the model memorizing the training data and not generalization well on unseen data, we stop training after 200 epochs. As shown in Figure \ref{fer_accuracy}, the model did not significantly improve the validation accuracy from epoch 150. This is evident from training and validation loss as shown in Fig. \ref{fer_loss}, the validation loss did not further reduce after epoch 150. Training on FERC-2013 dataset spanned a period of approximately 7 hours.
+
+For the JAFFE dataset, the model achieved 88\% accuracy on test samples. From Table \ref{table_jaffe_scores}, we can see that the only emotion category the model obtained a 100\% f1-score is the \textit{happy} emotion. Taking a closer look at the image samples in the JAFFE dataset, we observed that \textit{happy} emotion examples are quite distinct from the other emotion examples. The \textit{happy} emotion samples do not have the forehead and mouth region tightly squeezed like most other emotion expressions (fear, sad, disgust and anger). Hence, the model is able to learn these distinct features to obtain the 100\% f1-score for the \textit{happy} emotion. From the generated confusion matrix in Figure \ref{fig_jaffe_cm_scores}, we also observed that the model often confused fear and sad for disgust. Taking a look at the training samples , all the 3 expressions are very similar with the forehead and mouth region (sad expression) tightly squeezed. 
 % \begin{table}[ht]
 % \renewcommand{\arraystretch}{1.3}
 % \caption{Model test accuracy on Precision, Recall and F1-score for CK+ dataset. The first column contains the seven emotion classes (Anger, Contempt, Disgust, Fear, Happy, Sadness and Surprise), the second, third and fourth column contain the Precision, Recall, F1-score for each emotion respectively. The fifth column contains the number of samples observed for each emotion class. The last row contains the averaged Precision, Recall, F1-score and the total samples observed.}
@@ -996,8 +998,6 @@ For the JAFFE dataset, the model achieved 88\% accuracy on test samples. From Ta
 % \end{center}
 % \end{table}
 
-For CK+ dataset, our model achieved $99\%$ test accuracy and $0.03941$ for test loss. We present details accuracy for each of the seven emotion category in Table \ref{table_ck+_scores}. As shown in Fig. \ref{ck+_cm}, the model obtained prediction accuracy up to $100\%$ for all emotion classes except contempt emotion. The model confused contempt emotion for fear emotion. This cause can be associated to the nature of the dataset. We observed that few contempt emotions expressed in the dataset are similar to some fear expressions. Such similar expression both have the eyes fairly opened wide, no forehead contractions and mouth closed or slightly opened. Fig. \ref{ck+_similarity} shows few of such similar samples.
-
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.3}
 \caption{Model test accuracy on Precision, Recall and F1-score for CK+ dataset}
@@ -1020,11 +1020,14 @@ Surprise & 1.00 & 1.00 & 1.00 & 24\\ \hline
 \end{tabular}
 \end{center}
 \end{table}
+
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/XK+_accuracy_and_loss.png}
 \caption{Model training and validation accuracy and loss on CK+ dataset. The graph on the left is the accuracy increase for 200 epochs and the graph on the right is the loss reduction for 200 epochs}
 \label{ck+accuracy_loss}
 \end{figure}
+
+For CK+ dataset, our model achieved $99\%$ test accuracy and $0.03941$ for test loss. We present details accuracy for each of the seven emotion category in Table \ref{table_ck+_scores}. As shown in Figure \ref{ck+_cm}, the model obtained prediction accuracy up to $100\%$ for all emotion classes except contempt emotion. The model confused contempt emotion for fear emotion. This cause can be associated to the nature of the dataset. We observed that few contempt emotions expressed in the dataset are similar to some fear expressions. Such similar expression both have the eyes fairly opened wide, no forehead contractions and mouth closed or slightly opened. Fig. \ref{ck+_similarity} shows few of such similar samples.
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/ck+_cm.png}
@@ -1039,11 +1042,19 @@ Surprise & 1.00 & 1.00 & 1.00 & 24\\ \hline
 \end{figure}
 
 \section{Comparison with other works}
-The winner of the Kaggle competition \citing{tang2018} achieved 69.4\% accuracy on FERC-2013 public test and 71\% accuracy on the public test with a model containing more than 7 million parameters. Sang et al \citing{sang-2017} also achieved 71\% on FERC-2013 public test and 71.9\% on the private test with a model containing 4.19 million parameters. Arriaga et al\citing{DBLP:journals/corr/abs-1710-07557} achieved 66\% accuracy on FERC-2013 public test with a model containing approximately 600K parameters. Our proposed model contains $474K$ parameters, nevertheless, we achieved only $2\%$ lower than \citing{tang2018}, 2.9\% lower than \citing{sang-2017} and 3\% higher than \citing{DBLP:journals/corr/abs-1710-07557} on FERC-2013 private test. Our proposed model contains approximately 6.5 million fewer parameters compared to \citing{tang2018}, 4.2 million fewer parameters compared to \citing{sang-2017} and 126K fewer parameters compared to \citing{DBLP:journals/corr/abs-1710-07557}.
+The winner of the Kaggle competition Y. Tang\citing{tang2018} achieved 69.4\% accuracy on FERC-2013 public test and 71\% accuracy on the public test with a model containing more than 7 million parameters. Sang et al. \citing{sang-2017} also achieved 71\% on FERC-2013 public test and 71.9\% on the private test with a model containing 4.19 million parameters. Arriaga et al\citing{DBLP:journals/corr/abs-1710-07557} achieved 66\% accuracy on FERC-2013 public test with a model containing approximately 600K parameters. Our proposed model contains $474K$ parameters, nevertheless, we achieved only $2\%$ lower than Y. Tang\citing{tang2018}, 2.9\% lower than Sang et al. \citing{sang-2017} and 3\% higher than O. Arriaga et al.\citing{DBLP:journals/corr/abs-1710-07557} on FERC-2013 private test. Our proposed model contains approximately 6.5 million fewer parameters compared to Y. Tang\citing{tang2018}, 4.2 million fewer parameters compared to Sang et al. \citing{sang-2017} and 126K fewer parameters compared to O. Arriaga et al.\citing{DBLP:journals/corr/abs-1710-07557}.
 
-Duncan et al \citing{duncan2016} achieved 62\% accuracy on JAFFE dataset with a highly parameterized CNN model containing more than 10 million parameters. Additionally, \citing{7988558} achieved 87\% accuracy on JAFFE dataset with a model containing more than 10 million parameters. However, we achieved $88\%$ accuracy on JAFFE dataset with our proposed model containing about a whooping 9 million fewer parameters compared to \citing{duncan2016} and \citing{7988558}.
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/system_activity_diagram.png}
+\caption{Real-time Software Activity Diagram}
+\label{system_description}
+\end{figure}
 
-For CK+ dataset, Pooya et. al. \citing{do_deep_7406361} achieved $96.7\%$ accuracy using quadrant pooling technique on a CNN model containing a little over 4 million parameters. Ghosh et. al. \citing{Ghosh_7344632} achieved accuracy up to $88.14\%$ using a multi-label CNN model containing only about $321K$ total parameters. Table \ref{table_comparison} shows the comparison summary of our proposed model with other models. 
+Duncan et al. \citing{duncan2016} achieved 62\% accuracy on JAFFE dataset with a highly parameterized CNN model containing more than 10 million parameters. Additionally, X. Chen et al.\citing{7988558} achieved 87\% accuracy on JAFFE dataset with a model containing more than 10 million parameters. However, we achieved $88\%$ accuracy on JAFFE dataset with our proposed model containing about a whooping 9 million fewer parameters compared to Duncan et al.\citing{duncan2016} and X. Chen et al.\citing{7988558}.
+
+For CK+ dataset, Pooya et al.\citing{do_deep_7406361} achieved $96.7\%$ accuracy using quadrant pooling technique on a CNN model containing a little over 4 million parameters. Ghosh et. al. \citing{Ghosh_7344632} achieved accuracy up to $88.14\%$ using a multi-label CNN model containing only about $321K$ total parameters. However, our model outperformed the works done by both Pooya et al.\citing{do_deep_7406361} and Ghosh et. al. \citing{Ghosh_7344632} with a 99\% accuracy.
+
+Table \ref{table_comparison} shows the comparison summary of our proposed model with other models. 
 
 \begin{table}[ht]
 % increase table row spacing, adjust to taste
@@ -1057,16 +1068,16 @@ For CK+ dataset, Pooya et. al. \citing{do_deep_7406361} achieved $96.7\%$ accura
 \hline
 Dataset & Method & No. of parameters & Accuracy \\ \hline
 FERC-2013 & Y. Tang \citing{tang2018} & 7 million & 71\% \\
-                 & Sang et. al. \citing{sang-2017} & 4.19 million & 71.9\% \\
-	      & Arriaga et. al. \citing{DBLP:journals/corr/abs-1710-07557} & 600K & 66\% \\
+                 & Sang et al. \citing{sang-2017} & 4.19 million & 71.9\% \\
+	      & Arriaga et al. \citing{DBLP:journals/corr/abs-1710-07557} & 600K & 66\% \\
 	      & \textbf{Our method} & \textbf{474K} & \textbf{69\%} \\
 \hline
-JAFFE & Duncan et. al. \citing{duncan2016} & 10 million & 62\% \\
-                 & Chen et. al. \citing{7988558} & 10 million & 87\% \\
+JAFFE & Duncan et al. \citing{duncan2016} & 10 million & 62\% \\
+                 & Chen et al. \citing{7988558} & 10 million & 87\% \\
 	      & \textbf{Our method} & \textbf{474K} & \textbf{88\%} \\
 \hline
-CK+ & Pooya et. al. \citing{do_deep_7406361} & 4 million & 96.7\% \\
-                 & Ghosh et. al. \citing{Ghosh_7344632} & 321K & 88.14\% \\
+CK+ & Pooya et al. \citing{do_deep_7406361} & 4 million & 96.7\% \\
+                 & Ghosh et al. \citing{Ghosh_7344632} & 321K & 88.14\% \\
 	      & \textbf{Our method} & \textbf{474K} & \textbf{99\%} \\
 \hline
 \end{tabular}
@@ -1087,14 +1098,9 @@ Surprised or Neutral}. This software aims to predict the facial emotion expresse
     \item Display the emotion predicted to the user
 \end{enumerate}
 The software activity diagram is shown in Fig. \ref{system_description}.
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/system_activity_diagram.png}
-\caption{Real-time Software Activity Diagram}
-\label{system_description}
-\end{figure}
 
 \subsection{Operating Environment}
-The software was ran and tested on a Windows laptop with Windows 10, python, keras, CUDA (Compute Unified Device Architecture) and CuDNN (CUDA Deep Neural Netowrk) installed. The laptop has a web cam support. The software dependicies includes:
+The software was ran and tested on a laptop with Windows 10, Python, Keras, CUDA (Compute Unified Device Architecture) and CuDNN (CUDA Deep Neural Netowrk) installed. The laptop has a web cam support. The software dependencies includes:
 \begin{enumerate}
     \item Tensorflow: TensorFlow is an open source software library for numerical computation using data flow graphs.
     \item Keras: High level API (Application Program Interface) designed on top of Tensorflow for fast experiment and very user-friendly.
@@ -1154,11 +1160,11 @@ As demonstrated in Figure \ref{fig:implementation}, the software system is able 
 \end{figure}
 
 \section{Conclusion}
-In this chapter, we present the evaluation metrics used to measure the proposed model performance. This chapter also provides analysis of the model performance on all three datasets. Comparison of the proposed method with other state-of-the-art methods is also presented in this chapter. Finally, this chapter presents the real-time application of the proposed method. 
+In this chapter, we presented the evaluation metrics used to measure the proposed model performance. This chapter also provides analysis of the model performance on all three datasets. Comparison of the proposed method with other state-of-the-art methods is also presented in this chapter. Finally, this chapter presents the real-time application of the proposed method. 
 
 \chapter{Chapter 5 - Conclusions}
 \section{Conclusion Remarks}
-The accuracy and efficiency of CNN architectures for facial emotion recognition have very important significance to real world problems. In this thesis, we proposed a new and efficient `light weight' CNN model architecture based on depthwise separable 2D convolution for real-time emotion recognition. We implemented depthwise separable 2D convolution which reduced the network parameters drastically thereby accelerating the overall performance speed making it suitable for real-time application. We evaluated our model performance on FERC-2013 dataset provided on the Kaggle facial expression recognition competition, the Japanese Female Facial Expression (JAFFE) database and the Extended Cohn-Kanade Dataset (CK+). Our model containing only 474K parameters achieved very competitive results of 68\% and 69\% on FERC-2013 private test and public test respectively. For JAFFE dataset, our model achieved 88\% accuracy. The model achieved an outstanding accuracy of 99\% accuracy for the CK+ dataset. Thus, we drastically reduced model complexity and eventually speed up computation. We shown that with very minimum parameters our model is a better choice over state-of-the-art models for real-time applications. Finally, as shown in Fig. \ref{fig:implementation}, we demonstrated that our model can meet real-time needs by connecting a live video stream to a face detector to feed images to our trained model. The model subsequently classifies facial expressions into one of the seven emotions (Anger, Disgust, Fear, Happy, Neutral, Sad, and Surprise).
+The accuracy and efficiency of CNN architectures for facial emotion recognition have very important significance to real world problems. In this thesis, we proposed a new and efficient `light weight' CNN model architecture based on depthwise separable 2D convolution for real-time emotion recognition. We implemented depthwise separable 2D convolution which reduced the network parameters drastically thereby accelerating the overall performance speed making it suitable for real-time application. We evaluated our model performance on FERC-2013 dataset provided on the Kaggle facial expression recognition competition, the Japanese Female Facial Expression (JAFFE) database and the Extended Cohn-Kanade Dataset (CK+). Our model containing only 474K parameters achieved very competitive results of 68\% and 69\% on FERC-2013 private test and public test respectively. For JAFFE dataset, our model achieved 88\% accuracy. The model achieved an outstanding accuracy of 99\% accuracy for the CK+ dataset. Thus, we drastically reduced model complexity and eventually speed up computation. We shown that with very minimum parameters our model is a better choice over state-of-the-art models for real-time applications. Finally, as shown in Figure \ref{fig:implementation}, we demonstrated that our model can meet real-time needs by connecting a live video stream to a face detector to feed images to our trained model. The model subsequently classifies facial expressions into one of the seven emotions (Anger, Disgust, Fear, Happy, Neutral, Sad, and Surprise).
 
 \section{Future Work}
 The researches reported in this thesis have covered most important areas including the real-time application of CNN models and the accuracy improvement CNN models for facial emotion recognition. Nonetheless, due to the time limitation, there are still spaces for the future development of the real-time facial emotion recognition methods. 
@@ -1170,7 +1176,13 @@ Another future work is to improve the model accuracy. The model sometimes confus
 Finally, we can investigate how to build a model that will be more robust for continuous emotion recognition guided by some knowledge from specific domains like psychology, social science, etc. This will make models more useful into solving specific problems.
 
 \thesisacknowledgement
-This work was supported by the Intelligence Engineering Lab (IELAB), University of Electronic Science and Technology of China.
+Firstly, I like to thank my supervisor Prof. Jiandong Guo of the School of Information and Software Engineering at University of Electronic Science and Technology of China. Prof. Guo and his wife has been very supportive and has guided me very well throughout masters study, both in my course selections and research works.
+
+I would also like to thank all my lab mates at the Intelligent Engineering LAB (IELAB) at University of Electronic Science and Technology for their support and warmth reception. Special thanks goes to Miss Liyuan Lan, who helped in the thesis real-time testing.
+
+I would also like to thank all the professors who lectured me in the various courses. They exposed to me various research interests and also laid a strong foundation for further research.
+
+Finally, I must express my very profound gratitude to my parents, my friends and colleagues for providing me with unfailing support and continuous encouragement throughout my years of study and through the process of researching and writing this thesis. This accomplishment would not have been possible without them. Thank you.
 
 
 % \thesisloadbibliography[nocite]{reference}
