@@ -65,13 +65,13 @@
 %\makecover
 \begin{chineseabstract}
 近年来，在人工智能领域面部表情识别备受关注。许多研究工作使用具有数百万可训练参数的大型卷积神经网络获得了最先进的结果，当然这要求很高的计算能力, 但是这些深度学习模型对于实时应用是不可行的，尤其是运行在例如移动电话等功率受限的设备上。
-在本论文中，提出了一种新的，高效的“轻量级”卷积神经网络，用于实时情感识别。我们提出的模型架构基于深度可分离2D卷积的实现，这大大减少了网络参数，从而加快了整体性能速度，使其适用于实时应用。通过在Kaggle面部表情识别竞赛和日本女性面部表情（JAFFE）数据库中提供的FER-2013数据集上评估模型表现。模型以极低的参数实现了极具竞争力的结果，并且为实时应用提供了比最先进模型更好的选择。最后，通过将实时视频流连接到面部检测器以将图像提供给我们训练的模型来证明模型可以满足实时需求。该模型最终将面部表情分为七种情绪：愤怒、厌恶、恐惧、快乐、中立、悲伤和惊喜。
+在本论文中，提出了一种新的，高效的“轻量级”卷积神经网络，用于实时情感识别。我们提出的模型架构基于深度可分离2D卷积的实现，这大大减少了网络参数，从而加快了整体性能速度，使其适用于实时应用。通过在Kaggle面部表情识别竞赛和日本女性面部表情（JAFFE）数据库中提供的FERC-2013数据集上评估模型表现。模型以极低的参数实现了极具竞争力的结果，并且为实时应用提供了比最先进模型更好的选择。最后，通过将实时视频流连接到面部检测器以将图像提供给我们训练的模型来证明模型可以满足实时需求。该模型最终将面部表情分为七种情绪：愤怒、厌恶、恐惧、快乐、中立、悲伤和惊喜。
 
 \chinesekeyword{面部表情识别，深度可分卷积，深度学习，卷积神经网络，实时}
 \end{chineseabstract}
 
 \begin{englishabstract}
-Facial expression recognition has gained much attention in recent years in the field of artificial intelligence. Many research works achieved state-of-the-art results using large convolutional neural network with millions of trainable parameters requiring high computing power. These kinds of deep learning models are not feasible for real-time application, especially running on power constrained devices like mobile phones. In this thesis, we present a new and efficient `lightweight' Convolutional Neural Network for real-time emotion recognition. Our proposed model architecture is based on the implementation of depthwise separable 2D convolution which reduces the network parameters drastically thereby accelerating the overall performance speed making it suitable for real-time applications. The total number of parameters contained in our proposed depthwise separable convolutional model is about 474 thousand. The basic operations of the model include: depthwise separable convolution, batch normalization, max-pooing, global average pooling and softmax. These basic operations are carefully put together to create a twenty-one layer CNN architecture. We experiment our model on FER-2013 dataset provided on the Kaggle facial expression recognition competition, the Japanese Female Facial Expression (JAFFE) database and the Extended Cohn-Kanade Dataset (CK+). Our model obtained accuracy of 68\% and 69\% on FER-2013 private test and public test respectively. For JAFFE dataset, our model achieved 88\% accuracy on test data. The model achieved an outstanding accuracy of 99\% accuracy for the CK+ test dataset. It is evident that our model achieves very competitive results with few parameters and presents itself a better choice over state-of-the-art models for real-time applications. Finally, we demonstrate that our model can meet real-time needs by connecting a live video stream to a face detector to feed images to our trained model. The model classifies facial expressions into one of the seven emotions (Anger, Disgust, Fear, Happy, Neutral, Sad and Surprise).
+Facial expression recognition has gained much attention in recent years in the field of artificial intelligence. Many research works have achieved state-of-the-art results using large convolutional neural network with millions of trainable parameters requiring high computing power. Such deep learning models involve much computation, thus, making them not feasible for real-time application, especially running on power constrained devices like mobile phones. In this thesis, we present a new and efficient `lightweight' Convolutional Neural Network for real-time emotion recognition. Our proposed model architecture is based on the implementation of depthwise separable 2D convolution which reduces the network parameters drastically thereby accelerating the overall performance speed making it suitable for real-time applications. The total number of parameters contained in our proposed depthwise separable convolutional model is about only 474 thousand. The basic operations of the model include: depthwise separable convolution, batch normalization, max-pooing, global average pooling and softmax. These basic operations are carefully put together to create a twenty-one layer CNN architecture. We experiment our model on FERC-2013 dataset provided on the Kaggle facial expression recognition competition, the Japanese Female Facial Expression (JAFFE) database and the Extended Cohn-Kanade Dataset (CK+). Our model obtained accuracy of 68\% and 69\% on FERC-2013 private test and public test respectively. For JAFFE dataset, our model achieved 88\% accuracy on test data. The model achieved an outstanding accuracy of 99\% accuracy for the CK+ test dataset. It is evident that our model achieves very competitive results with few parameters and presents itself a better choice over state-of-the-art models for real-time applications. Finally, we demonstrate that our model can meet real-time needs by connecting a live video stream to a face detector to feed images to our trained model. The model classifies facial expressions into one of the seven emotions (Anger, Disgust, Fear, Happy, Neutral, Sad and Surprise).
 
 
 \englishkeyword{Facial Expression recognition, Depthwise Separable Convolution, Deep learning, Convolutional Neural network, Real-time}
@@ -84,31 +84,31 @@ Facial expression recognition has gained much attention in recent years in the f
 In this chapter, the thesis background and the thesis significance will be introduced. The state-of-the-art in this research area will be outlined to give grounds for the contribution and innovation of this thesis. 
 
 \section{Research Background and Significance}
-Facial Emotion Recognition (FER) is simply the process of identifying human emotions based on their facial expressions. The task of FER is obviously quite easy and natural for a person to solve without effort or delay, regardless of gender, age, race, and even in the presence or absence of eyeglasses, jewelry, mustache or beard \cite{Ivanovsky-2017}. Facial expressions are significant elements in human communication that enables us better comprehend each other’s intentions and feelings in communications. According to Mehrabian \cite{albert1968}, there are three basic elements in any face-to-face communication; namely: words, tone of voice, and nonverbal elements. A survey conducted by \cite{albert1968} shows that nonverbal elements conveys two-thirds of human communication whiles verbal (words and tone of voice) conveys one-third of human communication. Some examples of nonverbal communication elements include eye contact, shaking hands, patting the back, hugging, facial expressions, and many more. Mehrabian\cite{albert1968} further reports that among the several nonverbal communication forms, facial expression contains 55\% of messages pertaining to feelings and attitudes. Due to the rich informative clues in facial expressions, it becomes natural that over the most recent couple of decades, Facial Emotion Recognition has received much attention in research and its applications in cognitive science, affective computing and computer animations.
-
-FER can be used and applied in many areas including clinical psychology, medical diagnosis, human computer interaction (for example to analyze the impact of advertisements), forensics (lie detectors) and so on \cite{Ivanovsky-2017}\cite{sang-2017}. FER can also be beneficial in robotics; for example if robots are able to predict human emotions, they can be guided by the detected emotion and respond appropriately. In addition, FER in recent years has become popular in video analytics applications, such as evaluating front office staff performance, in security systems of terrorist identification and interrogation \cite{sang-2017}.
-
-In everyday life, the human face expresses a wide range of expressions. Building computer algorithms for FER compels us to identify certain classes of facial expressions. There are 7 basic emotions that most research works have focused on, which have become universally accepted across cultures and subgroups, namely: neutral, happy, surprise, fear, angry, sad, and disgust \cite{Yu:2013:LRF:2459511.2459661}. Examples of images for the 7 basic expression classes are shown in \ref{7_basic_emotions}. Humans sometimes express other forms of emotions such as compound emotions, i.e. a combination of two basic emotions, e.g. happily surprised, happily sad, sadly fearful, and sadly surprised. Another form of emotion is micro emotions, i.e. spontaneous and subtle facial movements that occur involuntarily. Micro emotions tend to reveal a person’s genuine and underlying emotions within a short period of time \cite{josh2018}. Examples of images for micro emotions are shown in \ref{micro_emotions}.
+Facial Emotion Recognition (FER) is simply the process of identifying human emotions based on their facial expressions. The task of FER is obviously quite easy and natural for a person to solve without effort or delay, regardless of gender, age, race, and even in the presence or absence of eyeglasses, jewelry, mustache or beard \citing{Ivanovsky-2017}. Facial expressions are significant elements in human communication that enables us better comprehend each other's intentions and feelings in communications. According to M. Albert\citing{albert1968}, there are three basic elements in any face-to-face communication; namely: words, tone of voice, and nonverbal elements. A survey conducted by M. Albert\citing{albert1968} shows that nonverbal elements conveys two-thirds of human communication whiles verbal (words and tone of voice) conveys one-third of human communication. Some examples of nonverbal communication elements include eye contact, shaking hands, patting the back, hugging, facial expressions, and many more. M. Albert\citing{albert1968} further reports that among the several nonverbal communication forms, facial expression contains 55\% of messages pertaining to feelings and attitudes. Due to the rich informative clues in facial expressions, it becomes natural that over the most recent couple of decades, facial emotion recognition has received much attention in research and its applications in cognitive science, affective computing and computer animations.
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/7_basic_emotions.png}
-\caption{Sample examples of the 7 classes of basic emotions expression (face images are taken from JAFFE database \cite{Michael-2017})}
+\caption{Sample examples of the seven classes of basic emotions expression. Source: M. Lyons et al.\citing{Michael-2017})}
 \label{7_basic_emotions}
 \end{figure}
 
+FER can be used and applied in many areas including clinical psychology, medical diagnosis, human computer interaction (for example to analyze the impact of advertisements), forensics (lie detectors) and so on \citing{Ivanovsky-2017, sang-2017}. FER can also be beneficial in robotics, for example if robots are able to predict human emotions, they can be guided by the detected emotion and respond appropriately. In addition, FER in recent years have become popular in video analytic applications, such as evaluating front office staff performance, in security systems of terrorist identification and interrogation \citing{sang-2017}.
+
+In everyday life, the human face expresses a wide range of expressions. Building computer algorithms for FER compels us to identify certain classes of facial expressions. There are seven basic emotions that most research works have focused on, which have become universally accepted across cultures and subgroups, namely: neutral, happy, surprise, fear, angry, sad, and disgust \citing{Yu:2013:LRF:2459511.2459661}. Examples of images for the seven basic expression classes are shown in Figure \ref{7_basic_emotions}. Humans sometimes express other forms of emotions such as compound emotions, i.e. a combination of two basic emotions, e.g. happily surprised, happily sad, sadly fearful, and sadly surprised. Another form of emotion is micro emotions, i.e. spontaneous and subtle facial movements that occur involuntarily. Micro emotions tend to reveal a person's genuine and underlying emotions within a short period of time \citing{josh2018}. Examples of images for micro emotions are shown in Figure \ref{micro_emotions}.
+
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/micro_expressions.png}
-\caption{Sample examples of spontaneous expressions (face images are taken from \cite{josh2018})}
+\caption{Sample examples of spontaneous expressions. Source: D. Joshi\citing{josh2018})}
 \label{micro_emotions}
 \end{figure}
 
-The task of facial emotion recognition has some challenges. Some of these challenges include: illumination, face pose (rotation), optical obstacles, face blur, noise in image, individual difference of subjects, spontaneous emotion, etc \cite{Ivanovsky-2017}\cite{josh2018}. Thus, the task of a FER algorithm must address all these challenges and output accurate recognition results in real-time. In this order, many types of approaches have been proposed and studied. These approaches can be grouped into two, namely: Conventional FER approach and Deep-Learning Based FER approach \cite{Ivanovsky-2017}.
+The task of facial emotion recognition has some challenges. Some of these challenges include: illumination, face pose (rotation), optical obstacles, face blur, noise in image, individual difference of subjects, spontaneous emotion, etc \citing{Ivanovsky-2017, josh2018}. Thus, the task of a FER algorithm must address all these challenges and output accurate recognition results in real-time. In this order, many types of approaches have been proposed and studied. These approaches can be grouped into two, namely: Conventional FER approach and Deep-Learning Based FER approach \citing{Ivanovsky-2017}.
 
-Conventional FER approach studies and detects the face region and extracts geometric features, appearance features, or a hybrid of geometric and appearance features from the input face. Most often, feature extraction in conventional approaches are handcrafted by experts. HoG, LBP, distance and angle relationship between landmarks are popular handcrafted features used to pre-train classifiers, like SVM, AdaBoost, and random forest \cite{Ivanovsky-2017}. Conventional approaches require relatively lower computing power than deep learning-based approaches but very difficult to optimize to achieve real-time performance. This is because feature extraction is done by an expert whiles classifiers are designed by the programmer; these two processes cannot be jointly optimized to improve performance \cite{Ivanovsky-2017}. Additionally, since features are handcrafted, there are overheads of finding the exact features suitable to build and pre-train robust classifiers for FER with environmental factors like illumination, occlusion, noise in image, individual difference of subjects, etc. in mind.
+Conventional FER approach studies and detects the face region and extracts geometric features, appearance features, or a hybrid of geometric and appearance features from the input face image. Most often, feature extraction in conventional approaches are handcrafted by experts. HoG, LBP, distance and angle relationship between landmarks are popular handcrafted features used to pre-train classifiers, like SVM, AdaBoost, and random forest \citing{Ivanovsky-2017}. Conventional approaches require relatively lower computing power than deep learning-based approaches but very difficult to optimize to achieve real-time performance. This is because feature extraction is done by an expert whiles classifiers are designed by the programmer; these two processes cannot be jointly optimized to improve performance \citing{Ivanovsky-2017}. Additionally, since features are handcrafted, there are overheads of finding the exact features suitable to build and pre-train robust classifiers for FER with environmental factors like illumination, occlusion, noise in image, individual difference of subjects, etc. in mind.
 
-Applying deep learning algorithms like convolutional neural network (CNN) and recurrent neural network (RNN) in the field of computer vision has gained a quantum leap in recent decades. With CNN, it has the ability of automatically learning at full-length the features that are optimal directly from the input image. Thus, the dependence on physics-based models and pre-processing technique (handcrafted features) are removed or highly reduced. This is a great advantage compared to conventional approach where the algorithm accuracy depends heavily on handcrafted features. However, deep learning algorithms come with their disadvantages as well. High computing power and memory is required for training models that have millions of parameters. This setback makes deep learning algorithms impractical for real-time performance.
+Applying deep learning algorithms like convolutional neural network (CNN) and recurrent neural network (RNN) in the field of computer vision have gained a quantum leap in recent decades. With CNN, it has the ability of automatically learning at full-length the features that are optimal directly from the input image. Thus, the dependence on physics-based models and pre-processing technique (handcrafted features) are removed or highly reduced. This is a great advantage compared to conventional approach where the algorithm accuracy depends heavily on handcrafted features. However, deep learning algorithms come with their disadvantages as well. High computing power and memory are required for training the models containing millions of parameters. This setback makes deep learning algorithms impractical for real-time performance.
 
-In the quest to solve this problem more efficiently and accurately, we propose and construct an efficient deep learning model based on depthwise separable convolution. The model is trained with augmented data very close to real world images. We test and deploy our model to recognize the 7 basic emotions in real-time.
+In the quest to solve this problem more efficiently and accurately, we propose and construct an efficient deep learning model based on depthwise separable convolution. The model is trained with augmented data very close to real world images. We test and deploy our model to recognize the seven basic emotions in real-time.
 
 \section{State of Arts}
 The methods proposed over the years for facial emotion recognition can be classified into two groups, namely: Conventional approach and Deep learning based approach.
@@ -116,44 +116,44 @@ The methods proposed over the years for facial emotion recognition can be classi
 \subsection{Conventional Approaches}
 Conventional approaches for facial emotion recognition perform recognition based on hand-engineered features; commonly by detecting the face region and extracting geometric features, appearance features, or a hybrid of geometric and appearance features.
 
-Ghimire and Lee\cite{ghimire2013} extracted geometric features from video sequences of facial expression images based on the position and angle of 52 facial landmark points. Further processing was done by calculating the Euclidean distance between landmark pairs within a frame; and subtracting the angle and distance from the corresponding distance and angles in the first frame of the video sequence. Two classifiers were presented, using a multi-class AdaBoost algorithm with dynamic time warping gained recognition accuracy of 95.17\%; using SVM on the boosted features gained recognition accuracy of 97.35\%.
+Ghimire and Lee\citing{ghimire2013} extracted geometric features from video sequences of facial expression images based on the position and angle of 52 facial landmark points. Further processing was done by calculating the Euclidean distance between landmark pairs within a frame; and subtracting the angle and distance from the corresponding distance and angles in the first frame of the video sequence. Two classifiers were presented, using a multi-class AdaBoost algorithm with dynamic time warping gained recognition accuracy of 95.17\%; and using SVM on the boosted features gained recognition accuracy of 97.35\%.
 
-Happy et al.\cite{Happy-2017} extracted appearance features by using local binary pattern (LBP) histogram of different block sizes of a global face region as the feature vectors; the algorithm classified facial expressions into 6 basic emotions, namely: happiness, sadness, disgust, fear, surprise and anger, using principal component analysis (PCA). The recognition accuracy of the algorithm diminished when implemented in real-time caused by inability to reflect local variations of the facial components to the feature vector. In contrast to global-feature-based approach, different regions of the face have different levels of importance for FER \cite{josh2018}.  Ghimire et al.\cite{ghimire2013} extracted region-specific appearance features by dividing the entire face into domain-specific local regions. Important local regions were determined by using incremental search approach which resulted in the reduction of feature dimension and improvement in recognition accuracy.
+Happy et al.\citing{Happy-2017} extracted appearance features by using local binary pattern (LBP) histogram of different block sizes of a global face region as the feature vectors; the algorithm classified facial expressions into six basic emotions, namely: happiness, sadness, disgust, fear, surprise and anger, using principal component analysis (PCA). The recognition accuracy of the algorithm diminished when implemented in real-time caused by inability to reflect local variations of the facial components to the feature vector. In contrast to global-feature-based approach, different regions of the face have different levels of importance for FER \citing{josh2018}. Ghimire et al.\citing{ghimire2013} extracted region-specific appearance features by dividing the entire face into domain-specific local regions. Important local regions were determined by using incremental search approach which resulted in the reduction of feature dimension and improvement in recognition accuracy.
 
-Some approaches have fused geometric and appearance features to balance the weaknesses of the two approaches and gained even better results in certain cases. Suk and Prabhakaran\cite{MSu14} extracts facial expression features by Active Shape Model(ASM) fitting landmarks on a face and then dynamic features were generated by the displacement between neutral and expression features. The algorithm gained 86\% accuracy in 309 video samples on the extended Cohn-Kanade (CK+) dataset\cite{5543262}. Although, the algorithm was implemented in real time mobile, the accuracy tends to degrade to about 72\% for 6 posed basic emotion recognition.
+Some approaches have fused geometric and appearance features to balance the weaknesses of the two approaches and gained even better results in certain cases. Suk and Prabhakaran\citing{MSu14} extracted facial expression features by Active Shape Model(ASM) fitting landmarks on a face and then dynamic features were generated by the displacement between neutral and expression features. The algorithm gained 86\% accuracy in 309 video samples on the extended Cohn-Kanade (CK+) dataset\citing{5543262}. Although, the algorithm was implemented in real-time mobile, the accuracy tends to degrade to about 72\% for six posed basic emotion recognition.
 
 \subsection{Deep Learning based Approaches}
-For deep learning methods, especially CNNs, they have gained a breakthrough in image-related problems in recent decades due to the ability to automatically learn and extract good optimal representations directly from the images. Previous works like LeNet-5\cite{YLe98}, AlexNet\cite{Kri12}, VGG-16\cite{Kar14}, GoogleNet\cite{Chr14}, and ResNet\cite{Kai15} have demonstrated the significance and power of CNNs in the field of computer vision.
+For deep learning methods, especially CNNs, they have gained a breakthrough in image-related problems in recent decades due to the ability to automatically learn and extract good optimal representations directly from the images. Previous works like LeNet-5\citing{YLe98}, AlexNet\citing{Kri12}, VGG-16\citing{Kar14}, GoogleNet\citing{Chr14}, and ResNet\citing{Kai15} have demonstrated the significance and power of CNNs in the field of computer vision.
 
-Rassadin et al.\cite{DBLP:journals/corr/abs-1709-01688} described an algorithm which was used for submissions in the fifth Emotion Recognition in the Wild (EmotiW 2017) group-level emotion recognition sub-challenge. They trained a CNN model for face identification task to extract feature vectors of detected faces rather than pre-training on emotion recognition problems. Then an ensemble of Random Forest classifiers was learned to predict emotion score using available set. If no faces were detected, one member of the ensemble extracts features from the whole image. The method achieved 75.4\% accuracy on the validation data, which is 20\% higher than the handcrafted feature-based baseline.
+Rassadin et al.\citing{DBLP:journals/corr/abs-1709-01688} described an algorithm which was used for submissions in the fifth Emotion Recognition in the Wild (EmotiW 2017) group-level emotion recognition sub-challenge. They trained a CNN model for face identification task to extract feature vectors of detected faces rather than pre-training on emotion recognition problems. Then an ensemble of Random Forest classifiers were learned to predict emotion score using available set. If no faces were detected, one member of the ensemble extracts features from the whole image. The method achieved 75.4\% accuracy on the validation data, which is 20\% higher than the handcrafted feature-based baseline.
 
-Ivanovsky et al.\cite{Ivanovsky-2017} presented an algorithm for smile detection and facial expression recognition based on CNN. The model was trained using face images from the CMU MultiPie database [18] and achieved test accuracy of 84.98\% and 94.73\% for smile detection and facial expression recognition respectively. Even though the algorithm is quite simple for its implementation and has good test results, from the architecture of the network, it is evident that the model has large parameters and it requires great computational power; thus, making it impractical for real-time usage. Furthermore, the algorithm often confused facial expression `squint' for `disgust'.
+Ivanovsky et al.\citing{Ivanovsky-2017} presented an algorithm for smile detection and facial expression recognition based on CNN. The model was trained using face images from the CMU Pose, Illumination, and Expression (PIE) database\citing{Sim-2003-8822} and achieved test accuracy of 84.98\% and 94.73\% for smile detection and facial expression recognition respectively. Even though the algorithm is quite simple for its implementation and has good test results, from the architecture of the network, it is evident that the model has large parameters and it requires great computational power; thus, making it impractical for real-time usage. Furthermore, the algorithm often confused facial expression \textit{squint} for \textit{disgust}.
 
-Dinh et al.\cite{sang-2017} proposed a so called effective architecture of CNN for FER by applying multiclass SVM loss function. They applied data augmentation techniques to increase the amount of training samples in FERC-2013 dataset [19] in order to avoid overfitting. The model gained accuracy up to 71.0\% for public test and 71.9\% for private test for 7 classes (Angry, Disgust, Fear, Happy, Sad, Surprise, and Neutral). Consequently, the model exhibits similar drawbacks as \cite{Ivanovsky-2017} with about 29\% wrongly classified images.
+Dinh et al.\citing{sang-2017} proposed a so called effective architecture of CNN for FER by applying multi-class SVM loss function. They applied data augmentation techniques to increase the amount of training samples in FERC-2013 dataset\citing{kaggle_ferc} in order to avoid overfitting. The model gained accuracy up to 71.0\% for public test and 71.9\% for private test for seven emotion classes. Consequently, the model exhibits similar drawbacks as observed in the work of Ivanovsky et al.\citing{Ivanovsky-2017} with about 29\% wrongly classified images.
 
-Xiao et al.\cite{8273609} proposed an improved FER method based on region of interest (ROI) to guide the CNN focus on the areas associated with facial expression. In the test stage, two recognition methods were investigated: (1) recognising the target image directly; and (2) recognising target image by implementing decision fusion strategy on ROI areas.  The performance of the algorithm was validated on augmented CK+ dataset \cite{5543262} gaining an average test accuracy of 94.53\%. This method outperformed the work done by [3] but suffers (1) higher computational cost to further perform decision fusion on ROI areas (2) high requirement for the distributed representations of the trained model; herein, making it impractical for real time applications. Also, amplifying ROI images to gain details compared with the original image may cause discrimination of the local representation to some extent.
+Xiao et al.\citing{8273609} proposed an improved FER method based on region of interest (ROI) to guide the CNN focus on the areas associated with facial expression. In the test stage, two recognition methods were investigated: (1) recognising the target image directly; and (2) recognising target image by implementing decision fusion strategy on ROI areas.  The performance of the algorithm was validated on augmented CK+ dataset \citing{5543262} gaining an average test accuracy of 94.53\%. This method outperformed the work done by D. Sang et al.\citing{sang-2017} but suffers (1) higher computational cost to further perform decision fusion on ROI areas (2) high requirement for the distributed representations of the trained model; herein, making it impractical for real time applications. Also, amplifying ROI images to gain details compared with the original image may cause discrimination of the local representation to some extent.
 
-Song et al.\cite{6776135} proposed and trained a model based on CNN that achieved FER in real-time on a smart phone using client-server architecture. A smart phone captures the user’s face, sends request to facial expression recognition server, server takes as input the face image and predicts facial expression (anger, happiness, sadness, surprise or neutral) by the trained model and reports back to the smart phone. Despite high training accuracy of 99.2\%, 97.1\%, 95.5\%, and 84.5\% on CK+ [11], SAIT , SAIT2  and Internet  datasets respectively; and its real-time achievement of about 100ms of round-trip time per image, the model is  not generalized and robust; i.e. no evaluation metrics were provided to assess the model performance and accuracy in real-time.
+Song et al.\citing{6776135} proposed and trained a model based on CNN that achieved FER in real-time on a smart phone using a client-server architecture. A smart phone captures the user's face, sends request to facial expression recognition server, server takes as input the face image and predicts facial a expression (anger, happiness, sadness, surprise or neutral) by the trained model and reports back to the smart phone. Despite high training accuracy of 99.2\%, 97.1\%, 95.5\%, and 84.5\% on CK+ dataset, SAIT , SAIT2  and Internet  datasets respectively; and its real-time achievement of about 100ms of round-trip time per image, the model is  not generalized and robust; i.e. no evaluation metrics were provided to assess the model performance and accuracy in real-time.
 
-Chen et al.\cite{7988558} proposed a CNN model for the task of FER that improved the recognition accuracy up to 98.15\%, about 4\% higher compared to AlexNet network\cite{Kri12} on the CK+ dataset\cite{5543262} with the help of adding Batch Normalization (BN) layers to the network. They went further to implement the model in real-time to recognize facial expressions. This method gained higher training accuracy compared to the average training accuracy of \citing{6776135}, however, both methods share same drawbacks (generalizing and robustness) with high computational cost.
+Chen et al.\citing{7988558} proposed a CNN model for the task of FER that improved the recognition accuracy up to 98.15\%, which is about 4\% higher compared to AlexNet network\citing{Kri12} on the CK+ dataset\citing{5543262} with the help of adding Batch Normalization (BN) layers to the network. They went further to implement the model in real-time to recognize facial expressions. This method gained higher training accuracy compared to the average training accuracy of Song et al.\citing{6776135}, however, both methods share same drawbacks (generalizing and robustness) with high computational cost.
 
-Duncan et al.\cite{duncan2016} developed a convolutional neural network for classifying human emotions from dynamic facial expressions in real time. They used transfer learning on the fully-connected layers of VGG's network which was pre-trained for the task of human emotion classification. To improve the model accuracy, they applied transfer learning on the JAFFE and CK+ datasets. Their model achieved an overall training accuracy of 90.7\% and test accuracy of 57.1\%. Finally, a live video stream connected to a face detector feeds images to the neural network for real-time facial emotion classification. During training, they applied randomized jitter by randomly changing both cropping (10\% variation) and brightness (20\% variation) in the input images; in order to account for real environment factors (lighting, distance from the camera, incorrect face cropping, and variations in orientation of the subject face) which are mostly omitted in a laboratory. It can be observed that higher accuracy was achieved (> 90\%) under the laboratory environment with perfect lighting, camera at eye level, subject facing camera with an exaggerated expression but there was significant fall in accuracy (57.1\%) when tested under real environmental conditions.
+Duncan et al.\citing{duncan2016} developed a convolutional neural network for classifying human emotions from dynamic facial expressions in real time. They used transfer learning on the fully-connected layers of VGG's network which was pre-trained for the task of human emotion classification. To improve the model accuracy, they applied transfer learning on the JAFFE and CK+ datasets. Their model achieved an overall training accuracy of 90.7\% and test accuracy of 57.1\%. Finally, a live video stream connected to a face detector feeds images to the neural network for real-time facial emotion classification. During training, they applied randomized jitter by randomly changing both cropping (10\% variation) and brightness (20\% variation) in the input images; in order to account for real environment factors (lighting, distance from the camera, incorrect face cropping, and variations in orientation of the subject face) which are mostly omitted in a laboratory. It can be observed that higher accuracy was achieved (> 90\%) under the laboratory environment with perfect lighting, camera at eye level, subject facing camera with an exaggerated expression but there was significant fall in accuracy (57.1\%) when tested under real environmental conditions.
 
-Jung et al.\cite{7410698} proposed a deep learning network based on two different models of CNN. The first model extracts temporal appearance features from image sequences, whereas the second deep learning network extracts temporal geometry features from temporal facial landmark points. Unlike traditional integration methods like weighted summation and feature concatenation, these two models were combined to cooperate with each other using a new integration method called joint fine-tuning in order to boost the performance of the facial expression recognition. This method achieved accuracy up 97.25\% for CK+ dataset, 81.46\% for Oulu-CASIA dataset\cite{ZHAO2011607}, and 70.24 for MMI dataset\cite{1521424}\cite{Valstar10induceddisgust}. Despite the good performance of the proposed deep network on various datasets, running two separate deep convolutional neural network in parallel requires great computational power; thus, making this method not feasible for real-time application.
+Jung et al.\citing{7410698} proposed a deep learning network based on two different models of CNN. The first model extracts temporal appearance features from image sequences, whereas the second deep learning network extracts temporal geometry features from temporal facial landmark points. Unlike traditional integration methods like weighted summation and feature concatenation, these two models were combined to cooperate with each other using a new integration method called joint fine-tuning in order to boost the performance of the facial expression recognition. This method achieved accuracy up 97.25\% for CK+ dataset, 81.46\% for Oulu-CASIA dataset\citing{ZHAO2011607}, and 70.24\% for MMI dataset\citing{1521424, Valstar10induceddisgust}. Despite the good performance of the proposed deep network on various datasets, running two separate deep convolutional neural network in parallel requires great computational power; thus, making this method not feasible for real-time application.
 
-Yu and Zhang\cite{Yu:2015:IBS:2818346.2830595} proposed a method similar in fashion to \cite{7410698}. The proposed method was made up of a face detection module based on the ensemble of three state-of-the-art face detectors, followed by a classification module with the ensemble of multiple deep convolutional neural networks. Each CNN is initialized randomly and pre-trained on a larger dataset provided by the Facial Expression Recognition Challenge 2013\footnote{The Third Emotion Recognition in The Wild (EmotiW) 2015 Grand Challenge, http://cs.anu.edu.au/few/emotiw2015.html}. The pre-trained CNN models are fine-tuned on the training set of SFEW 2.0. Two strategies were presented to combine the multiple CNN models: minimizing the log likelihood loss, and minimizing the hinge loss. The proposed method achieves 55.96\% and 61.29\% respectively on the validation and test set of SFEW 2.0; and outperformed the challenge baseline of 35.96\% and 39.13\%. Similar to \cite{7410698}, this method will not be feasible for real-time application because of the great computing power required to run the multiple deep CNN models.
+Yu and Zhang\citing{Yu:2015:IBS:2818346.2830595} proposed a method similar in fashion to the proposed model of Jung et al.\citing{7410698}. The proposed method was made up of a face detection module based on the ensemble of three state-of-the-art face detectors, followed by a classification module with the ensemble of multiple deep convolutional neural networks. Each CNN is initialized randomly and pre-trained on a larger dataset provided by the Facial Expression Recognition Challenge 2013\footnote{The Third Emotion Recognition in The Wild (EmotiW) 2015 Grand Challenge, http://cs.anu.edu.au/few/emotiw2015.html}. The pre-trained CNN models are fine-tuned on the training set of SFEW 2.0\citing{dhall2012collecting}. Two strategies were presented to combine the multiple CNN models: minimizing the log likelihood loss, and minimizing the hinge loss. The proposed method achieves 55.96\% and 61.29\% respectively on the validation and test set of SFEW 2.0; and outperformed the challenge baseline of 35.96\% and 39.13\%. Similar to the work done by Jung et al.\citing{7410698}, this method will not be feasible for real-time application because of the great computing power required to run the multiple deep CNN models.
 
-Due to small datasets available for training deep learning networks, Hong-Wei et al\cite{Ng:2015:DLE:2818346.2830593} employed a transfer learning approach for deep convolution neural network architecture for the 2015 Emotion Recognition in the Wild contest, in the sub-challenge of Static Facial Expression Recognition in the Wild. Beginning from a network pre-trained on the generic ImageNet dataset, they conducted supervised fine-tuning on the network in a two-stage process. The first fine-tune was on datasets relevant to facial expressions, the second fine-tuned by dataset provided by the contest. This cascading fine-tuning method achieves better results with overall accuracy of 48.5\% in validation set and 55.6\% in the test set compared to a single stage fine tuning with the combined datasets.
+Due to small datasets available for training deep learning networks, Hong-Wei et al.\citing{Ng:2015:DLE:2818346.2830593} employed a transfer learning approach for deep convolution neural network architecture for the 2015 Emotion Recognition in the Wild contest, in the sub-challenge of Static Facial Expression Recognition in the Wild. Beginning from a network pre-trained on the generic ImageNet dataset, they conducted supervised fine-tuning on the network in a two-stage process. The first fine-tune was on datasets relevant to facial expressions, the second fine-tuned by dataset provided by the contest. This cascading fine-tuning method achieves better results with overall accuracy of 48.5\% in validation set and 55.6\% in the test set compared to a single stage fine tuning with the combined datasets.
 
-Ding et al\cite{7961731} proposed a distribution function to model the high-level neurons of the deep learning network. They performed two-stage training; the first is the pre-training stage where they trained convolutional layers of the deep learning network, regularized by the face net. The second stage is refining stage; they appended fully-connected layers to the pre-trained convolutional layers and trained the whole network jointly. This method was experimented on four public datasets, CK+, Oulu-CASIA, TFD, and SFEW with accuracy up to 96.8\%, 87.71\%, 88.9\% and 55.15\% respectively.
+Ding et al.\citing{7961731} proposed a distribution function to model the high-level neurons of the deep learning network. They performed two-stage training; the first is the pre-training stage where they trained convolutional layers of the deep learning network, regularized by the face net. The second stage is refining stage; they appended fully-connected layers to the pre-trained convolutional layers and trained the whole network jointly. This method was experimented on four public datasets, CK+, Oulu-CASIA\citing{Zhao_Oulu-CASIA}, TFD, and SFEW with accuracy up to 96.8\%, 87.71\%, 88.9\% and 55.15\% respectively.
 
-Jie et al\cite{8373844} proposed an island loss to enhance the discriminating power of the deeply learned features by convolutional neural networks. The island loss was designed to reduce the intra-class variations while enlarging the inter-class differences simultaneously. The proposed method was evaluated on three popular facial expression datasets; CK+\cite{5543262}, Oulu-CASIA, and MMI dataset with accuracy up to 94.35\%, 77.29\% and 70.67\% respectively.
+Jie et al\citing{8373844} proposed an island loss to enhance the discriminating power of the deeply learned features by convolutional neural networks. The island loss was designed to reduce the intra-class variations while enlarging the inter-class differences simultaneously. The proposed method was evaluated on three popular facial expression datasets; CK+\citing{5543262}, Oulu-CASIA, and MMI dataset with accuracy up to 94.35\%, 77.29\% and 70.67\% respectively.
 
-Facial expressions can be broken down into action units (AUs) as suggested by the Facial Action Coding System (FACS). Motivated by the work of Ekman and Friesen\cite{ekman}, there have been several attempts that recognize expression using AUs and their composition rules.
+Facial expressions can be broken down into action units (AUs) as suggested by the Facial Action Coding System (FACS). Motivated by the work of Ekman and Friesen\citing{ekman}, there have been several attempts that recognize expression using AUs and their composition rules.
 
-Taheri et al\cite{6837526} proposed a dictionary-based approach for facial expression analysis by decomposing expressions in terms of AUs by using domain experts’ knowledge of AUs. They encoded this knowledge as sparse codes using a two-layer approach. The lower layer is the AU-layer grouped dictionary atoms corresponding to each AU. The top layer was called the expression-layer which used the high-level knowledge to group different AUs that are composed to form a particular expression. This method achieved average recognition rate of 88.52\% for CK+ dataset and 69.78\% for Bosphorus dataset\cite{10.1007/978-3-540-89991-4_6}.
+Taheri et al\citing{6837526} proposed a dictionary-based approach for facial expression analysis by decomposing expressions in terms of AUs by using domain experts’ knowledge of AUs. They encoded this knowledge as sparse codes using a two-layer approach. The lower layer is the AU-layer grouped dictionary atoms corresponding to each AU. The top layer was called the expression-layer which used the high-level knowledge to group different AUs that are composed to form a particular expression. This method achieved average recognition rate of 88.52\% for CK+ dataset and 69.78\% for Bosphorus dataset\citing{10.1007/978-3-540-89991-4_6}.
 
-Zhao et al\cite{7780738} proposed a Deep Region and Multi-label Learning (DRML), a unified deep network that simultaneously identified Action Unit (AU) and multi-label learning (ML). This method was a complete end-to-end network that identified more specific regions for different AUs than conventional convolutional patch-based methods. The proposed region layer was experimented BP4D \cite{6553788} and DISFA\cite{10.1007/978-3-642-33783-3_58} benchmarks.
+Zhao et al\citing{7780738} proposed a Deep Region and Multi-label Learning (DRML), a unified deep network that simultaneously identified Action Unit (AU) and multi-label learning (ML). This method was a complete end-to-end network that identified more specific regions for different AUs than conventional convolutional patch-based methods. The proposed region layer was experimented BP4D \citing{6553788} and DISFA\citing{10.1007/978-3-642-33783-3_58} benchmarks.
 
 \section{Contents and Innovation of Thesis}
 The purpose of the thesis is about finding efficient convolutional neural network architecture for facial emotion recognition task. The convolutional neural network will be constructed with real-time application in mind. The complete network will be end-to-end trainable and automatically learns representations robust to variations embedded with facial expressions. The thesis shall be implemented in real-time to solve real world problems to demonstrate its real-time ability. In an innovative way, this thesis seeks to bridge the gap between laboratory-constructed deep learning models and implementation for higher accuracy and performance in real-time for the task of recognizing facial emotion expressions.
@@ -162,10 +162,10 @@ The purpose of the thesis is about finding efficient convolutional neural networ
 The thesis is organized as follows:
 \begin{itemize}
     \item Chapter 1 gives the background and significance of the thesis. This chapter also provides the state of the art in the area of research for this thesis. Finally, this chapter outlines the innovative idea of the thesis.
-    \item Chapter 2 explains all theoretical bases for the proposed idea in the thesis.
-    \item Chapter 3 discusses the proposed method.
-    \item Chapter 4 discusses the experiments and results
-    \item Chapter 5 provides the concluding remarks and future work
+    \item Chapter 2 explains all theoretical basics underlining the proposed idea in the thesis.
+    \item Chapter 3 discusses the proposed method and the various experiments carried out in the laboratory.
+    \item Chapter 4 discusses the results of the experiments carried out. Also, the chapter presents the results metrics used to evaluate the experiments. Finally, this chapter analyses in details the results obtained on experiments and real-time testing.
+    \item Chapter 5 provides the concluding remarks and some future works.
 \end{itemize}
 
 
@@ -173,7 +173,7 @@ The thesis is organized as follows:
 In this chapter, we introduce the underlying theories for the proposed method. We will introduce machine learning, deep learning and artificial neural networks, convolutional neural network and separable convolutions.
 
 \section{Machine Learning}
-Machine learning uses statistical methods to learn patterns from data without programming the patterns explicitly. Here, \cite{mitchell1997} defines learning as ``A computer program is said to learn from experience $E$ with respect to some class of tasks $T$ and performance measure $P$, if it performs the tasks at $T$, as measured by $P$, improves the experience $E$''. Thus, programs perform tasks with some sort of their own intelligence (artificial intelligence). There are many kinds of tasks that can be solved with machine learning. Some popular machine learning tasks include classification\cite{Goodfellow-et-al-2016}, regression, transcription\cite{Goodfellow-et-al-2016}, machine translation\cite{DBLP:journals/corr/AbadiABBCCCDDDG16}\cite{DBLP:journals/corr/BahdanauCB14}, anomaly detection\cite{Chandola:2009:ADS:1541880.1541882}, synthesis and sampling \cite{pmlr-v31-luo13a}, inputting of missing values, density estimation or probability mass function estimation, denoising, and many more. In order to assess the capabilities of a machine learning algorithm, we must construct a quantitative measure of it's performance. Most often, the performance measure $P$ is determined by the task $T$ that is been executed by the program. We usually measure \textbf{accuracy} of the algorithm for tasks such as classification, transcription and classification with missing inputs. To measure the \textbf{accuracy}, we compute the proportion of dataset samples for which the algorithm produces the correct output. Alternatively, we can achieve this by computing the \textbf{error rate}, i.e. the proportion of dataset samples for which the algorithm produces incorrect output. The evaluation of the algorithm is carried out on dataset samples not seen before by the algorithm, termed \textbf{test set}.
+Machine learning uses statistical methods to learn patterns from data without programming the patterns explicitly. Here, \citing{mitchell1997} defines learning as ``A computer program is said to learn from experience $E$ with respect to some class of tasks $T$ and performance measure $P$, if it performs the tasks at $T$, as measured by $P$, improves the experience $E$''. Thus, programs perform tasks with some sort of their own intelligence (artificial intelligence). There are many kinds of tasks that can be solved with machine learning. Some popular machine learning tasks include classification\citing{Goodfellow-et-al-2016}, regression, transcription\citing{Goodfellow-et-al-2016}, machine translation\citing{DBLP:journals/corr/AbadiABBCCCDDDG16}\citing{DBLP:journals/corr/BahdanauCB14}, anomaly detection\citing{Chandola:2009:ADS:1541880.1541882}, synthesis and sampling \citing{pmlr-v31-luo13a}, inputting of missing values, density estimation or probability mass function estimation, denoising, and many more. In order to assess the capabilities of a machine learning algorithm, we must construct a quantitative measure of it's performance. Most often, the performance measure $P$ is determined by the task $T$ that is been executed by the program. We usually measure \textbf{accuracy} of the algorithm for tasks such as classification, transcription and classification with missing inputs. To measure the \textbf{accuracy}, we compute the proportion of dataset samples for which the algorithm produces the correct output. Alternatively, we can achieve this by computing the \textbf{error rate}, i.e. the proportion of dataset samples for which the algorithm produces incorrect output. The evaluation of the algorithm is carried out on dataset samples not seen before by the algorithm, termed \textbf{test set}.
 
 Machine learning is different from traditional computer software. Let us take a classic example of how to classify handwritten digits. In a traditional computer software, a human developer will have to write code to instruct the system on how to tell the difference between all the digits from zero to nine. However, a machine learning model will have to learn how to solidly differentiate between all ten digits through training on a large number of data, in this case obviously a large number of labelled handwritten images containing numbers from zero to nine. Machine learning has achieved huge success in recent years, however it is only one way for accomplishing artificial intelligence in systems. Apart from machine learning, there exist many different approaches to construct artificial intelligence (AI) systems. An example of an AI approach is evolutionary computation; this is where algorithms go through random mutations and combinations of generations in effort to produce highly optimal solutions. Another example of an AI approach is expert systems; this is an approach in AI that seeks to program computers with rules in order to mimic a human expert in decision making in a specific domain, for example an auto mechanic diagnosing automobile expert system. The main goal of machine learning is to allow computers to learn automatically without the human moderation or assistance and adapt to perform actions accordingly. There are typically two types of machine learning experience $E$; namely: supervised learning and non-supervised learning.
 
@@ -245,10 +245,10 @@ The biggest difference between supervised and unsupervised learning is that supe
 \subsection{Semi-supervised Learning}
 Semi-supervised learning uses both labelled and unlabelled data. We can say semi-supervised learning lies between supervised and unsupervised learning. In semi-supervised learning, we use some small amount of labelled data to help discover hidden patterns in the rest of the data and improves accuracy. Semi-supervised learning seeks to solve the high cost problem involved in supervised learning. Thus, the cost involved in the process of labelling very large dataset for training is highly reduced in semi-supervised learning. Only few data needs to be labelled to guide a semi-supervised learning model to learn from the rest of the unlabelled data. Semi-supervised approach is very useful in practice as fully labelled data is very difficult and costly to produce compared to unlabelled data. Usually, we use semi-supervised learning when the data acquired needs some special and relevant information or resources in order to be able to achieve training or learning from the data. Some of the methods used in semi-supervised learning include: Generative models, Co-training and multiview models, semi-supervised support vector machines and Graph-based models.
 
-Since semi-supervised learning has the same aim of achieving prediction as supervised learning, it can be applied to any problem applicable to supervised learning. For example, semi-supervised learning has been applied in natural language processing (tasks like word sense disambiguation\cite{yarowsky13}, machine translation, sentiment analysis), computer vision, bioinformatics and cognitive psychology.
+Since semi-supervised learning has the same aim of achieving prediction as supervised learning, it can be applied to any problem applicable to supervised learning. For example, semi-supervised learning has been applied in natural language processing (tasks like word sense disambiguation\citing{yarowsky13}, machine translation, sentiment analysis), computer vision, bioinformatics and cognitive psychology.
 
 \section{Deep Learning}
-Deep learning is one of the approaches in machine learning that is based on learning the representations in data as compared to other task-specific algorithms. The term deep learning simply means training neural networks or sometimes deep neural networks to learn a general representation of data. The aim of a deep learning network is to estimate some function $f^*$. For instance, for a deep learning classifier, $y = f^*(x)$ tries to map an input $x$ to its corresponding category $y$. A deep learning network defines a mapping $y = f\,(x;\theta)$ and learns the appropriate value of the parameters $\theta$ in order to get the best estimation function. Many deep learning architectures such as \cite{Ivanovsky-2017}\cite{Kri12}\cite{Chr14}, recurrent neural networks\cite{7914752}\cite{7801769}, and deep belief networks\cite{7111524}\cite{7539822} have been used to solve problems in diverse fields including speech recognition, computer vision, natural language processing, machine translation, etc. However, deep learning can be supervised or unsupervised.
+Deep learning is one of the approaches in machine learning that is based on learning the representations in data as compared to other task-specific algorithms. The term deep learning simply means training neural networks or sometimes deep neural networks to learn a general representation of data. The aim of a deep learning network is to estimate some function $f^*$. For instance, for a deep learning classifier, $y = f^*(x)$ tries to map an input $x$ to its corresponding category $y$. A deep learning network defines a mapping $y = f\,(x;\theta)$ and learns the appropriate value of the parameters $\theta$ in order to get the best estimation function. Many deep learning architectures such as \citing{Ivanovsky-2017}\citing{Kri12}\citing{Chr14}, recurrent neural networks\citing{7914752}\citing{7801769}, and deep belief networks\citing{7111524}\citing{7539822} have been used to solve problems in diverse fields including speech recognition, computer vision, natural language processing, machine translation, etc. However, deep learning can be supervised or unsupervised.
 
 \subsection{Artificial Neural Network}
 Artificial Neural networks (ANN) are inspired by the biological neural networks of the animal brain that simply connects many neurons together to form a network. However, in ANN a neuron is simply a function that takes in input and spits out an output. More formally,
@@ -259,7 +259,7 @@ where $\vec{w} = (w_1, w_2, \dots, w_n)$ are the weight vectors from previous ne
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/neuron.png}
-\caption{Directed graph showing ANN with input units \textbf{A, B,} and \textbf{C} into the neuron \textbf{S} to perform computation on weights \textbf{W ($w_1, w_2, w_3$)} with output \textbf{$Y$}: Source:\cite{McGonagle}}
+\caption{Directed graph showing ANN with input units \textbf{A, B,} and \textbf{C} into the neuron \textbf{S} to perform computation on weights \textbf{W ($w_1, w_2, w_3$)} with output \textbf{$Y$}: Source:\citing{McGonagle}}
 \label{fig_neuron}
 \end{figure}
 
@@ -267,7 +267,7 @@ Let's go back to our example of recognizing handwritten digits; say our dataset 
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/ANN.png}
-\caption{A simple ANN consisting of an input layer (Layer 0) with inputs $x_1, x_2, x_3$ and weights $w_{x_1s_1}, w_{x_2s_1}, w_{x_2s_2}, w_{x_3s_2}$; and an output layer (Layer 3) with inputs $s_3, s_4, s_5$ and weights $w_{s_3y_1}, w_{s_4y_1}, w_{s_5y_2}$ and two hidden layers (Layer 1 and Layer 2) in between. Source:\cite{McGonagle}}
+\caption{A simple ANN consisting of an input layer (Layer 0) with inputs $x_1, x_2, x_3$ and weights $w_{x_1s_1}, w_{x_2s_1}, w_{x_2s_2}, w_{x_3s_2}$; and an output layer (Layer 3) with inputs $s_3, s_4, s_5$ and weights $w_{s_3y_1}, w_{s_4y_1}, w_{s_5y_2}$ and two hidden layers (Layer 1 and Layer 2) in between. Source:\citing{McGonagle}}
 \label{fig_ANN}
 \end{figure}
 
@@ -320,7 +320,7 @@ Conceptually, we think of each neuron as been connected to all of the neurons in
     E_{total} = \frac{1}{n}\sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2
     \label{cost_function}
 \end{equation}
-In this sense, the sum is small when the network confidently classifies the image correctly but it is large when the network seems like it does not really know what it is doing. Furthermore, we consider the average cost over all the dataset samples at our disposal. This average cost is our measure of how good or bad the network is performing. The ANN itself is basically a function; taking in 748 pixels as input and outputs 10 numbers and parameterized by so many weights and biases. Here, the cost function is a layer of complexity on top of that. It takes as input those many weights and biases and outputs a single number describing how bad or good those weights and biases are; and its defined based on the network's behaviour over all the tens of thousands of pieces of training data. There are many forms of cost functions such as Cross-entropy cost\cite{deBoer2005} for multi-class classification, Hellinger distance\cite{Nikulin2018}, Kullback–Leibler divergence\cite{kullback1951}, Generalized Kullback–Leibler divergence\cite{4655451}, Itakura–Saito distance\cite{NOZAKI201763}, etc.
+In this sense, the sum is small when the network confidently classifies the image correctly but it is large when the network seems like it does not really know what it is doing. Furthermore, we consider the average cost over all the dataset samples at our disposal. This average cost is our measure of how good or bad the network is performing. The ANN itself is basically a function; taking in 748 pixels as input and outputs 10 numbers and parameterized by so many weights and biases. Here, the cost function is a layer of complexity on top of that. It takes as input those many weights and biases and outputs a single number describing how bad or good those weights and biases are; and its defined based on the network's behaviour over all the tens of thousands of pieces of training data. There are many forms of cost functions such as Cross-entropy cost\citing{deBoer2005} for multi-class classification, Hellinger distance\citing{Nikulin2018}, Kullback–Leibler divergence\citing{kullback1951}, Generalized Kullback–Leibler divergence\citing{4655451}, Itakura–Saito distance\citing{NOZAKI201763}, etc.
 
 \subsection{Gradient Descent - how neural networks are corrected}
 Telling the computer what kind of a bad job it is doing is not really helpful. We want to tell it how to change those weights and biases so that it gets better. At this point let us imagine we have a simple function, which has one number as an input and one number as an output. Our job is to find an input that minimizes the value of this function. In calculus, you can sometimes figure out this minimum number explicitly; but not always feasible for a very complicated function. Certainly not feasible in our very complicated neural network cost function. 
@@ -330,7 +330,7 @@ Imaging a function instead of two inputs and one output; we might think of the i
 Figure \ref{fig_gradient_descent} shows a demonstration of the gradient descent.
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/gradient_descent.PNG}
-\caption{An illustration of how gradient descent algorithm minimizes the function to the downhill. Source: \cite{Goodfellow-et-al-2016}}
+\caption{An illustration of how gradient descent algorithm minimizes the function to the downhill. Source: \citing{Goodfellow-et-al-2016}}
 \label{fig_gradient_descent}
 \end{figure}
 
@@ -394,7 +394,7 @@ For mini-batch gradient descent, the cost function is calculated over some small
 \subsection{Back propagation - how neural networks learn}
 Back propagation is the core algorithm behind how neural networks learn. Back propagation is an algorithm for minimizing the cost function. Because the cost function involves averaging a certain cost per example over all the tens of thousands of training examples, the way that we adjust the weights and biases for a single gradient descent step also depends on every single example. Let's take for example feeding an image of digit $2$ into an ANN that is not trained yet. Since the network is not trained yet, the activations in the output layer are going to be pretty random. Here, we cannot directly change the activations in the output layer; instead we can only change the weights and biases of the network. But it is helpful to keep track of which adjustments we wish to take place to that output layer. And since we want it to classify the image as a digit $2$, we will want say the value in the third output layer neuron be nudged up whiles all of the others get nudged down. Moreover, the sizes of these nudges should be proportional to how far away each current value is from its target value. For example, the increase to the number two's neuron activation is in essence more important than the decrease in the number eight's neuron; which is already pretty close to where it should be. Let's zoom in further and focus on just the digit $2$ neuron. We already know that activations are made up of the weighted sum of all the activations in the previous layer plus a bias which is all then plugged into some squash function as stated in equation \ref{ANN_equation}. Hence, there are three different avenues that team up together to help increase that activation; we can increase the bias, we can increase the weight, and we can change the activations of the previous layers.
 
-Focusing on how the weights should be adjusted, the weights actually have different levels of influence. The connection with the brightest neurons from the preceding layer, have the biggest effect since those weights are multiplied by larger activation values. So if we increase those weights, it actually has a strong influence on the ultimate cost function than increasing the weights of connections with dimmer neurons as far as this training example is concern. Remember, when we talked about gradient descent, we don't just care about whether each component should get nudged up or down. We care about which components have the most effect on cost function. This by the way is at least going to get someone reminiscing of the theory in neural science for how biological neurons learn, called Hebbian theory\cite{Donald1949}. This theory is often summed up in the phrase ``Neurons that fire together wire together''. Here, the biggest strengthening of connections happens between neurons which are the most active and the ones which we wish to become more active. In essence, the neurons which are firing whiles seeing a digit $2$ gives more strongly linked to those firing whiles thinking about a digit $2$. To be clear, really we are not in a position to be making statements one way or another about whether artificial networks of neurons behaves any a thing like biological brains. But taking as a very loose analogy, we do find it interesting to note.
+Focusing on how the weights should be adjusted, the weights actually have different levels of influence. The connection with the brightest neurons from the preceding layer, have the biggest effect since those weights are multiplied by larger activation values. So if we increase those weights, it actually has a strong influence on the ultimate cost function than increasing the weights of connections with dimmer neurons as far as this training example is concern. Remember, when we talked about gradient descent, we don't just care about whether each component should get nudged up or down. We care about which components have the most effect on cost function. This by the way is at least going to get someone reminiscing of the theory in neural science for how biological neurons learn, called Hebbian theory\citing{Donald1949}. This theory is often summed up in the phrase ``Neurons that fire together wire together''. Here, the biggest strengthening of connections happens between neurons which are the most active and the ones which we wish to become more active. In essence, the neurons which are firing whiles seeing a digit $2$ gives more strongly linked to those firing whiles thinking about a digit $2$. To be clear, really we are not in a position to be making statements one way or another about whether artificial networks of neurons behaves any a thing like biological brains. But taking as a very loose analogy, we do find it interesting to note.
 
 The third way is that we can help increasing the activation of the output neuron corresponding to the digit $2$ is by changing all the activations in the previous layer. Namely, if everything connected to that digit $2$ neuron with a positive weight got brighter; and everything connected with a negative weight got dimmer; then that digit $2$ neuron will become more active. Similar to the weight changes, there is stronger effect by seeking changes that are proportional to the size of the corresponding weights. Of course, we cannot directly influence those activations, we only have control over the weights and biases. Let us keep in mind that what we actually want is the output layer to have all other neurons be less active except the digit two neuron to be highly active. However, each of those output neurons have their own thoughts about what should happen to that second to last layer. Hence, the desire of the digit two neuron is added together to the desires of all the other output neurons for what should happen to this second to last layer; this should be done in proportion to the corresponding weights and in proportion to how much each of those neurons needs to change.
 
@@ -515,19 +515,19 @@ In the equation \ref{ConvNet_structure} above, we show how ConvNet process input
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/CNN_example.PNG}
-\caption{ConvNet recognizing scenes and accurately suggesting important captions: Source \cite{densecap}}
+\caption{ConvNet recognizing scenes and accurately suggesting important captions: Source \citing{densecap}}
 \label{cnn_example}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/everyday_objects.PNG}
-\caption{ConvNet recognizing everyday objects with bounding boxes: Source \cite{DBLP:journals/corr/RenHG015}}
+\caption{ConvNet recognizing everyday objects with bounding boxes: Source \citing{DBLP:journals/corr/RenHG015}}
 \label{everyday_objects}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/ConvNet_Arch.png}
-\caption{A simple ConvNet architecture: Source \cite{intuitiveCNN}}
+\caption{A simple ConvNet architecture: Source \citing{intuitiveCNN}}
 \label{ConvNet_arch}
 \end{figure}
 
@@ -569,7 +569,7 @@ After performing convolution computation on an image, the spatial size of the ou
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/rgb_image.png}
-\caption{An RGB image with volume of size: 4 x 4 x 3. It comprises of the 3 Colour channel matrices: Source \cite{Abhineet}}
+\caption{An RGB image with volume of size: 4 x 4 x 3. It comprises of the 3 Colour channel matrices: Source \citing{Abhineet}}
 \label{rgb_image}
 \end{figure}
 
@@ -589,7 +589,7 @@ After performing convolution computation on an image, the spatial size of the ou
 \end{figure}
 
 \subsection{Non Linearity (ReLU)}
-We perform a ReLU operation after every convolution. Rectified Linear Unit (ReLU) is an operation that simply replaces every negative pixel value in the feature map with zero. We write the ReLU function as $f(x) = max(0,x)$. The reason we use ReLU is to feed non-linearity into our CNN, since convolutional operation is a linear operation, ReLU helps to take care of non-linearity. Additionally, ReLU helps to speed up training of our CNN. Computation is very simple since we will be dealing with either $0$ or $1$ depending on $x$. There are other kinds of ReLU such as Noisy ReLUs\cite{Nair:2010:RLU:3104322.3104425}, Leaky ReLUSs\cite{Maas2013RectifierNI}, Parametric ReLUs\cite{7410480}, ELUs\cite{Clevert2015FastAA}, etc.
+We perform a ReLU operation after every convolution. Rectified Linear Unit (ReLU) is an operation that simply replaces every negative pixel value in the feature map with zero. We write the ReLU function as $f(x) = max(0,x)$. The reason we use ReLU is to feed non-linearity into our CNN, since convolutional operation is a linear operation, ReLU helps to take care of non-linearity. Additionally, ReLU helps to speed up training of our CNN. Computation is very simple since we will be dealing with either $0$ or $1$ depending on $x$. There are other kinds of ReLU such as Noisy ReLUs\citing{Nair:2010:RLU:3104322.3104425}, Leaky ReLUSs\citing{Maas2013RectifierNI}, Parametric ReLUs\citing{7410480}, ELUs\citing{Clevert2015FastAA}, etc.
 
 Noisy ReLUs introduces Gaussian noise in the rectified linear units, given below as
 \[ f(x) = max(0, x + Y), \text{with} Y \sim N(0, \sigma(x))\]
@@ -620,7 +620,7 @@ Exponential linear units (ELUs) try to make the mean activations closer to zero 
 $a$ is a hyper-parameter to be adjusted and $a \geq 0$ is a constraint.
 
 \subsection{Pooling layer}
-Pooling can be defined as the process of encoding and aggregating feature maps into a global feature vector \cite{cui2017cvpr}. The pooling layer reduces the spatial height and weight of the input by extracting only the important activations. This process helps to reduce computation and also helps to make the CNN translation invariant in terms of the convolution output. We have many kinds of pooling: max-pooling, average-pooling, sum-pooling, etc.
+Pooling can be defined as the process of encoding and aggregating feature maps into a global feature vector \citing{cui2017cvpr}. The pooling layer reduces the spatial height and weight of the input by extracting only the important activations. This process helps to reduce computation and also helps to make the CNN translation invariant in terms of the convolution output. We have many kinds of pooling: max-pooling, average-pooling, sum-pooling, etc.
 
 Max-pooling is performed by sliding a window (say, 2$\times$2 window) over the input and saving the maximum value of the elements withing the window space. Same process is applied for average-pooling and sum-pooling. However, for sum pooling we take the sum of all elements in that window and we take the average sum for average pooling. Max Pooling has shown better performance so far. Figure \ref{fig_maxpooling} shows an example of max pooling.
 
@@ -642,7 +642,7 @@ Apart from Softmax, Support Vector Machine (SVM) is another commonly used classi
 where $\beta$ is the \textit{weight} vector, $\beta_{0}$ as the \textit{bias} term and $x$ is the \textit{training examples}.
 
 \section{Depthwise Separable Convolutions}\label{depthconve}
-Depthwise Separable Convolution is a type of convolution that splits the convolution operation into two steps. It transforms standard convolution by factorizing into a depthwise convolution and a $1 \times 1$ standard convolution termed as pointwise convolution. Depthwise separable convolutions have been used successfully in recent deep neural network models such as \cite{DBLP:journals/corr/HowardZCKWWAA17}, \cite{DBLP:journals/corr/Chollet16a} and \cite{8451339}.
+Depthwise Separable Convolution is a type of convolution that splits the convolution operation into two steps. It transforms standard convolution by factorizing into a depthwise convolution and a $1 \times 1$ standard convolution termed as pointwise convolution. Depthwise separable convolutions have been used successfully in recent deep neural network models such as \citing{DBLP:journals/corr/HowardZCKWWAA17}, \citing{DBLP:journals/corr/Chollet16a} and \citing{8451339}.
 
 In the first operation for depthwise convolution, given an RGB input image of spatial dimension $12 \times 12 \times 3$, we use 3 filters of shape $5 \times 5\times 1$. Each $5 \times 5\times 1$ filter performs convolution on 1 channel of the input image, resulting in scalar products of every 25 pixel group with an output shape of $8\times8\times1$. We stack these output images together to form a $8\times8\times3$ image.
 
@@ -683,12 +683,13 @@ computation cost:
 We can evidently see the computational cost advantages depthwise separable convolution have over regular convolution. In the example above, depthwise separable convolution have about $\sim5.5e6$ fewer parameters than regular convolution for the same convolutional operation.
 
 \section{Conclusion}
+In this chapter we presented the theoretical basics underlying this research work. We started by discussing what machine learning is and the types or forms of machine learning techniques in existence. We went further to discuss in details one example of the techniques in machine learning, deep learning. Furthermore, we discussed one popular type of deep learning method called convolutional neural network. Finally, we took a look at a type of convolutional neural network called depthwise separable convolutions and analyzed the computation cost of a regular convolution vs depthwise separable convolution.
 
 \chapter{Chapter 3 - Proposed Method and Experiments}
 In this section, we will describe our proposed CNN model based on depthwise separable convolution for facial expression recognition problem and provide details of the layers that constituents the model. This chapter also presents the computation cost of the model and describes the various experiments conducted.
 
 \section{Model Architecture}
-Our proposed model structure is a pure convolutional network (i.e. without any fully-connected layer) that is based on depthwise separable convolutions as explained in section \ref{depthconve}. All depthwise separable layers perform \textit{same convolution} with a filter size of $3 \times 3 \times 1$ and a \textit{depth-multiplier} value of $1$ shifting by $1$ stride. We use ReLU\cite{7410480} activation function in all the separable convolutional layers to help us avoid the vanishing gradient problem\cite{5264952}. All depthwise separable convolutional layers are followed by a batch normalization \cite{DBLP:journals/corr/IoffeS15} operation to normalize the output in each layer in order to avoid varying distributions of the features across the training and test data. For our model to generalize well on unseen data and avoid overfitting on the training data, we apply dropout\cite{JMLR:v15:srivastava14a} as our regularization method in the last three depthwise separable convolutional layers. We apply Max-Pooling of window size $2 \times 2$ and stride $1$ after the $6^{th}$, $9^{th}$, $12^{th}$, and $15^{th}$ depthwise separable convolutional layers in order to down sample input flowing through the network. Instead of the traditional fully connected layer, we output the spatial average of the learned feature maps from the last depthwise separable convolutional layer via a global average pooling layer \cite{DBLP:journals/corr/LinCY13}; and the output feature vector is fed into the softmax layer for classification.  In summary, the entire network contains only $474K$ parameters with 15 separable convolutional layers and four pooling layers. Table \ref{model_arch} shows details of our proposed model architecture.
+Our proposed model structure is a pure convolutional network (i.e. without any fully-connected layer) that is based on depthwise separable convolutions as explained in section \ref{depthconve}. All depthwise separable layers perform \textit{same convolution} with a filter size of $3 \times 3 \times 1$ and a \textit{depth-multiplier} value of $1$ shifting by $1$ stride. We use ReLU\citing{7410480} activation function in all the separable convolutional layers to help us avoid the vanishing gradient problem\citing{5264952}. All depthwise separable convolutional layers are followed by a batch normalization \citing{DBLP:journals/corr/IoffeS15} operation to normalize the output in each layer in order to avoid varying distributions of the features across the training and test data. For our model to generalize well on unseen data and avoid overfitting on the training data, we apply dropout\citing{JMLR:v15:srivastava14a} as our regularization method in the last three depthwise separable convolutional layers. We apply Max-Pooling of window size $2 \times 2$ and stride $1$ after the $6^{th}$, $9^{th}$, $12^{th}$, and $15^{th}$ depthwise separable convolutional layers in order to down sample input flowing through the network. Instead of the traditional fully connected layer, we output the spatial average of the learned feature maps from the last depthwise separable convolutional layer via a global average pooling layer \citing{DBLP:journals/corr/LinCY13}; and the output feature vector is fed into the softmax layer for classification.  In summary, the entire network contains only $474K$ parameters with 15 separable convolutional layers and four pooling layers. Table \ref{model_arch} shows details of our proposed model architecture.
 
 The model starts by feed forwarding training examples through a continuous $6$ depthwise separable convolution layers. The first three depthwise separable layers have $32$ filters each. Each of the first $3$ depthwise separable layers takes in input shape $48 \times 48 \times 1$ and outputs $48 \times 48 \times 32$ after depthwise separable convolution operation. The next three depthwise separable layers have $64$ filters each. Apart from the $4^{th}$ layer which takes an input shape $48 \times 48 \times 32$, the $5^{th}$ and $6^{th}$ layers receive input shape $48 \times 48 \times 64$ and outputs $48 \times 48 \times 64$.
 
@@ -786,91 +787,46 @@ The output after the global average pooling is fed to the final layer ($21^{th}$
 We experiment our model using supervised learning techniques. That it, we expose the model to large amount of data and we allow it to learn the optimal features and parameters for the underlined task.
 
 \subsection{Datasets}
-We experiment our proposed model on three famous dataset for the task of facial expression recognition. The three datasets are FER-2013\cite{fer2013_cite}, JAFFE database\cite{Michael-2017} and CK+ database\cite{5543262}.
+We experiment our proposed model on three famous dataset for the task of facial expression recognition. The three datasets are FERC-2013\citing{fer2013_cite}, JAFFE database\citing{Michael-2017} and CK+ database\citing{5543262}.
 
-\subsubsection{FER-2013}
-FER-2013 was prepared by Pierre-Luc Carrier and Aaron Courville and used by Kaggle during the \textit{Challenges in Representation Learning: Facial Expression Recognition Challenge} in 2013. The dataset is made up of $48\times48$ pixel grayscale images of faces categorized into the seven emotion classes (0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral). The dataset contains uneven distribution of the emotion classes with happy emotion containing the highest with 25.05\%, followed by neutral emotion with 17.27\%, followed by sad emotion with 16.93\%, followed by fear emotion with 14.27\%, followed by anger with 13.8\%, followed by surprise with 11.15\% and disgust emotion contains the smallest examples with only 1.52\%.  All the faces contained in the dataset images are positioned in such a way that it is centered and covers bigger portions of the entire image. The \textit{train.csv} file has two columns, \textit{emotion} and \textit{pixels}. The \textit{emotion} column is made up of digit code inclusively spanning from 0 to 6 corresponding to one of the seven emotions. The \textit{pixels} is made up of strings enclosed in quotes for each image. The strings contain the pixel values in row major order separating each pixel value with a space. The \textit{test.csv} file houses only the the `pixel' values for each test image. There contain 35,896 total samples with 28,709 training samples, 3,589 samples for public test and another 3,589 samples for private test.  Examples of facial expression images from the FER-2013 emotion database are shown in figure \ref{fer2013_images}.
+\subsubsection{FERC-2013}
+FERC-2013 was prepared by Pierre-Luc Carrier and Aaron Courville and used by Kaggle during the \textit{Challenges in Representation Learning: Facial Expression Recognition Challenge} in 2013. The dataset is made up of $48\times48$ pixel grayscale images of faces categorized into the seven emotion classes (0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral). The dataset contains uneven distribution of the emotion classes with happy emotion containing the highest with 25.05\%, followed by neutral emotion with 17.27\%, followed by sad emotion with 16.93\%, followed by fear emotion with 14.27\%, followed by anger with 13.8\%, followed by surprise with 11.15\% and disgust emotion contains the smallest examples with only 1.52\%.  All the faces contained in the dataset images are positioned in such a way that it is centered and covers bigger portions of the entire image. The \textit{train.csv} file has two columns, \textit{emotion} and \textit{pixels}. The \textit{emotion} column is made up of digit code inclusively spanning from 0 to 6 corresponding to one of the seven emotions. The \textit{pixels} is made up of strings enclosed in quotes for each image. The strings contain the pixel values in row major order separating each pixel value with a space. The \textit{test.csv} file houses only the the `pixel' values for each test image. There contain 35,896 total samples with 28,709 training samples, 3,589 samples for public test and another 3,589 samples for private test.  Examples of facial expression images from the FERC-2013 emotion database are shown in figure \ref{fer2013_images}.
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/fer2013.png}
-\caption{Examples of facial expression images from the FER-2013 emotion database}
+\caption{Examples of facial expression images from the FERC-2013 emotion database}
 \label{fer2013_images}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/total_data_distribution.png}
-\caption{FER-2013 total sample distribution for Angry, Disgust, Fear, Happy, Sad, Surprise and Neutral emotion}
+\caption{FERC-2013 total sample distribution for Angry, Disgust, Fear, Happy, Sad, Surprise and Neutral emotion}
 \label{fer2013_distribution}
 \end{figure}
 
-\subsubsection{Japanese Female Facial Expression}
-% We validate the effectiveness of our proposed method on FER-2013 and JAFFE database in order to appropriately generalize our model for facial expression recognition.
-The Japanese Female Facial Expression (JAFFE) database\cite{Michael-2017} contains $256\times256$ pixel 213 grayscale images of the seven facial expressions posed by 10 Japanese female models. Facial expression images were coded using a multi-orientation, multi-resolution set of Gabor filters which were topographically ordered and arranged pretty much with the face. The similarity space
-obtained from this representation was crosschecked with one obtained from semantic ratings of the images by human observers. The Gabor representation demonstrated a notable degree of psychological credibility, a design feature which may be important for human-computer interfaces. Examples of facial expression images from the Japanese Female Facial Expression (JAFFE) database are shown in figure \ref{jaffe_images} 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/jaffe.png}
-\caption{Examples of facial expression images from the Japanese Female Facial Expression (JAFFE) database. Source: \cite{Michael-2017}}
+\caption{Examples of facial expression images from the Japanese Female Facial Expression (JAFFE) database. Source: \citing{Michael-2017}}
 \label{jaffe_images}
 \end{figure}
 
-\subsubsection{Extended Cohn-Kanade Dataset}
-The Extended Cohn-Kanade Dataset (CK+) dataset\cite{5543262} is a build on the work done by \cite{ck_840611}. In the work done by \cite{ck_840611}, they presented a sequence of 2105 images obtained from 128 adult subjects of different ethnicity. The subjects expressed the various emotions by acting the multiple tokens of many basic Facial Action Coding System (FACS)\cite{ekman_facs} action units. The Extended Cohn-Kanade Dataset (CK+) dataset increased the sequence of images by $22\%$ and the also increased the number of adult subjects by $27\%$. All label expressions for each sequence was fully based on FACS coding. Also, CK+ dataset added non-posed sequences for many kinds of smiles and their corresponding metadata. Examples of facial expression images from the CK+ dataset are shown in figure \ref{CK+_images}
+\subsubsection{Japanese Female Facial Expression}
+% We validate the effectiveness of our proposed method on FERC-2013 and JAFFE database in order to appropriately generalize our model for facial expression recognition.
+The Japanese Female Facial Expression (JAFFE) database\citing{Michael-2017} contains $256\times256$ pixel 213 grayscale images of the seven facial expressions posed by 10 Japanese female models. Facial expression images were coded using a multi-orientation, multi-resolution set of Gabor filters which were topographically ordered and arranged pretty much with the face. The similarity space
+obtained from this representation was crosschecked with one obtained from semantic ratings of the images by human observers. The Gabor representation demonstrated a notable degree of psychological credibility, a design feature which may be important for human-computer interfaces. Examples of facial expression images from the Japanese Female Facial Expression (JAFFE) database are shown in Figure \ref{jaffe_images} .
+
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/ck+.PNG}
 \caption{Examples of images from the CK+ database. The top four horizontal grayscale images are taken from the original CK database and the other four horizontal RGB images at the bottom are taken from the CK+ dataset. All together we have 8 emotions and 30 AUs. Examples of the Emotion and AU labels
-are: (a) Disgust - AU 1+4+15+17, (b) Happy - AU 6+12+25, (c) Surprise - AU 1+2+5+25+27, (d) Fear - AU 1+4+7+20, (e) Angry - AU 4+5+15+17, (f) Contempt - AU 14, (g) Sadness - AU 1+2+4+15+17, and (h) Neutral - AU0. Source: \cite{5543262}}
+are: (a) Disgust - AU 1+4+15+17, (b) Happy - AU 6+12+25, (c) Surprise - AU 1+2+5+25+27, (d) Fear - AU 1+4+7+20, (e) Angry - AU 4+5+15+17, (f) Contempt - AU 14, (g) Sadness - AU 1+2+4+15+17, and (h) Neutral - AU0. Source: \citing{5543262}}
 \label{CK+_images}
 \end{figure}
 
-\subsection{Model Training}
-For training and testing we implemented our network architecture using Keras Deep Learning library\footnote{Keras is a high-level neural networks API, written in Python - https://keras.io/}. We ran the on independent streams on GPU using NVIDIA CUDA parallel computing platform. We conduct training on FER-2013 dataset, JAFFE dataset and CK+ dataset. For all datasets, we trained for 200 epochs. In order to make our model more robust and speed up training, we implemented the following real-time data augmentation and preprocessing during training:
-\begin{itemize}
- \item rescaling images to 1./255 in order to transform every pixel value from range [0,255] to [0,1]
- \item image shearing clockwise value of 0.2
- \item  random zoom range of 40
- \item  image width and height shifting of 0.2
- \item random horizontal flipping
- \item image cropping of 48 x 48
- \item converting all RGB images to grayscale
-\end{itemize}
-We maintained a batch size of 32 across all datasets to feed input into the network. We trained the network using Adam Optimizer \cite{DBLP:journals/corr/KingmaB14} with learning rate of 0.001 for both datasets. Training results are presented in chapter \ref{chp4}. Finally, we implemented our model with OpenCV on an Intel Dual Core i3-7100U 2.4GHz Processor laptop in real-time by connecting a live video stream to a face detector to feed images to our trained model to recognise the 7 basic emotions.
-
-\section{Conclusion}
-
-\chapter{Chapter 4 - Results and Analysis}\label{chp4}
-In this chapter we present the results and analysis of the experiments on the three dataset: FER-2013 dataset, JAFFE dataset and CK+ dataset. We also present the results metrics used to evaluate the model performance.
-\section{Results Metrics}
-We evaluated the model by calculating the accuracy, precision, recall, f1-score and confusion matrix \cite{FAWCETT2006861} for all three datasets. We perform the calculations based on the following parameters: True Positives (TP), True Negatives (TN), False Positives (FP) and False Negatives (FN). TP are the correctly predicted positive values, thus, when target label is `yes' and the predicted label is also `yes'. TN are correctly predicted negative values, thus, when target label is `no' and the predicted label is also `no'. FP are the predicted values where target label is `no' but the predicted label is `yes'. FN are the values where target label is `yes' but the predicted label is `no'.
-
-We define accuracy as simply the ratio of correctly classified samples to the total test samples. Accuracy of the model was calculated according to the following formula:
-\begin{equation}
-Accuracy=\frac{TP + TN}
- {TP + FP + FN + TN}
-\end{equation}
-
-Precision is the ratio of correctly classified positive samples to the total classified positive samples. Intuitively, precision relates to false positive rate, in that, the lower the false positives the higher our precision. Precision of the model was calculated according to the following formula:
-\begin{equation}
-Precision=\frac{TP}
- {TP + FP}
-\end{equation}
-
-Recall or Sensitivity is the ratio of correctly classified positive samples to all samples belonging to the actual class. Recall of the model was calculated according to the following formula:
-\begin{equation}
-Recall=\frac{TP}
- {TP + FN}
-\end{equation}
-
-F1-score is simply the weighted average of Precision and Recall. In this sense, F1-score considers both the false positives and false negatives. We calculated for F1-score because the three datasets (FER-2013, JAFFE and CK+) have uneven distribution of class samples. This means false positives and false negative have different cost contribution to the model accuracy. F1-score of the model was calculated according to the following formula:
-\begin{equation}
-F1-score=2\frac{Precision \times Recall}
- {Precision + Recall}
-\end{equation}
-
-\section{Analysis}
-For the FER-2013 dataset, the model achieved 68\% on precision, recall and f1-score on the public test examples. During the private test, the model obtained 69\% performance on precision, recall and f1-score. Table \ref{table_fer2013_scores_public} and Table \ref{table_fer2013_scores_private} shows the model accuracy details on the public and private test respectively. It was observed that the model performed worst in recognizing fear and sad expressions. From the confusion matrix in Fig \ref{fig_ferpr_cm_scores} and Fig \ref{fig_ferpub_cm_scores}, the model often confused fear for sad and also confused sad for neutral and anger. We also observed from the dataset that fear and sad expressions exhibits similar facial movements with the forehead been squeezed and the mouth tightly closed. Additionally, many sad expression samples looked similar to neutral and anger, both expressions have the mouth closed and steady facial contour. However, among the seven emotions, the model performance on happy emotion was the highest, obtaining up to 87\% and 88\% for public and private test respectively. This result can be explained by observing the total sample distribution of the emotion classes in the dataset as shown in Fig. \ref{fer2013_distribution}. The happy emotion contains the largest samples (25.05\%) among all the other emotion classes. Consequently, the model is exposed to larger number of happy emotion samples and learns more optimal features to distinguish happy emotion from other emotions. In order to avoid the model memorizing the training data and not generalization well on unseen data, we stop training after 200 epochs. As shown in Fig. \ref{fer_accuracy}, the model did not significantly improve the validation accuracy from epoch 150. This is evident from training and validation loss as shown in Fig. \ref{fer_loss}, the validation loss did not further reduce after epoch 150. Training on FER-2013 dataset spanned a period of approximately 7 hours.
+\subsubsection{Extended Cohn-Kanade Dataset}
+The Extended Cohn-Kanade Dataset (CK+) dataset\citing{5543262} is a build on the work done by \citing{ck_840611}. In the work done by \citing{ck_840611}, they presented a sequence of 2105 images obtained from 128 adult subjects of different ethnicity. The subjects expressed the various emotions by acting the multiple tokens of many basic Facial Action Coding System (FACS)\citing{ekman_facs} action units. The Extended Cohn-Kanade Dataset (CK+) dataset increased the sequence of images by $22\%$ and the also increased the number of adult subjects by $27\%$. All label expressions for each sequence was fully based on FACS coding. Also, CK+ dataset added non-posed sequences for many kinds of smiles and their corresponding metadata. Examples of facial expression images from the CK+ dataset are shown in figure \ref{CK+_images}
 
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.3}
-\caption{Model accuracy for public test on Precision, Recall and F1-score for FER-2013 dataset. The first column contains the seven emotion classes (Anger, Disgust, Fear, Happy, Neutral, Sad and Surprise), the second, third and fourth column contain the Precision, Recall, F1-score for each emotion respectively. The fifth column contains the number of samples observed for each emotion class. The last row contains the averaged Precision, Recall, F1-score and the total samples observed.}
+\caption{Model accuracy for public test on Precision, Recall and F1-score for FERC-2013 dataset}
 \label{table_fer2013_scores_public}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
@@ -891,10 +847,22 @@ Surprise & 0.78 & 0.81 & 0.79 & 415\\ \hline
 \end{tabular}
 \end{center}
 \end{table}
+\subsection{Model Training}
+For training and testing we implemented our network architecture using Keras Deep Learning library\footnote{Keras is a high-level neural networks API, written in Python - https://keras.io/}. We ran the on independent streams on GPU using NVIDIA CUDA parallel computing platform. We conduct training on FERC-2013 dataset, JAFFE dataset and CK+ dataset. For all datasets, we trained for 200 epochs. In order to make our model more robust and speed up training, we implemented the following real-time data augmentation and preprocessing during training:
+\begin{itemize}
+ \item rescaling images to 1./255 in order to transform every pixel value from range [0,255] to [0,1]
+ \item image shearing clockwise value of 0.2
+ \item  random zoom range of 40
+ \item  image width and height shifting of 0.2
+ \item random horizontal flipping
+ \item image cropping of 48 x 48
+ \item converting all RGB images to grayscale
+\end{itemize}
+We maintained a batch size of 32 across all datasets to feed input into the network. We trained the network using Adam Optimizer \citing{DBLP:journals/corr/KingmaB14} with learning rate of 0.001 for both datasets. Training results are presented in chapter \ref{chp4}. Finally, we implemented our model with OpenCV on an Intel Dual Core i3-7100U 2.4GHz Processor laptop in real-time by connecting a live video stream to a face detector to feed images to our trained model to recognise the 7 basic emotions.
 
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.3}
-\caption{Model accuracy for private test on Precision, Recall and F1-score for FER-2013 dataset. The first column contains the seven emotion classes (Anger, Disgust, Fear, Happy, Neutral, Sad and Surprise), the second, third and fourth column contain the Precision, Recall, F1-score for each emotion respectively. The fifth column contains the number of samples observed for each emotion class. The last row contains the averaged Precision, Recall, F1-score and the total samples observed.}
+\caption{Model accuracy for private test on Precision, Recall and F1-score for FERC-2013 dataset}
 \label{table_fer2013_scores_private}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
@@ -915,15 +883,49 @@ Surprise & 0.77 & 0.81 & 0.79 & 416\\ \hline
 \end{center}
 \end{table}
 
+\section{Conclusion}
+This chapter presents the proposed model architecture and the various experiments conducted. Also, the chapter presents all the technical details for the model training on three different datasets.
+
+\chapter{Chapter 4 - Results and Analysis}\label{chp4}
+In this chapter we present the results and analysis of the experiments on the three dataset: FERC-2013 dataset, JAFFE dataset and CK+ dataset. We also present the results metrics used to evaluate the model performance.
+\section{Results Metrics}
+We evaluated the model by calculating the accuracy, precision, recall, f1-score and confusion matrix \citing{FAWCETT2006861} for all three datasets. We perform the calculations based on the following parameters: True Positives (TP), True Negatives (TN), False Positives (FP) and False Negatives (FN). TP are the correctly predicted positive values, thus, when target label is `yes' and the predicted label is also `yes'. TN are correctly predicted negative values, thus, when target label is `no' and the predicted label is also `no'. FP are the predicted values where target label is `no' but the predicted label is `yes'. FN are the values where target label is `yes' but the predicted label is `no'.
+
+We define accuracy as simply the ratio of correctly classified samples to the total test samples. Accuracy of the model was calculated according to the following formula:
+\begin{equation}
+Accuracy=\frac{TP + TN}
+ {TP + FP + FN + TN}
+\end{equation}
+
+Precision is the ratio of correctly classified positive samples to the total classified positive samples. Intuitively, precision relates to false positive rate, in that, the lower the false positives the higher our precision. Precision of the model was calculated according to the following formula:
+\begin{equation}
+Precision=\frac{TP}
+ {TP + FP}
+\end{equation}
+
+Recall or Sensitivity is the ratio of correctly classified positive samples to all samples belonging to the actual class. Recall of the model was calculated according to the following formula:
+\begin{equation}
+Recall=\frac{TP}
+ {TP + FN}
+\end{equation}
+
+F1-score is simply the weighted average of Precision and Recall. In this sense, F1-score considers both the false positives and false negatives. We calculated for F1-score because the three datasets (FERC-2013, JAFFE and CK+) have uneven distribution of class samples. This means false positives and false negative have different cost contribution to the model accuracy. F1-score of the model was calculated according to the following formula:
+\begin{equation}
+F1-score=2\frac{Precision \times Recall}
+ {Precision + Recall}
+\end{equation}
+
+For all confusion matrices, the major diagonal of the matrix contains the correctly predicted labels, thus \textbf{TP} and \textbf{TN} values. The values outside the major diagonal represent the wrongly predicted labels. The values above the major diagonal are the \textbf{FP} values.
+
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/FER-2013_public_test_CM_normalzed.png}
-\caption{Normalized confusion matrix on model test accuracy for FER-2013 private test. The major diagonal of the matrix contains the correctly predicted labels, thus \textbf{TP} and \textbf{TN} values. The values outside the major diagonal represent the wrongly predicted labels. The values above the major diagonal are the \textbf{FP} values. The values below the major diagonal are the \textbf{FN} values.}
+\caption{Normalized confusion matrix on model test accuracy for FERC-2013 private test.}
 \label{fig_ferpr_cm_scores}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/FER-2013_public_test_CM_normalzed.png}
-\caption{Normalized confusion matrix on model test accuracy for FER-2013 public test. The major diagonal of the matrix contains the correctly predicted labels, thus \textbf{TP} and \textbf{TN} values. The values outside the major diagonal represent the wrongly predicted labels. The values above the major diagonal are the \textbf{FP} values. The values below the major diagonal are the \textbf{FN} values}
+\caption{Normalized confusion matrix on model test accuracy for FERC-2013 public test}
 \label{fig_ferpub_cm_scores}
 \end{figure}
 
@@ -937,6 +939,37 @@ Surprise & 0.77 & 0.81 & 0.79 & 416\\ \hline
 \includegraphics[width=5in]{pic/model_loss_fer.png}
 \caption{Model training and validation loss}
 \label{fer_loss}
+\end{figure}
+
+\section{Analysis}
+For the FERC-2013 dataset, the model achieved 68\% on precision, recall and f1-score on the public test examples. During the private test, the model obtained 69\% performance on precision, recall and f1-score. Table \ref{table_fer2013_scores_public} and Table \ref{table_fer2013_scores_private} shows the model accuracy details on the public and private test respectively. It was observed that the model performed worst in recognizing fear and sad expressions. From the confusion matrix in Fig \ref{fig_ferpr_cm_scores} and Fig \ref{fig_ferpub_cm_scores}, the model often confused fear for sad and also confused sad for neutral and anger. We also observed from the dataset that fear and sad expressions exhibits similar facial movements with the forehead been squeezed and the mouth tightly closed. Additionally, many sad expression samples looked similar to neutral and anger, both expressions have the mouth closed and steady facial contour. However, among the seven emotions, the model performance on happy emotion was the highest, obtaining up to 87\% and 88\% for public and private test respectively. This result can be explained by observing the total sample distribution of the emotion classes in the dataset as shown in Fig. \ref{fer2013_distribution}. The happy emotion contains the largest samples (25.05\%) among all the other emotion classes. Consequently, the model is exposed to larger number of happy emotion samples and learns more optimal features to distinguish happy emotion from other emotions. In order to avoid the model memorizing the training data and not generalization well on unseen data, we stop training after 200 epochs. As shown in Fig. \ref{fer_accuracy}, the model did not significantly improve the validation accuracy from epoch 150. This is evident from training and validation loss as shown in Fig. \ref{fer_loss}, the validation loss did not further reduce after epoch 150. Training on FERC-2013 dataset spanned a period of approximately 7 hours.
+
+\begin{table}[ht]
+\renewcommand{\arraystretch}{1.3}
+\caption{Model test accuracy on Precision, Recall and F1-score for JAFFE dataset}
+\label{table_jaffe_scores}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+
+\hline
+ & Precision & Recall & F1-score & Support\\ \hline
+
+Anger & 0.82 & 1.00 & 0.90 & 9\\ \hline
+Disgust & 1.00 & 0.78 & 0.88 & 9\\ \hline
+Fear & 0.91 & 1.00 & 0.95 & 10\\ \hline
+Happy & 1.00 & 1.00 & 1.00 & 10\\ \hline
+Neutral & 0.71 & 1.00 & 0.83 & 10\\ \hline
+Sad & 0.83 & 0.50 & 0.62 & 10\\ \hline
+Surprise & 1.00 & 0.90 & 0.95 & 10\\ \hline
+
+\textbf{avg / total} & \textbf{0.90} & \textbf{0.88} & \textbf{0.88} & \textbf{68}\\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/JAFFE_CM_normalized.png}
+\caption{Normalized confusion matrix on model test accuracy for JAFFE dataset}
+\label{fig_jaffe_cm_scores}
 \end{figure}
 
 For the JAFFE dataset, the model achieved 88\% accuracy on test samples. From Table \ref{table_jaffe_scores}, we can see that the only emotion category the model obtained a 100\% f1-score is the \textit{happy} emotion. Taking a closer look at the image samples in the JAFFE dataset, we observed that \textit{happy} emotion examples are quite distinct from the other emotion examples. The \textit{happy} emotion samples do not have the forehead and mouth region tightly squeezed like most other emotion expressions (fear, sad, disgust and anger). Hence, the model is able to learn these distinct features to obtain the 100\% f1-score for the \textit{happy} emotion. From the generated confusion matrix in Fig.\ref{fig_jaffe_cm_scores}, we also observed that the model often confused fear and sad for disgust. Taking a look at the training samples , all the 3 expressions are very similar with the forehead and mouth region (sad expression) tightly squeezed. 
@@ -962,39 +995,12 @@ For the JAFFE dataset, the model achieved 88\% accuracy on test samples. From Ta
 % \end{tabular}
 % \end{center}
 % \end{table}
-\begin{table}[ht]
-\renewcommand{\arraystretch}{1.3}
-\caption{Model test accuracy on Precision, Recall and F1-score for JAFFE dataset. The first column contains the seven emotion classes (Anger, Disgust, Fear, Happy, Neutral, Sad and Surprise), the second, third and fourth column contain the Precision, Recall, F1-score for each emotion respectively. The fifth column contains the number of samples observed for each emotion class. The last row contains the averaged Precision, Recall, F1-score and the total samples observed.}
-\label{table_jaffe_scores}
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|}
-
-\hline
- & Precision & Recall & F1-score & Support\\ \hline
-
-Anger & 0.82 & 1.00 & 0.90 & 9\\ \hline
-Disgust & 1.00 & 0.78 & 0.88 & 9\\ \hline
-Fear & 0.91 & 1.00 & 0.95 & 10\\ \hline
-Happy & 1.00 & 1.00 & 1.00 & 10\\ \hline
-Neutral & 0.71 & 1.00 & 0.83 & 10\\ \hline
-Sad & 0.83 & 0.50 & 0.62 & 10\\ \hline
-Surprise & 1.00 & 0.90 & 0.95 & 10\\ \hline
-
-\textbf{avg / total} & \textbf{0.90} & \textbf{0.88} & \textbf{0.88} & \textbf{68}\\ \hline
-\end{tabular}
-\end{center}
-\end{table}
-\begin{figure}[ht]
-\includegraphics[width=5in]{pic/JAFFE_CM_normalized.png}
-\caption{Normalized confusion matrix on model test accuracy for JAFFE dataset. The major diagonal of the matrix contains the correctly predicted labels, thus \textbf{TP} and \textbf{TN} values. The values outside the major diagonal represent the wrongly predicted labels. The values above the major diagonal are the \textbf{FP} values. The values below the major diagonal are the \textbf{FN} values}
-\label{fig_jaffe_cm_scores}
-\end{figure}
 
 For CK+ dataset, our model achieved $99\%$ test accuracy and $0.03941$ for test loss. We present details accuracy for each of the seven emotion category in Table \ref{table_ck+_scores}. As shown in Fig. \ref{ck+_cm}, the model obtained prediction accuracy up to $100\%$ for all emotion classes except contempt emotion. The model confused contempt emotion for fear emotion. This cause can be associated to the nature of the dataset. We observed that few contempt emotions expressed in the dataset are similar to some fear expressions. Such similar expression both have the eyes fairly opened wide, no forehead contractions and mouth closed or slightly opened. Fig. \ref{ck+_similarity} shows few of such similar samples.
 
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.3}
-\caption{Model test accuracy on Precision, Recall and F1-score for CK+ dataset. The first column contains the seven emotion classes (Anger, Contempt, Disgust, Fear, Happy, Sadness and Surprise), the second, third and fourth column contain the Precision, Recall, F1-score for each emotion respectively. The fifth column contains the number of samples observed for each emotion class. The last row contains the averaged Precision, Recall, F1-score and the total samples observed.}
+\caption{Model test accuracy on Precision, Recall and F1-score for CK+ dataset}
 \label{table_ck+_scores}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
@@ -1022,16 +1028,22 @@ Surprise & 1.00 & 1.00 & 1.00 & 24\\ \hline
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/ck+_cm.png}
-\caption{Confusion matrix generated from CK+ dataset testing. The major diagonal of the matrix contains the correctly predicted labels, thus \textbf{TP} and \textbf{TN} values. The values outside the major diagonal represent the wrongly predicted labels. The values above the major diagonal are the \textbf{FP} values. The values below the major diagonal are the \textbf{FN} values}
+\caption{Confusion matrix generated from CK+ dataset testing}
 \label{ck+_cm}
 \end{figure}
 
+\begin{figure}[ht]
+\includegraphics[width=5in]{pic/ck+similarity.jpg}
+\caption{Similarity samples of contempt and fear emotion expressed in the CK+ dataset. The top horizontal faces are fear emotions and the bottom horizontal emotions are contempt emotions.}
+\label{ck+_similarity}
+\end{figure}
+
 \section{Comparison with other works}
-The winner of the Kaggle competition \cite{tang2018} achieved 69.4\% accuracy on FER-2013 public test and 71\% accuracy on the public test with a model containing more than 7 million parameters. Sang et al \cite{sang-2017} also achieved 71\% on FER-2013 public test and 71.9\% on the private test with a model containing 4.19 million parameters. Arriaga et al\cite{DBLP:journals/corr/abs-1710-07557} achieved 66\% accuracy on FER-2013 public test with a model containing approximately 600K parameters. Our proposed model contains $474K$ parameters, nevertheless, we achieved only $2\%$ lower than \cite{tang2018}, 2.9\% lower than \cite{sang-2017} and 3\% higher than \cite{DBLP:journals/corr/abs-1710-07557} on FER-2013 private test. Our proposed model contains approximately 6.5 million fewer parameters compared to \cite{tang2018}, 4.2 million fewer parameters compared to \cite{sang-2017} and 126K fewer parameters compared to \cite{DBLP:journals/corr/abs-1710-07557}.
+The winner of the Kaggle competition \citing{tang2018} achieved 69.4\% accuracy on FERC-2013 public test and 71\% accuracy on the public test with a model containing more than 7 million parameters. Sang et al \citing{sang-2017} also achieved 71\% on FERC-2013 public test and 71.9\% on the private test with a model containing 4.19 million parameters. Arriaga et al\citing{DBLP:journals/corr/abs-1710-07557} achieved 66\% accuracy on FERC-2013 public test with a model containing approximately 600K parameters. Our proposed model contains $474K$ parameters, nevertheless, we achieved only $2\%$ lower than \citing{tang2018}, 2.9\% lower than \citing{sang-2017} and 3\% higher than \citing{DBLP:journals/corr/abs-1710-07557} on FERC-2013 private test. Our proposed model contains approximately 6.5 million fewer parameters compared to \citing{tang2018}, 4.2 million fewer parameters compared to \citing{sang-2017} and 126K fewer parameters compared to \citing{DBLP:journals/corr/abs-1710-07557}.
 
-Duncan et al \cite{duncan2016} achieved 62\% accuracy on JAFFE dataset with a highly parameterized CNN model containing more than 10 million parameters. Additionally, \cite{7988558} achieved 87\% accuracy on JAFFE dataset with a model containing more than 10 million parameters. However, we achieved $88\%$ accuracy on JAFFE dataset with our proposed model containing about a whooping 9 million fewer parameters compared to \cite{duncan2016} and \cite{7988558}.
+Duncan et al \citing{duncan2016} achieved 62\% accuracy on JAFFE dataset with a highly parameterized CNN model containing more than 10 million parameters. Additionally, \citing{7988558} achieved 87\% accuracy on JAFFE dataset with a model containing more than 10 million parameters. However, we achieved $88\%$ accuracy on JAFFE dataset with our proposed model containing about a whooping 9 million fewer parameters compared to \citing{duncan2016} and \citing{7988558}.
 
-For CK+ dataset, Pooya et. al. \cite{do_deep_7406361} achieved $96.7\%$ accuracy using quadrant pooling technique on a CNN model containing a little over 4 million parameters. Ghosh et. al. \cite{Ghosh_7344632} achieved accuracy up to $88.14\%$ using a multi-label CNN model containing only about $321K$ total parameters. Table \ref{table_comparison} shows the comparison summary of our proposed model with other models. 
+For CK+ dataset, Pooya et. al. \citing{do_deep_7406361} achieved $96.7\%$ accuracy using quadrant pooling technique on a CNN model containing a little over 4 million parameters. Ghosh et. al. \citing{Ghosh_7344632} achieved accuracy up to $88.14\%$ using a multi-label CNN model containing only about $321K$ total parameters. Table \ref{table_comparison} shows the comparison summary of our proposed model with other models. 
 
 \begin{table}[ht]
 % increase table row spacing, adjust to taste
@@ -1044,29 +1056,69 @@ For CK+ dataset, Pooya et. al. \cite{do_deep_7406361} achieved $96.7\%$ accuracy
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 Dataset & Method & No. of parameters & Accuracy \\ \hline
-FER-2013 & Y. Tang \cite{tang2018} & 7 million & 71\% \\
-                 & Sang et. al. \cite{sang-2017} & 4.19 million & 71.9\% \\
-	      & Arriaga et. al. \cite{DBLP:journals/corr/abs-1710-07557} & 600K & 66\% \\
+FERC-2013 & Y. Tang \citing{tang2018} & 7 million & 71\% \\
+                 & Sang et. al. \citing{sang-2017} & 4.19 million & 71.9\% \\
+	      & Arriaga et. al. \citing{DBLP:journals/corr/abs-1710-07557} & 600K & 66\% \\
 	      & \textbf{Our method} & \textbf{474K} & \textbf{69\%} \\
 \hline
-JAFFE & Duncan et. al. \cite{duncan2016} & 10 million & 62\% \\
-                 & Chen et. al. \cite{7988558} & 10 million & 87\% \\
+JAFFE & Duncan et. al. \citing{duncan2016} & 10 million & 62\% \\
+                 & Chen et. al. \citing{7988558} & 10 million & 87\% \\
 	      & \textbf{Our method} & \textbf{474K} & \textbf{88\%} \\
 \hline
-CK+ & Pooya et. al. \cite{do_deep_7406361} & 4 million & 96.7\% \\
-                 & Ghosh et. al. \cite{Ghosh_7344632} & 321K & 88.14\% \\
+CK+ & Pooya et. al. \citing{do_deep_7406361} & 4 million & 96.7\% \\
+                 & Ghosh et. al. \citing{Ghosh_7344632} & 321K & 88.14\% \\
 	      & \textbf{Our method} & \textbf{474K} & \textbf{99\%} \\
 \hline
 \end{tabular}
 \end{center}
 \end{table}
 
+\section{Real-Time Application}
+We implement the model in a simple software system to assess the feasibility of meeting real-time applications. The software can be advanced to child care system, old age system, customer satisfactory assessment system and systems for people with hearing and speaking disorders.
+
+\subsection{Software Scope and Description}
+The software simply takes as input real-time facial expression images and recognizes the appropriate emotion expressed in the facial expression. The emotion may be \textit{Angry, Disgusted, Fear, Happy, Sad,
+Surprised or Neutral}. This software aims to predict the facial emotion expressed with the maximum accuracy possible. The software functions are listed as follows:
+\begin{enumerate}
+    \item Access camera
+    \item Detect faces in live camera feed
+    \item Send the detected face images in live camera feed to the pre-trained model
+    \item Model predicts the emotion expressed in the face images
+    \item Display the emotion predicted to the user
+\end{enumerate}
+The software activity diagram is shown in Fig. \ref{system_description}.
 \begin{figure}[ht]
-\includegraphics[width=5in]{pic/ck+similarity.jpg}
-\caption{Similarity samples of contempt and fear emotion expressed in the CK+ dataset. The top horizontal faces are fear emotions and the bottom horizontal emotions are contempt emotions.}
-\label{ck+_similarity}
+\includegraphics[width=5in]{pic/system_activity_diagram.png}
+\caption{Real-time Software Activity Diagram}
+\label{system_description}
 \end{figure}
 
+\subsection{Operating Environment}
+The software was ran and tested on a Windows laptop with Windows 10, python, keras, CUDA (Compute Unified Device Architecture) and CuDNN (CUDA Deep Neural Netowrk) installed. The laptop has a web cam support. The software dependicies includes:
+\begin{enumerate}
+    \item Tensorflow: TensorFlow is an open source software library for numerical computation using data flow graphs.
+    \item Keras: High level API (Application Program Interface) designed on top of Tensorflow for fast experiment and very user-friendly.
+    \item OpenCV (Open Source Computer Vision): is a library for real-time computer vision developement.
+    \item Numpy: python library for numerical computations especially for multidimensional arrays. 
+\end{enumerate}
+
+\subsection{Functional and Non-Functional Requirements}
+\subsubsection{Functional Requirements}
+\begin{enumerate}
+    \item The emotion classified feedback should be sent to the user in real-time.
+    \item The system should respond to every frame captured in less than 1 second.
+    \item The camera should capture frames with good quality in order to extract faces from it.
+    \item The emotion classified should be accurate, i.e. correspond to the facial expression acted by the user.
+    \item The computer or device running the software must have a camera and allow accessibility to the software.
+\end{enumerate}
+\subsubsection{Non-Functional Requirements}
+\begin{enumerate}
+    \item The camera must focus on the frontal view of the user's face in order to detect the face.
+    \item The user should be expressive in the emotion.
+    \item The light illumination of the user environment should be appropriate in order for efficient analysis.
+\end{enumerate}
+
+As demonstrated in Figure \ref{fig:implementation}, the software system is able to capture frames, extract faces, predict accurately and report the emotion predicted to the user.  
 \begin{figure}%
 \centering
 \subfigure[][]{%
@@ -1102,29 +1154,34 @@ CK+ & Pooya et. al. \cite{do_deep_7406361} & 4 million & 96.7\% \\
 \end{figure}
 
 \section{Conclusion}
+In this chapter, we present the evaluation metrics used to measure the proposed model performance. This chapter also provides analysis of the model performance on all three datasets. Comparison of the proposed method with other state-of-the-art methods is also presented in this chapter. Finally, this chapter presents the real-time application of the proposed method. 
 
 \chapter{Chapter 5 - Conclusions}
 \section{Conclusion Remarks}
-We proposed a new and efficient `light weight' CNN model based on depthwise separable 2D convolution for real-time emotion recognition. We implemented depthwise separable 2D convolution which reduced the network parameters drastically thereby accelerating the overall performance speed making it suitable for real-time application. We evaluated our model performance on FER-2013 dataset provided on the Kaggle facial expression recognition competition, the Japanese Female Facial Expression (JAFFE) database and the Extended Cohn-Kanade Dataset (CK+). Our model containing only 474K parameters achieved very competitive results of 68\% and 69\% on FER-2013 private test and public test respectively. For JAFFE dataset, our model achieved 88\% accuracy. The model achieved an outstanding accuracy of 99\% accuracy for the CK+ dataset. Thus, we drastically reduced model complexity and eventually speed up computation. We shown that with very minimum parameters our model is a better choice over state-of-the-art models for real-time applications. Finally, as shown in Fig. \ref{fig:implementation}, we demonstrated that our model can meet real-time needs by connecting a live video stream to a face detector to feed images to our trained model. The model subsequently classifies facial expressions into one of the seven emotions (Anger, Disgust, Fear, Happy, Neutral, Sad, and Surprise).
+The accuracy and efficiency of CNN architectures for facial emotion recognition have very important significance to real world problems. In this thesis, we proposed a new and efficient `light weight' CNN model architecture based on depthwise separable 2D convolution for real-time emotion recognition. We implemented depthwise separable 2D convolution which reduced the network parameters drastically thereby accelerating the overall performance speed making it suitable for real-time application. We evaluated our model performance on FERC-2013 dataset provided on the Kaggle facial expression recognition competition, the Japanese Female Facial Expression (JAFFE) database and the Extended Cohn-Kanade Dataset (CK+). Our model containing only 474K parameters achieved very competitive results of 68\% and 69\% on FERC-2013 private test and public test respectively. For JAFFE dataset, our model achieved 88\% accuracy. The model achieved an outstanding accuracy of 99\% accuracy for the CK+ dataset. Thus, we drastically reduced model complexity and eventually speed up computation. We shown that with very minimum parameters our model is a better choice over state-of-the-art models for real-time applications. Finally, as shown in Fig. \ref{fig:implementation}, we demonstrated that our model can meet real-time needs by connecting a live video stream to a face detector to feed images to our trained model. The model subsequently classifies facial expressions into one of the seven emotions (Anger, Disgust, Fear, Happy, Neutral, Sad, and Surprise).
 
 \section{Future Work}
-A future area to be improved is to provide a mechanism to provide data for imbalance emotion classes. For example, a simple user interface can be created to allow users instantly act out imbalance emotions to be added to the dataset. In this way, the model is even exposed to more real-life data.
+The researches reported in this thesis have covered most important areas including the real-time application of CNN models and the accuracy improvement CNN models for facial emotion recognition. Nonetheless, due to the time limitation, there are still spaces for the future development of the real-time facial emotion recognition methods. 
 
-Another future work is to improve the model accuracy. The model sometimes confuse certain emotions for others and miss-classifies them. We can investigate how to build a model that will be more robust for continuous emotion recognition guided by some knowledge from specific domains like psychology, social science, etc. This will make models more useful into solving specific problems.
+A future area to be improved is to provide a mechanism to provide data for imbalance emotion classes. For example, a simple user interface can be created to allow users instantly act out imbalance emotions to be added to the dataset. In this way, the model is exposed to even more real-life data.
+
+Another future work is to improve the model accuracy. The model sometimes confuse certain emotions for others and miss-classifies them. Hence, there is room for model accuracy improvement, even to the level of highly skilled psychologist.
+
+Finally, we can investigate how to build a model that will be more robust for continuous emotion recognition guided by some knowledge from specific domains like psychology, social science, etc. This will make models more useful into solving specific problems.
 
 \thesisacknowledgement
 This work was supported by the Intelligence Engineering Lab (IELAB), University of Electronic Science and Technology of China.
 
 
-\thesisloadbibliography[nocite]{reference}
+% \thesisloadbibliography[nocite]{reference}
 
 %
 % Uncomment following codes to load bibliography database with native
 % \bibliography command.
 %
-% \nocite{*}
-% \bibliographystyle{thesis-uestc}
-% \bibliography{reference}
+%\nocite{*}
+\bibliographystyle{thesis-uestc}
+\bibliography{reference}
 %
 
 % \thesisappendix
