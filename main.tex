@@ -710,12 +710,18 @@ where $\beta$ is the \textit{weight} vector, $\beta_{0}$ as the \textit{bias} te
 
 19 & Max Pool & 2 x 2 x 1 & 3 x 3 x 124\\ \hline
 
-20 & Global Avg Pool & Pool & 1 x 124\\ \hline
+20 & Global Avg Pool & Pool & 1 x 1 x 124\\ \hline
 21 & Softmax & Classifier & 1 x 1 x 7\\ \hline
 
 \end{tabular}
 \end{center}
 \end{table}
+
+\begin{figure}[ht]
+\includegraphics[width=6in]{pic/sequence_model_architecture.pdf}
+\caption{The sequential view of the proposed model architecture and how input flows through the network.}
+\label{sequence_model_arch}
+\end{figure}
 
 \section{Depthwise Separable Convolutions}\label{depthconve}
 Depthwise Separable Convolution is a type of convolution that splits the convolution operation into two steps. It transforms standard convolution by factorizing into a depthwise convolution and a $1 \times 1$ standard convolution termed as pointwise convolution. Depthwise separable convolutions have been used successfully in recent deep neural network models such as MobileNets\citing{DBLP:journals/corr/HowardZCKWWAA17}, Xception\citing{DBLP:journals/corr/Chollet16a} and Effnet\citing{8451339}.
@@ -772,7 +778,7 @@ In this chapter we presented the theoretical basics underlying this research wor
 In this section, we will describe our proposed CNN model based on depthwise separable convolution for facial expression recognition problem and provide details of the layers that constituents the model. This chapter also presents the computation cost of the model and describes the various experiments conducted.
 
 \section{Model Architecture}
-Our proposed model structure is a pure convolutional network (i.e. without any fully-connected layer) that is based on depthwise separable convolutions as explained in section \ref{depthconve}. All depthwise separable layers perform \textit{same convolution} with a filter size of $3 \times 3 \times 1$ and a \textit{depth-multiplier} value of $1$ shifting by $1$ stride. We use ReLU\citing{7410480} activation function in all the separable convolutional layers to help us avoid the vanishing gradient problem\citing{5264952}. All depthwise separable convolutional layers are followed by a batch normalization operation\citing{DBLP:journals/corr/IoffeS15} to normalize the output in each layer in order to avoid varying distributions of the features across the training and test data. For our model to generalize well on unseen data and avoid overfitting on the training data, we apply dropout\citing{JMLR:v15:srivastava14a} as our regularization method in the last three depthwise separable convolutional layers. We apply Max-Pooling of window size $2 \times 2$ and stride $1$ after the $6^{th}$, $9^{th}$, $12^{th}$, and $15^{th}$ depthwise separable convolutional layers in order to down sample input flowing through the network. Instead of the traditional fully connected layer, we output the spatial average of the learned feature maps from the last depthwise separable convolutional layer via a global average pooling layer \citing{DBLP:journals/corr/LinCY13}; and the output feature vector is fed into the softmax layer for classification.  In summary, the entire network contains only $474K$ parameters with 15 separable convolutional layers and four pooling layers. Table \ref{model_arch} shows details of our proposed model architecture.
+Our proposed model structure is a pure convolutional network (i.e. without any fully-connected layer) that is based on depthwise separable convolutions as explained in section \ref{depthconve}. All depthwise separable layers perform \textit{same convolution} with a filter size of $3 \times 3 \times 1$ and a \textit{depth-multiplier} value of $1$ shifting by $1$ stride. We use ReLU\citing{7410480} activation function in all the separable convolutional layers to help us avoid the vanishing gradient problem\citing{5264952}. All depthwise separable convolutional layers are followed by a batch normalization operation\citing{DBLP:journals/corr/IoffeS15} to normalize the output in each layer in order to avoid varying distributions of the features across the training and test data. For our model to generalize well on unseen data and avoid overfitting on the training data, we apply dropout\citing{JMLR:v15:srivastava14a} as our regularization method in the last three depthwise separable convolutional layers. We apply Max-Pooling of window size $2 \times 2$ and stride $1$ after the $6^{th}$, $9^{th}$, $12^{th}$, and $15^{th}$ depthwise separable convolutional layers in order to down sample input flowing through the network. Instead of the traditional fully connected layer, we output the spatial average of the learned feature maps from the last depthwise separable convolutional layer via a global average pooling layer \citing{DBLP:journals/corr/LinCY13}; and the output feature vector is fed into the softmax layer for classification.  In summary, the entire network contains only $474K$ parameters with 15 separable convolutional layers and four pooling layers. Table \ref{model_arch} shows details of our proposed model architecture. Figure \ref{sequence_model_arch} shows the architecture of our proposed model.
 
 The model starts by feed forwarding training examples through a continuous $6$ depthwise separable convolution layers. The first three depthwise separable layers have $32$ filters each. Each of the first $3$ depthwise separable layers takes in input shape $48 \times 48 \times 1$ and outputs $48 \times 48 \times 32$ after depthwise separable convolution operation. The next three depthwise separable layers have $64$ filters each. Apart from the $4^{th}$ layer which takes an input shape $48 \times 48 \times 32$, the $5^{th}$ and $6^{th}$ layers receive input shape $48 \times 48 \times 64$ and outputs $48 \times 48 \times 64$.
 
@@ -1065,7 +1071,7 @@ For CK+ dataset, our model achieved $99\%$ test accuracy and $0.03941$ for test 
 The winner of the Kaggle competition Y. Tang\citing{tang2018} achieved 69.4\% accuracy on FERC-2013 public test and 71\% accuracy on the public test with a model containing more than 7 million parameters. Sang et al.\citing{sang-2017} also achieved 71\% on FERC-2013 public test and 71.9\% on the private test with a model containing 4.19 million parameters. Arriaga et al\citing{DBLP:journals/corr/abs-1710-07557} achieved 66\% accuracy on FERC-2013 public test with a model containing approximately 600K parameters. Our proposed model contains $474K$ parameters, nevertheless, we achieved only $2\%$ lower than Y. Tang\citing{tang2018}, 2.9\% lower than Sang et al.\citing{sang-2017} and 3\% higher than O. Arriaga et al.\citing{DBLP:journals/corr/abs-1710-07557} on FERC-2013 private test. Our proposed model contains approximately 6.5 million fewer parameters compared to Y. Tang\citing{tang2018}, 4.2 million fewer parameters compared to Sang et al.\citing{sang-2017} and 126K fewer parameters compared to O. Arriaga et al.\citing{DBLP:journals/corr/abs-1710-07557}.
 
 \begin{figure}[ht]
-\includegraphics[width=5in]{pic/system_activity_diagram.png}
+\includegraphics[width=6in]{pic/activity_diagram.pdf}
 \caption{Real-time Software Activity Diagram}
 \label{system_description}
 \end{figure}
