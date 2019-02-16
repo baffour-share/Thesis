@@ -185,7 +185,7 @@
 
 \makeatletter
 
-\renewcommand{\algorithmname}{算法}
+\renewcommand{\algorithmname}{Algorithm}
 \renewcommand{\thealgorithm}{\arabic{chapter}-\arabic{algorithm}}
 \captionsetup[algorithm]{aboveskip=6pt}
 \AtBeginEnvironment{algorithm}{\vspace{6pt}}
@@ -199,10 +199,10 @@
 \urlstyle{rm}
 \raggedbottom
 
-\renewcommand{\contentsname}{目\hspace{6pt}录}
-\renewcommand{\bibname}{参考文献}
-\renewcommand{\figurename}{图}
-\renewcommand{\tablename}{表}
+\renewcommand{\contentsname}{\textbf{Contents}}
+\renewcommand{\bibname}{\textbf{References}}
+\renewcommand{\figurename}{Figure}
+\renewcommand{\tablename}{Table}
 \renewcommand{\listfigurename}{图目录}
 \renewcommand{\listtablename}{表目录}
 
@@ -215,7 +215,7 @@
   \fancyhf{}
   \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 图目录}
   \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
-  \renewcommand{\cftfigpresnum}{图}
+  \renewcommand{\cftfigpresnum}{Figure}
   \addtolength{\cftfignumwidth}{12pt}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}} 
 }{}{}
@@ -229,7 +229,7 @@
   \fancyhf{}
   \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 表目录}
   \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
-  \renewcommand{\cfttabpresnum}{表}
+  \renewcommand{\cfttabpresnum}{Table}
   \addtolength{\cfttabnumwidth}{12pt}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
 }{}{}
@@ -252,7 +252,8 @@
 \titlespacing{\subsection}{0pt}{12pt}{6pt}
 \titlespacing{\subsubsection}{0pt}{12pt}{6pt}
 
-\renewcommand\thechapter{第\zhnumber{\arabic{chapter}}章}
+%\renewcommand\thechapter{第\zhnumber{\arabic{chapter}}章}
+\renewcommand\thechapter{\textbf{Chapter \arabic{chapter}}}
 \renewcommand\thesection{\arabic{chapter}.\arabic{section}}
 
 \renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
@@ -298,19 +299,28 @@
 \setcounter{tocdepth}{4}
 
 \titleformat{\chapter}[block]
-  {\centering\fontsize{15pt}{15pt}\selectfont\heiti\thispagestyle{fancy}}{\thechapter}{7.5pt}{}
+  {\centering\fontsize{15pt}{15pt}\selectfont\heiti\thispagestyle{fancy}}{\textbf{\thechapter}}{7.5pt}\textbf{{}}
+  
+  %{\textbf{\thesubsection}}{7pt}\textbf{{}}
   
 \titleformat{\section}[block]
   {\fontsize{14pt}{14pt}\selectfont\heiti}
-  {\thesection}{7pt}{}
+  {\textbf{\thesection}}{7pt}\textbf{{}}
   
 \titleformat{\subsection}[block]
   {\fontsize{14pt}{14pt}\selectfont\heiti}
-  {\thesubsection}{7pt}{}
+  {\textbf{\thesubsection}}{7pt}\textbf{{}}
+  %{\thesubsection}{7pt}{}
 
 \titleformat{\subsubsection}[block]
   {\fontsize{12pt}{12pt}\selectfont\heiti}
-  {\thesubsubsection}{6pt}{}
+  {\textbf{\thesubsubsection}}{6pt}\textbf{{}}
+  %{\thesubsubsection}{6pt}{}
+  
+\titleformat{\subsubsubsection}[block]
+  {\fontsize{10pt}{10pt}\selectfont\heiti}
+  {\textbf{\thesubsubsubsection}}{5pt}\textbf{{}}
+  %{\thesubsubsection}{6pt}{}
 
 \RequirePackage[hang]{footmisc}
 \addtolength{\footnotesep}{0pt}
@@ -377,7 +387,7 @@
 \newenvironment{chineseabstract}{
   \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
   \pagenumbering{Roman}
-    \pdfbookmark{中文摘要}{chineseabstract}
+    \pdfbookmark{Chinese Abstract}{chineseabstract}
     \chapter*{摘\chinesespace 要}
     \thispagestyle{fancy}
     \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 摘要}
@@ -402,7 +412,7 @@
 }
   
 \newenvironment{englishabstract}{
-  \pdfbookmark{英文摘要}{englishabstract}
+  \pdfbookmark{English Abstract}{englishabstract}
   \chapter*{\bfseries ABSTRACT}
     \thispagestyle{fancy}
     \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont ABSTRACT}
@@ -643,30 +653,32 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
 \newcommand{\standardhead}{
   \fancyhf{}
   \fancyhead[CO]{\fontsize{10.5pt}{12.6pt}\selectfont\leftmark}
-  \fancyhead[CE]{\fontsize{10.5pt}{12.6pt}\selectfont 电子科技大学\chinesedegreename{}学位论文}
+  \fancyhead[CE]{\fontsize{10.5pt}{12.6pt}\selectfont Master Thesis of University of Electronic Science and Technology of China}
   \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\thepage}
 }
 
 \pretocmd{\tableofcontents}{
   \fancyhf{}
-  \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 目录}
+  \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont Contents}
   \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
-  \pdfbookmark{目录}{toc}
+  \pdfbookmark{Contents}{toc}
 }{}{}
 
 \newcommand{\thesistableofcontents}{
   \tableofcontents
 }
 
-\renewcommand{\chaptermark}[1]{\markboth{第\zhnumber{\arabic{chapter}}章 \hspace{5.25pt}#1}{}}
+% \renewcommand{\chaptermark}[1]{\markboth{第\zhnumber{\arabic{chapter}}章 \hspace{5.25pt}#1}{}}
+
+\renewcommand{\chaptermark}[1]{\markboth{Chapter \arabic{chapter}\hspace{5.25pt}#1}{}}
 
 \newcommand{\thesisacknowledgement}{
   \renewcommand\thesection{\arabic{section}}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{0}} 
   \setcounter{section}{0}
-  \chapter*{致\hspace{12pt}谢}
-  \addcontentsline{toc}{chapter}{致\hspace{12pt}谢}
-  \markboth{致谢}{致谢}
+  \chapter*{Acknowledgements}
+  \addcontentsline{toc}{chapter}{\textbf{Acknowledgements}}
+  \markboth{Acknowledgements}{Acknowledgements}
   \thispagestyle{fancy}
 }
 
@@ -682,15 +694,15 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
   \standardhead
   \pagenumbering{arabic}
   \setcounter{page}{1}
-  \chapter{绪\hspace{6pt}论}
-    \chaptermark{绪论}
+  \chapter{\textbf{\,\,\,\,\,Introduction}}
+    \chaptermark{Introduction}
 }
 
 \newcommand{\thesisappendix}{
-  \chapter*{附\chinesespace 录}
+  \chapter*{Appendix}
     \setcounter{section}{0}
-    \addcontentsline{toc}{chapter}{附录}
-    \markboth{附录}{附录}
+    \addcontentsline{toc}{chapter}{Appendix}
+    \markboth{Appendix}{Appendix}
     \thispagestyle{fancy}
     \renewcommand{\theequation}{a-\arabic{equation}}
     \renewcommand{\thetable}{a-\arabic{table}}
@@ -764,10 +776,10 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
   \bibliography{#2}
 }
 
-\newcites{achievement}{攻读\chinesedegreename{}学位期间取得的成果}
+\newcites{achievement}{Research Results Obtained During the Study for Master Degree}
 
 \newenvironment{thesisachievement}{
-  \renewcommand{\bibname}{攻读\chinesedegreename{}学位期间取得的成果}
+  \renewcommand{\bibname}{\textbf{Research Results Obtained During the Study for Master Degree}}
   \begin{thebibliography}{lo}
   \interlinepenalty=10000
   \begin{spacing}{1.667}
@@ -775,21 +787,19 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
   \small
 }{
   \end{spacing}\end{thebibliography}
-  \renewcommand{\bibname}{参考文献}
+  \renewcommand{\bibname}{Bibliography}
 }
 
 \newcommand{\thesisloadachievement}[1]{
   \nociteachievement{*}
-  \renewcommand{\bibname}{攻读\chinesedegreename{}学位期间取得的成果}
+  \renewcommand{\bibname}{\textbf{Research Results Obtained During the Study for Master Degree}}
   \thispagestyle{fancy}
   \begin{spacing}{1.667}
   \bibliographystyleachievement{thesis-uestc}
   \bibliographyachievement{#1}
   \end{spacing}
-  \renewcommand{\bibname}{参考文献}
+  \renewcommand{\bibname}{Bibliography}
 }
-
-
 
 \newtheoremstyle{dotless}{0pt}{0pt}{\normalfont}{24pt}{\heiti}{}{ }{}
 \theoremstyle{dotless}
@@ -834,6 +844,4 @@ UDC\textsuperscript{ 注1} \uline{\hspace{2.5in}} \\[12bp]
   \setlength{\belowdisplayshortskip}{8pt}
   \setlength{\abovedisplayshortskip}{8pt}
 }
-
-
 \endinput
