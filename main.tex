@@ -72,8 +72,7 @@
 \end{chineseabstract}
 
 \begin{englishabstract}
-Facial expression recognition has gained much research interest in the last few years in the field of artificial intelligence. Many research works have achieved state-of-the-art results using large convolutional neural networks containing millions of trainable parameters requiring high computing power. Such deep learning models involve much computation, thus, making them unfeasible for real-time application, especially running on power constrained devices like mobile phones. In this thesis, we propose a new and efficient `lightweight' Convolutional Neural Network for facial emotion recognition in real-time. Our proposed model architecture is based on the implementation of depthwise separable 2D convolution which reduces the network parameters drastically thereby accelerating the overall performance speed making it seemingly feasible for applications in real-time. The total number of parameters contained in our proposed depthwise separable convolutional model is about only 474 thousand. The basic operations of the model include: depthwise separable convolution, batch normalization, max-pooing, global average pooling and softmax. These basic operations are carefully put together to create a twenty-one layer CNN architecture. We experiment our model on FERC-2013 dataset provided on the Kaggle facial expression recognition competition, the Japanese Female Facial Expression (JAFFE) database and the Extended Cohn-Kanade Dataset (CK+). Our model obtained accuracy of 68\% and 69\% on FERC-2013 private test and public test respectively. For JAFFE dataset, our model achieved 88\% accuracy on test data. The model achieved an outstanding accuracy of 99\% accuracy for the CK+ test dataset. It is evident that our model achieves very competitive results with few parameters and presents itself a better choice over state-of-the-art models for real-time applications. Finally, we demonstrate that our model can meet real-time needs by connecting a live video stream to a face detector to feed images to our trained model. The model classifies facial expressions into one of the seven emotions (Anger, Disgust, Fear, Happy, Neutral, Sad and Surprise).
-
+Facial expression recognition has gained much research interest in the last few years in the field of artificial intelligence. Many research works have achieved state-of-the-art results using large convolutional neural networks containing millions of trainable parameters requiring high computing power. Such deep learning models involve much computation, thus, making them unfeasible for real-time application, especially running on power constrained devices like mobile phones. In this thesis, we propose a new and efficient `lightweight' Convolutional Neural Network for facial emotion recognition in real-time. Our proposed model architecture is based on the implementation of depthwise separable 2D convolution which reduces the network parameters drastically thereby accelerating the overall performance speed making it seemingly feasible for applications in real-time. The total number of parameters contained in our proposed model is about only 474 thousand. The basic operations of the model include: depthwise separable convolution, batch normalization, max-pooing, global average pooling and softmax. These basic operations are carefully put together to create a twenty-one layer CNN architecture. We experiment our model on FERC-2013 dataset, the Japanese Female Facial Expression (JAFFE) database and the Extended Cohn-Kanade Dataset (CK+). Our model obtained test accuracy up to 69\% for FERC-2013 dataset, 88\% for JAFFE dataset and an outstanding 99\% for CK+ dataset. It is evident that our model achieves very competitive results with few parameters and presents itself a better choice over state-of-the-art models for real-time applications. Finally, we demonstrate that our model can meet real-time needs by connecting a live video stream to a face detector to feeding images to our trained model. The model classifies facial expressions into one of the seven emotions (Anger, Disgust, Fear, Happy, Neutral, Sad and Surprise).
 
 \englishkeyword{Facial Emotion recognition, Depthwise Separable Convolution, Deep learning, Convolutional Neural network, Real-time}
 \end{englishabstract}
@@ -157,6 +156,8 @@ Taheri et al\cite{6837526} proposed a dictionary-based approach for facial expre
 Zhao et al\cite{7780738} proposed a Deep Region and Multi-label Learning (DRML), a unified deep network that simultaneously identified Action Unit (AU) and multi-label learning (ML). This method was a complete end-to-end network that identified more specific regions for different AUs than conventional convolutional patch-based methods. The proposed region layer was experimented BP4D \cite{6553788} and DISFA\cite{10.1007/978-3-642-33783-3_58} benchmarks.
 
 Summary of the literature review is shown in Figure \ref{summ_literature}.
+
+\subsection{Existing Problems}
 
 \section{Contents and Innovation of Thesis}
 The purpose of this thesis is about finding an efficient convolutional neural network architecture for facial emotion recognition task in real-time. The convolutional neural network will be constructed with real-time application in mind. The complete network will be an end-to-end trainable that automatically learns optimal representations that are robust to variations embedded with facial expressions. This thesis shall be implemented in real-time to solve real world problems to demonstrate its real-time feasibility. In an innovative way, this thesis seeks to bridge the gap between laboratory-constructed deep learning models and implementation for higher accuracy and performance in real-time for the task of recognizing facial emotion expressions.
@@ -1093,7 +1094,7 @@ Surprise & 1.00 & 1.00 & 1.00 & 24\\ \hline
 \end{table}
 
 \begin{figure}[ht]
-\includegraphics[width=5in]{pic/XK+_accuracy_and_loss.png}
+\includegraphics[width=6.5in]{pic/XK+_accuracy_and_loss.png}
 \caption{Model training and validation accuracy and loss on CK+ dataset. The graph on the left is the accuracy increase for 200 epochs and the graph on the right is the loss reduction for 200 epochs}
 \label{ck+accuracy_loss}
 \end{figure}
@@ -1158,7 +1159,7 @@ CK+ & Pooya et al.\cite{do_deep_7406361} & 4 million & 96.7\% \\
 \section{Real-Time Application}
 We implement the model in a simple software system to assess the feasibility of meeting real-time applications. The software can be advanced to child care system, old age system, customer satisfactory assessment system and systems for people with hearing and speaking disorders.
 
-\subsection{Software Scope and Description}
+\subsection{Application Scope and Description}
 The software simply takes as input real-time facial expression images and recognizes the appropriate emotion expressed in the facial expression. The emotion may be \textit{Angry, Disgusted, Fear, Happy, Sad,
 Surprised or Neutral}. This software aims to predict the facial emotion expressed with the maximum accuracy possible. The software functions are listed as follows:
 \begin{enumerate}
@@ -1252,6 +1253,7 @@ I would also like to thank all my lab mates at the Intelligent Engineering LAB (
 Furthermore, I would like to acknowledge all professors who lectured me in my various courses. They exposed me to several research interests and laid a strong foundation for further research.\\
 Finally, I must express my profound gratitude to my parents, friends and colleagues for providing me with unfailing support and continuous encouragement throughout my years of study, researching and writing this thesis. This accomplishment would not have been possible without them. \\
 Thank you.
+
 
 % \thesisloadbibliography[nocite]{reference}
 
