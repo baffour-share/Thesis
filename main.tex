@@ -158,6 +158,14 @@ Zhao et al\cite{7780738} proposed a Deep Region and Multi-label Learning (DRML),
 Summary of the literature review is shown in Figure \ref{summ_literature}.
 
 \subsection{Existing Problems}
+\begin{itemize}
+    \item \textbf{Unfeasible real time application:} Deploying deep learning models for facial emotion recognition in real time is almost unfeasible due to the large computing power required.
+    \item \textbf{Real world accuracy fall:} Deep learning models for facial emotion recognition tend to degrade in accuracy significantly when finally tested in real time due to environmental difference in training environment and real world environment.
+    \item \textbf{Micro-expression detection:} Micro-expression detection remains a challenging task to solve because they are more spontaneous and subtle facial movements that occur involuntarily.
+    \item \textbf{Lack of dataset: }Machine learning algorithms learn from data in order to make decisions based on knowledge gained from the data. Even though some quite large datasets are available; with the emergence of very deep learning models, much larger amount of data is required to train such models. Therefore, the problem of large dataset still exists.
+    \item\textbf{ Massive computing power:} Massive computing power and large amounts of memory are required to train deep learning models.
+    \item \textbf{Time consuming:} Training and testing phases in deep learning is time consuming. It can take several hours or days complete experiment on only one dataset.
+\end{itemize}
 
 \section{Contents and Innovation of Thesis}
 The purpose of this thesis is about finding an efficient convolutional neural network architecture for facial emotion recognition task in real-time. The convolutional neural network will be constructed with real-time application in mind. The complete network will be an end-to-end trainable that automatically learns optimal representations that are robust to variations embedded with facial expressions. This thesis shall be implemented in real-time to solve real world problems to demonstrate its real-time feasibility. In an innovative way, this thesis seeks to bridge the gap between laboratory-constructed deep learning models and implementation for higher accuracy and performance in real-time for the task of recognizing facial emotion expressions.
@@ -1156,32 +1164,62 @@ CK+ & Pooya et al.\cite{do_deep_7406361} & 4 million & 96.7\% \\
 \end{center}
 \end{table}
 
-\section{Real-Time Application}
-We implement the model in a simple software system to assess the feasibility of meeting real-time applications. The software can be advanced to child care system, old age system, customer satisfactory assessment system and systems for people with hearing and speaking disorders.
+\section{Summary}
+In this chapter, we presented the evaluation metrics used to measure the proposed model performance. This chapter also provides analysis of the model performance on all three datasets. Comparison of the proposed method with other state-of-the-art methods is also presented in this chapter. Finally, this chapter presents the real-time application of the proposed method. 
 
-\subsection{Application Scope and Description}
-The software simply takes as input real-time facial expression images and recognizes the appropriate emotion expressed in the facial expression. The emotion may be \textit{Angry, Disgusted, Fear, Happy, Sad,
-Surprised or Neutral}. This software aims to predict the facial emotion expressed with the maximum accuracy possible. The software functions are listed as follows:
+\begin{figure}[ht]
+\includegraphics[width=6in]{pic/rt-interface.JPG}
+\caption{Application implementation interface in web browser}
+\label{rt_interface}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=6in]{pic/rt-1.JPG}
+\caption{Application implementation showing emotion results for uploaded images in web browser}
+\label{rt_uploaded}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=6in]{pic/rt-2.png}
+\caption{Real-time application implementation showing emotion results for multi-persons from live web cam}
+\label{rt_livecam}
+\end{figure}
+\chapter{\,\,\,\,\,\textbf{Real-Time Implementation}}
+We implement the model in two simple software systems to assess the feasibility of meeting real-time applications. Both software systems run in a web browser. The first software allows users to upload still images and outputs the emotion expressed on faces found in the image. The second software detects faces in a live web cam and predicts the facial expressions expressed on the faces. The software systems can be advanced to child care system, old age system, customer satisfactory assessment system and systems for people with hearing and speaking disorders.
+
+\section{Application Scope and Description}
+Both software systems simply take as input real-time facial expression images and recognizes the appropriate emotion expressed in the facial expression. The emotion may be \textit{Angry, Disgusted, Fear, Happy, Sad,
+Surprised or Neutral}. Figure \ref{rt_uploaded} shows emotion classification from an uploaded image. This software aims to predict the facial emotion expressed with the maximum accuracy possible. The software functions are listed as follows:
 \begin{enumerate}
+    \item Load model
     \item Access camera
     \item Detect faces in live camera feed
     \item Send the detected face images in live camera feed to the pre-trained model
     \item Model predicts the emotion expressed in the face images
     \item Display the emotion predicted to the user
 \end{enumerate}
-The software activity diagram is shown in Figure \ref{system_description}.
+The software activity diagram is shown in Figure \ref{system_description}. The software is made up of two main components. They are face detection component and model component.
 
-\subsection{Operating Environment}
-The software was ran and tested on a laptop with Windows 10, Python, Keras, CUDA (Compute Unified Device Architecture) and CuDNN (CUDA Deep Neural Netowrk) installed. The laptop has a web cam support. The software dependencies includes:
+\subsection{Application Components}
+For the software system detecting emotions from uploaded images, we use used the Shape Detection API\footnote{FaceDetector: Chrome on Android, macOS, Windows 10 platfrom - https://www.chromestatus.com/feature/4757990523535360}. This API allows accessing hardware-accelerated detectors where available. For the software system detecting emotions from real-time web cam, we used the Tiny Face Detector\footnote{https://github.com/justadudewhohacks/face-api.js}. The Tiny Face Detector is a very performant, realtime face detector, which is much faster, smaller and less resource consuming compared to the SSD Mobilenet V1 face detector\footnote{A mobilenet SSD(single shot multibox detector) based face detector with pretrained model provided, powered by tensorflow object detection api, trained by WIDERFACE dataset - https://github.com/yeephycho/tensorflow-face-detection}, in return it performs slightly less well on detecting small faces.
+
+We used \textit{TensorFlow.js converter}\footnote{https://github.com/tensorflow/tfjs-converter} to convert our Keras model to \textit{.json} file for loading and running Javascript inference. TensorFlow.js converter is an open source library to load a pretrained TensorFlow SavedModel, Frozen Model, Session Bundle or TensorFlow Hub module into the browser and run inference through TensorFlow.js. Figures \ref{} shows the web browser interface of the application.
+
+\section{Operating Environment}
+The software was ran and tested on a laptop with Windows 10, Python, Keras, CUDA (Compute Unified Device Architecture) and CuDNN (CUDA Deep Neural Netowrk) installed. The laptop has web cam support. The software dependencies includes:
 \begin{enumerate}
     \item Tensorflow: TensorFlow is an open source software library for numerical computation using data flow graphs.
     \item Keras: High level API (Application Program Interface) designed on top of Tensorflow for fast experiment and very user-friendly.
     \item OpenCV (Open Source Computer Vision): is a library for real-time computer vision developement.
-    \item Numpy: python library for numerical computations especially for multidimensional arrays. 
+    \item Numpy: python library for numerical computations especially for multidimensional arrays.
+    \item Chrome browser: To render the html pages and run javascript codes. Figure \ref{rt_interface} shows the web browser interface of the application.
+    \item Chrome Shape Detection API: Provides accelerated shape detectors (e.g. human faces) for still images and/or live image feeds.
+    \item face-api.js: JavaScript API for face detection and face recognition in the browser implemented on top of the tensorflow.js core API.
+    \item TensorFlow.js converter: An open source library to load a pretrained TensorFlow SavedModel, Frozen Model, Session Bundle or TensorFlow Hub module into the browser and run inference through TensorFlow.js.
 \end{enumerate}
 
-\subsection{Functional and Non-Functional Requirements}
-\subsubsection{Functional Requirements}
+\section{Functional and Non-Functional Requirements}
+\subsection{Functional Requirements}
 \begin{enumerate}
     \item The emotion classified feedback should be sent to the user in real-time.
     \item The system should respond to every frame captured in less than 1 second.
@@ -1189,13 +1227,12 @@ The software was ran and tested on a laptop with Windows 10, Python, Keras, CUDA
     \item The emotion classified should be accurate, i.e. correspond to the facial expression acted by the user.
     \item The computer or device running the software must have a camera and allow accessibility to the software.
 \end{enumerate}
-\subsubsection{Non-Functional Requirements}
+\subsection{Non-Functional Requirements}
 \begin{enumerate}
     \item The camera must focus on the frontal view of the user's face in order to detect the face.
     \item The user should be expressive in the emotion.
     \item The light illumination of the user environment should be appropriate in order for efficient analysis.
 \end{enumerate}
-
 As demonstrated in Figure \ref{fig:implementation}, the software system is able to capture frames, extract faces, predict accurately and report the emotion predicted to the user.  
 \begin{figure}%
 \centering
@@ -1232,7 +1269,7 @@ As demonstrated in Figure \ref{fig:implementation}, the software system is able 
 \end{figure}
 
 \section{Summary}
-In this chapter, we presented the evaluation metrics used to measure the proposed model performance. This chapter also provides analysis of the model performance on all three datasets. Comparison of the proposed method with other state-of-the-art methods is also presented in this chapter. Finally, this chapter presents the real-time application of the proposed method. 
+In this chapter, we presented the real-time application details of our proposed method. We described the the application scope and its components. We also provide the technical and non-technical requirements to ran the application successfully. Figure \ref{rt_livecam} shows real-time emotion detection in the web browser.
 
 \chapter{\,\,\,\,\,\textbf{Conclusions}}
 \section{Conclusion Remarks}
