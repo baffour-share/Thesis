@@ -17,36 +17,7 @@
 \usepackage{listings}
 \usepackage{amsmath}
 \usepackage{fancynum}
-
-% % Python style for highlighting
-% \newcommand\pythonstyle{\lstset{
-% language=Python,
-% basicstyle=\ttm,
-% otherkeywords={self},             % Add keywords here
-% keywordstyle=\ttb\color{deepblue},
-% emph={MyClass,__init__},          % Custom highlighting
-% emphstyle=\ttb\color{deepred},    % Custom highlighting style
-% stringstyle=\color{deepgreen},
-% frame=tb,                         % Any extra options here
-% showstringspaces=false            % 
-% }}
-
-
-% % Python environment
-% \lstnewenvironment{python}[1][]
-% {
-% \pythonstyle
-% \lstset{#1}
-% }
-% {}
-
-% % Python for external files
-% \newcommand\pythonexternal[2][]{{
-% \pythonstyle
-% \lstinputlisting[#1]{#2}}}
-
-% % Python for inline
-% \newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+\usepackage[nottoc]{tocbibind}
 
 % \usepackage{listings}
 
@@ -60,24 +31,28 @@
 
 % \major{SOFTWARE ENGINEERING}
 
-% \studentid{201724220103}
+% \studentid{201724220103} 
 
 \begin{document}
 %\makecover
 \begin{chineseabstract}
-近年来，在人工智能领域面部表情识别备受关注。许多研究工作使用具有数百万可训练参数的大型卷积神经网络获得了最先进的结果，当然这要求很高的计算能力, 但是这些深度学习模型对于实时应用是不可行的，尤其是运行在例如移动电话等功率受限的设备上。
-在本论文中，提出了一种新的，高效的“轻量级”卷积神经网络，用于实时情感识别。我们提出的模型架构基于深度可分离2D卷积的实现，这大大减少了网络参数，从而加快了整体性能速度，使其适用于实时应用。通过在Kaggle面部表情识别竞赛和日本女性面部表情（JAFFE）数据库中提供的FERC-2013数据集上评估模型表现。模型以极低的参数实现了极具竞争力的结果，并且为实时应用提供了比最先进模型更好的选择。最后，通过将实时视频流连接到面部检测器以将图像提供给我们训练的模型来证明模型可以满足实时需求。该模型最终将面部表情分为七种情绪：愤怒、厌恶、恐惧、快乐、中立、悲伤和惊喜。
+近年来，在人工智能领域，面部表情的识别备受人们的关注。许多研究工作利用具有数百万可训练参数的大型卷积神经网络，最终获得了很高水平的结果。当然这要求计算机拥有很高的计算能力，但是这些深度学习模型对于实时应用是不可行的，尤其是运行在例如移动电话等功率受限的设备上。
+在本论文中，为了进行实时的人脸表情识别，我们提出了一种新的、高效的“轻量级”卷积神经网络。我们提出的模型架构是基于深度可分离2D卷积实现的，它可以大大减少网络参数，从而加快整体性能速度，使其对于实时应用是可行的。我们提出的模型中包含的参数总数大约只有400千。该模型的基本操作包括：深度可分离卷积、批量规范化、最大化、全局平均池化和归一化。这些基本操作被周密地组合在一起，创建了一个具有21层的CNN架构。我们通过在FERC-2013数据集，日本女性面部表情（JAFFE）数据库和扩展Cohn-Kanade数据集（CK +）上对该模型进行了测试。该模型获得的FERC-2013数据集的测试精度高达69\%，JAFFE数据集的测试精度高达80\%，CK +数据集的测试精度高达99\%。显而易见的是，我们的模型以很少的参数实现了非常有竞争力的结果，并且为实时应用提供了比最先进模型更好的选择。最后，我们通过将实时视频流连接到面部检测器，以将图像提供给训练的模型，最终证明我们的模型可以满足实时应用的需求。该模型将面部表情分为七种情绪：愤怒，厌恶，恐惧，快乐，中立，悲伤和惊喜。
+
 
 \chinesekeyword{面部表情识别，深度可分卷积，深度学习，卷积神经网络，实时}
 \end{chineseabstract}
 
 \begin{englishabstract}
-Facial expression recognition has gained much research interest in the last few years in the field of artificial intelligence. Many research works have achieved state-of-the-art results using large convolutional neural networks containing millions of trainable parameters requiring high computing power. Such deep learning models involve much computation, thus, making them unfeasible for real-time application, especially running on power constrained devices like mobile phones. In this thesis, we propose a new and efficient `lightweight' Convolutional Neural Network for facial emotion recognition in real-time. Our proposed model architecture is based on the implementation of depthwise separable 2D convolution which reduces the network parameters drastically thereby accelerating the overall performance speed making it seemingly feasible for applications in real-time. The total number of parameters contained in our proposed model is about only 474 thousand. The basic operations of the model include: depthwise separable convolution, batch normalization, max-pooing, global average pooling and softmax. These basic operations are carefully put together to create a twenty-one layer CNN architecture. We experiment our model on FERC-2013 dataset, the Japanese Female Facial Expression (JAFFE) database and the Extended Cohn-Kanade Dataset (CK+). Our model obtained test accuracy up to 69\% for FERC-2013 dataset, 88\% for JAFFE dataset and an outstanding 99\% for CK+ dataset. It is evident that our model achieves very competitive results with few parameters and presents itself a better choice over state-of-the-art models for real-time applications. Finally, we demonstrate that our model can meet real-time needs by connecting a live video stream to a face detector to feeding images to our trained model. The model classifies facial expressions into one of the seven emotions (Anger, Disgust, Fear, Happy, Neutral, Sad and Surprise).
+Facial expression recognition has gained much research interest in the last few years in the field of artificial intelligence. Many research works have achieved state-of-the-art results using large convolutional neural networks containing millions of trainable parameters requiring high computing power. Such deep learning models involve much computation, thus, making them unfeasible for real-time application, especially running on power constrained devices like mobile phones. In this thesis, we propose a new and efficient `lightweight' Convolutional Neural Network for facial emotion recognition in real-time. Our proposed model architecture is based on the implementation of depthwise separable 2D convolution which reduces the network parameters drastically thereby accelerating the overall performance speed making it seemingly feasible for applications in real-time. The total number of parameters contained in our proposed model is about only 400 thousand. The basic operations of the model include: depthwise separable convolution, batch normalization, max-pooing, global average pooling and softmax. These basic operations are carefully put together to create a twenty-one layer CNN architecture. We experiment our model on FERC-2013 dataset, the Japanese Female Facial Expression (JAFFE) database and the Extended Cohn-Kanade Dataset (CK+). Our model obtained test accuracy up to 69\% for FERC-2013 dataset, 88\% for JAFFE dataset and an outstanding 99\% for CK+ dataset. It is evident that our model achieves very competitive results with few parameters and presents itself a better choice over state-of-the-art models for real-time applications. Finally, we demonstrate that our model can meet real-time needs by connecting a live video stream to a face detector to feeding images to our trained model. The model classifies facial expressions into one of the seven emotions (Anger, Disgust, Fear, Happy, Neutral, Sad and Surprise).
 
 \englishkeyword{Facial Emotion recognition, Depthwise Separable Convolution, Deep learning, Convolutional Neural network, Real-time}
 \end{englishabstract}
 
 \thesistableofcontents
+\thesisfigurelist
+\thesistablelist
+
 
 \thesischapterexordium
 
@@ -88,7 +63,7 @@ Facial Emotion Recognition (FER) is simply the process of detecting emotions of 
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/7_basic_emotions.png}
-\caption{Sample examples of the seven classes of basic emotions expression. Source: M. Lyons et al.\cite{Michael-2017})}
+\caption{\,\,\,\,\,\,\,\,\,\,The seven classes of basic emotions expression. Source: M. Lyons et al.\cite{Michael-2017})}
 \label{7_basic_emotions}
 \end{figure}
 
@@ -98,7 +73,7 @@ In everyday life, the human face expresses a wide range of expressions. Building
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/micro_expressions.png}
-\caption{Sample examples of spontaneous expressions. Source: D. Joshi\cite{josh2018})}
+\caption{\,\,\,\,\,\,\,\,\,\,Sample examples of spontaneous expressions. Source: D. Joshi\cite{josh2018})}
 \label{micro_emotions}
 \end{figure}
 
@@ -172,7 +147,7 @@ The purpose of this thesis is about finding an efficient convolutional neural ne
 
 \begin{center}
 \begin{table}
-\caption{Summary of literature review}
+\caption{\,\,\,\,\,Summary of literature review}
 \begin{tabular}{ | m{5em} | m{3cm}| m{2cm} | m{2cm} | m{2cm} | m{2cm} | } 
 \hline
 \textbf{Authors} & \textbf{Classifier} & \textbf{Dataset} & \textbf{Test Accuracy} & \textbf{No. of emotions} & \textbf{Real-time}\\ 
@@ -233,7 +208,7 @@ Machine learning is different from traditional computer software. Let us take a 
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/neuron.png}
-\caption{Directed graph showing artificial neural network with input units $A, B,$ and $C$ into the neuron $S$ to perform computation on weights $W (w_1, w_2, w_3)$ with output $Y$: Source: McGonagle and Belete\cite{McGonagle}}
+\caption{\,\,\,\,\,\,\,\,\,\,Directed graph showing artificial neural network. Source: McGonagle and Belete\cite{McGonagle}}
 \label{fig_neuron}
 \end{figure}
 
@@ -265,7 +240,7 @@ Some popular supervised learning algorithms include: Decision Trees, Linear SVC 
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/ANN.png}
-\caption{A simple ANN consisting of an input layer (Layer 0) with inputs $x_1, x_2, x_3$ and weights $w_{x_1s_1}, w_{x_2s_1}, w_{x_2s_2}, w_{x_3s_2}$; and an output layer (Layer 3) with inputs $s_3, s_4, s_5$ and weights $w_{s_3y_1}, w_{s_4y_1}, w_{s_5y_2}$ and two hidden layers (Layer 1 and Layer 2) in between. Source: McGonagle and Belete\cite{McGonagle}}
+\caption{\,\,\,\,\,\,\,\,\,\,A simple ANN consisting of an input layer, two hidden layers and an output layer. Source: McGonagle and Belete\cite{McGonagle}}
 \label{fig_ANN}
 \end{figure}
 
@@ -287,7 +262,7 @@ The biggest difference between supervised and unsupervised learning is that supe
 
 \begin{center}
 \begin{table}
-\caption{Summary of differences between supervised learning and unsupervised learning}
+\caption{\,\,\,\,\,Summary of differences between supervised learning and unsupervised learning}
 \begin{tabular}{ | m{10em} | m{5cm}| m{5cm} | } 
 \hline
 \textbf{Criteria} & \textbf{Supervised} & \textbf{Unsupervised} \\ 
@@ -320,12 +295,12 @@ Semi-supervised learning uses both labelled and unlabelled data. We can say semi
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/digits.PNG}
-\caption{An intuitive breakdown of the digit `8' and `9'. The digit `8' has a loop up top and paired with another loop down low. The digit `9' has a loop up top and a line on the right}
+\caption{\,\,\,\,\,\,\,\,\,\,An intuitive breakdown of the digit `8' and `9'. The digit `8' has a loop up top and paired with another loop down low. The digit `9' has a loop up top and a line on the right}
 \label{fig_digit}
 \end{figure}
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/digits_subcomponents.PNG}
-\caption{A further breakdown of loops into little edges}
+\caption{\,\,\,\,\,\,\,\,\,\,A further breakdown of loops into little edges}
 \label{fig_digit_sub}
 \end{figure}
 
@@ -350,7 +325,7 @@ Similarly, a long line that you might see in digit one, four or seven is just a 
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/gradient_descent.PNG}
-\caption{An illustration of how gradient descent algorithm minimizes the function to the downhill. Source: Goodfellow et al.\cite{Goodfellow-et-al-2016}}
+\caption{\,\,\,\,\,\,\,\,\,\,An illustration of how gradient descent algorithm minimizes the function to the downhill. Source: Goodfellow et al.\cite{Goodfellow-et-al-2016}}
 \label{fig_gradient_descent}
 \end{figure}
 
@@ -394,7 +369,7 @@ Conceptually, we think of each neuron as been connected to all of the neurons in
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/fluctuation.png}
-\caption{Objective function fluctuations caused by high variance of frequent updates}
+\caption{\,\,\,\,\,\,\,\,\,\,Objective function fluctuations caused by high variance of frequent updates}
 \label{SGD}
 \end{figure}
 
@@ -405,7 +380,7 @@ Telling the computer what kind of a bad job it is doing is not really helpful. W
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/mini-batch.PNG}
-\caption{Mini-batch gradient descent variance of objective function (cost function). There is little bit of fluctuations due to some difficult mini-batch examples.}
+\caption{\,\,\,\,\,\,\,\,\,\,Mini-batch gradient descent variance of objective function (cost function). There is little bit of fluctuations due to some difficult mini-batch examples.}
 \label{mini-batch}
 \end{figure}
 
@@ -437,7 +412,7 @@ Gradient Descent is one of the most popular ways to train and optimize a neural 
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/network_example2.png}
-\caption{Structure of a neural network with two input $i_1, i_2$,  two hidden neurons $h_1, h_2$, two output neurons $o_1, o_2$, two biases $b_1, b_2$ and eight weights $w_1, \cdots, w_8$.}
+\caption{\,\,\,\,\,\,\,\,\,\,Structure of a neural network with two input $i_1, i_2$,  two hidden neurons $h_1, h_2$, two output neurons $o_1, o_2$, two biases $b_1, b_2$ and eight weights $w_1, \cdots, w_8$.}
 \label{neural_net_example}
 \end{figure}
 
@@ -459,13 +434,13 @@ Stochastic gradient descent (SGD) solves the problems of slow training and onlin
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/output_1_backprop-4.png}
-\caption{Back propagation of the error for $o_1$ and $o_2$}
+\caption{\,\,\,\,\,\,\,\,\,\,Back propagation of the error for $o_1$ and $o_2$}
 \label{output_1_backprop}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/nn-calculation.png}
-\caption{Back propagation the error of $o_1$ and $o_2$}
+\caption{\,\,\,\,\,\,\,\,\,\,Back propagation the error of $o_1$ and $o_2$ to obtain $w_{2}^{\prime}, w_{3}^{\prime}$ and $w_{4}^{\prime}$ for $w_2, w_3$ and $w_4$ respectively}
 \label{fig_nn-calculation}
 \end{figure}
 
@@ -484,19 +459,19 @@ Focusing on how the weights should be adjusted, the weights actually have differ
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/CNN_example.PNG}
-\caption{ConvNet recognizing scenes and accurately suggesting important captions. Source: Johnson et al.\cite{densecap}}
+\caption{\,\,\,\,\,\,\,\,\,\,ConvNet recognizing scenes and accurately suggesting important captions. Source: Johnson et al.\cite{densecap}}
 \label{cnn_example}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/everyday_objects.PNG}
-\caption{ConvNet recognizing everyday objects with bounding boxes. Source: Ren et al.\cite{DBLP:journals/corr/RenHG015}}
+\caption{\,\,\,\,\,\,\,\,\,\,ConvNet recognizing everyday objects with bounding boxes. Source: Ren et al.\cite{DBLP:journals/corr/RenHG015}}
 \label{everyday_objects}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/ConvNet_Arch.png}
-\caption{A simple ConvNet architecture. Source: Ujjwalkarn\cite{intuitiveCNN}}
+\caption{\,\,\,\,\,\,\,\,\,\,A simple ConvNet architecture. Source: Ujjwalkarn\cite{intuitiveCNN}}
 \label{ConvNet_arch}
 \end{figure}
 
@@ -508,13 +483,13 @@ In summary, back propagation is the algorithm for determining how a single train
 
 \begin{figure}[ht]
 \includegraphics[width=7in]{pic/padding.png}
-\caption{Padding a 32$\times$32$\times$3 input image into a 36$\times$36$\times$3}
+\caption{\,\,\,\,\,\,\,\,\,\,Padding a 32$\times$32$\times$3 input image into a 36$\times$36$\times$3}
 \label{fig_padding}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/rgb_image.png}
-\caption{An RGB image with volume of size: 4 x 4 x 3. It comprises of the 3 Colour channel matrices: Source \cite{Abhineet}}
+\caption{\,\,\,\,\,\,\,\,\,\,An RGB image with volume of size: 4 x 4 x 3. It comprises of the 3 Colour channel matrices: Source \cite{Abhineet}}
 \label{rgb_image}
 \end{figure}
 
@@ -611,7 +586,7 @@ In equation \ref{ConvNet_structure}, we show how ConvNet process input image in 
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/pooling.png}
-\caption{Max Pooling. We slide a $2 \times 2$ window by 2 strides over a $4 \times 4$ rectified feature map and take the maximum value in each region to obtain a $2 \times 2$ output. This reduces the dimension of our feature map.}
+\caption{\,\,\,\,\,\,\,\,\,\,Max Pooling. We slide a $2 \times 2$ window by 2 strides over a $4 \times 4$ rectified feature map and take the maximum value in each region to obtain a $2 \times 2$ output.}
 \label{fig_maxpooling}
 \end{figure}
 
@@ -653,7 +628,7 @@ After performing convolution computation on an image, the spatial size of the ou
 \subfigure[][]{%
 \label{fig:ex3-bb}%
 \includegraphics[height=1in]{pic/filter_matrix.png}}
-\caption[Image matrix to and filter matrix for convolution operation]{Image matrix to and filter matrix for convolution operation
+\caption{\,\,\,\,\,\,\,\,\,\,Image matrix to and filter matrix for convolution operation
 \subref{fig:ex3-aa} a 5 $\times$ 5 image matrix;
 \subref{fig:ex3-bb} a 3 $\times$ 3 filter/kernel matrix}
 \label{fig:convolution}
@@ -712,25 +687,25 @@ where $\beta$ is the \textit{weight} vector, $\beta_{0}$ as the \textit{bias} te
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/fer2013.png}
-\caption{Examples of facial expression images from the FERC-2013 emotion database}
+\caption{\,\,\,\,\,\,\,\,\,\,Examples of facial expression images from the FERC-2013 emotion database}
 \label{fer2013_images}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/total_data_distribution.png}
-\caption{FERC-2013 total sample distribution for Angry, Disgust, Fear, Happy, Sad, Surprise and Neutral emotion}
+\caption{\,\,\,\,\,\,\,\,\,\,FERC-2013 total sample distribution for Angry, Disgust, Fear, Happy, Sad, Surprise and Neutral emotion}
 \label{fer2013_distribution}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/jaffe.png}
-\caption{Examples of facial expression images from the Japanese Female Facial Expression (JAFFE) database.}
+\caption{\,\,\,\,\,\,\,\,\,\,Examples of facial expression images from the Japanese Female Facial Expression (JAFFE) database.}
 \label{jaffe_images}
 \end{figure}
 
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1}
-\caption{Proposed Model Architecture containing approximately 474K parameters. \textit{DepthSep Conv2D} consists of two steps: first carrying out a depthwise spatial convolution and proceeded to perform a pointwise convolution to stack the output channels on top of each other. \textit{Max Pool} slide a $2 \times 2$ window size over the feature maps taking the maximum value in each local window region. \textit{Global Avg Pool} takes the global average of the feature maps. \textit{Softmax} is the classifier that outputs a 7 unit vector where each unit corresponds to one of the emotion categories.}
+\caption{\,\,\,\,\,Proposed Model Architecture containing approximately 474K parameters. \textit{DepthSep Conv2D} consists of two steps: first carrying out a depthwise spatial convolution and proceeded to perform a pointwise convolution to stack the output channels on top of each other. \textit{Max Pool} slide a $2 \times 2$ window size over the feature maps taking the maximum value in each local window region. \textit{Global Avg Pool} takes the global average of the feature maps. \textit{Softmax} is the classifier that outputs a 7 unit vector where each unit corresponds to one of the emotion categories.}
 \label{model_arch}
 \begin{center}
 \begin{tabular}{|c|c|c|c|}
@@ -773,7 +748,7 @@ where $\beta$ is the \textit{weight} vector, $\beta_{0}$ as the \textit{bias} te
 
 \begin{figure}[ht]
 \includegraphics[width=6in]{pic/sequence_model_architecture.pdf}
-\caption{The sequential view of the proposed model architecture and how input flows through the network.}
+\caption{\,\,\,\,\,\,\,\,\,\,The sequential view of the proposed model architecture and how input flows through the network.}
 \label{sequence_model_arch}
 \end{figure}
 
@@ -820,7 +795,7 @@ We can evidently see the computational cost advantages depthwise separable convo
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/ck+.PNG}
-\caption{Examples of images from the CK+ database. The top four horizontal grayscale images are taken from the original CK database and the other four horizontal RGB images at the bottom are taken from the CK+ dataset. All together we have 8 emotions and 30 AUs. Examples of the Emotion and AU labels
+\caption{\,\,\,\,\,\,\,\,\,\,Examples of images from the CK+ database. The top four horizontal grayscale images are taken from the original CK database and the other four horizontal RGB images at the bottom are taken from the CK+ dataset. All together we have 8 emotions and 30 AUs. Examples of the Emotion and AU labels
 are: (a) Disgust - AU 1+4+15+17, (b) Happy - AU 6+12+25, (c) Surprise - AU 1+2+5+25+27, (d) Fear - AU 1+4+7+20, (e) Angry - AU 4+5+15+17, (f) Contempt - AU 14, (g) Sadness - AU 1+2+4+15+17, and (h) Neutral - AU0. Source: Lucey et al.\cite{5543262}}
 \label{CK+_images}
 \end{figure}
@@ -853,7 +828,7 @@ The output after the global average pooling is fed to the final layer ($21^{th}$
 \begin{comment}
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.3}
-\caption{Model Architecture for JAFFE dataset containing approximately 120K parameters}
+\caption{\,\,\,\,\,Model Architecture for JAFFE dataset containing approximately 120K parameters}
 \label{small_model_arch}
 \begin{center}
 \begin{tabular}{|c|c|c|c|}
@@ -888,25 +863,25 @@ We experiment our model using supervised learning techniques. That it, we expose
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/FER-2013_private_test_CM_normalzed.png}
-\caption{Normalized confusion matrix on model test accuracy for FERC-2013 private test.}
+\caption{\,\,\,\,\,\,\,\,\,\,Normalized confusion matrix on model test accuracy for FERC-2013 private test.}
 \label{fig_ferpr_cm_scores}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/FER-2013_public_test_CM_normalzed.png}
-\caption{Normalized confusion matrix on model test accuracy for FERC-2013 public test}
+\caption{\,\,\,\,\,\,\,\,\,\,Normalized confusion matrix on model test accuracy for FERC-2013 public test}
 \label{fig_ferpub_cm_scores}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/model_accuracy_fer.png}
-\caption{Model training and validation accuracy.}
+\caption{\,\,\,\,\,\,\,\,\,\,Model training and validation accuracy.}
 \label{fer_accuracy}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/model_loss_fer.png}
-\caption{Model training and validation loss}
+\caption{\,\,\,\,\,\,\,\,\,\,Model training and validation loss}
 \label{fer_loss}
 \end{figure}
 
@@ -926,7 +901,7 @@ The Extended Cohn-Kanade Dataset (CK+) dataset is a built on the work done by T.
 
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.3}
-\caption{Model accuracy for public test on Precision, Recall and F1-score for FERC-2013 dataset}
+\caption{\,\,\,\,\,Model accuracy for public test on Precision, Recall and F1-score for FERC-2013 dataset}
 \label{table_fer2013_scores_public}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
@@ -963,7 +938,7 @@ We maintained a batch size of 32 across all datasets to feed input into the netw
 
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.3}
-\caption{Model accuracy for private test on Precision, Recall and F1-score for FERC-2013 dataset}
+\caption{\,\,\,\,\,Model accuracy for private test on Precision, Recall and F1-score for FERC-2013 dataset}
 \label{table_fer2013_scores_private}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
@@ -1024,7 +999,7 @@ For all confusion matrices, the major diagonal of the matrix contains the correc
 
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.3}
-\caption{Model test accuracy on Precision, Recall and F1-score for JAFFE dataset}
+\caption{\,\,\,\,\,Model test accuracy on Precision, Recall and F1-score for JAFFE dataset}
 \label{table_jaffe_scores}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
@@ -1047,7 +1022,7 @@ Surprise & 1.00 & 0.90 & 0.95 & 10\\ \hline
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/JAFFE_CM_normalized.png}
-\caption{Normalized confusion matrix on model test accuracy for JAFFE dataset}
+\caption{\,\,\,\,\,\,\,\,\,\,Normalized confusion matrix on model test accuracy for JAFFE dataset}
 \label{fig_jaffe_cm_scores}
 \end{figure}
 
@@ -1080,7 +1055,7 @@ For the JAFFE dataset, the model achieved 88\% accuracy on test samples. From Ta
 
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.3}
-\caption{Model test accuracy on Precision, Recall and F1-score for CK+ dataset}
+\caption{\,\,\,\,\,Model test accuracy on Precision, Recall and F1-score for CK+ dataset}
 \label{table_ck+_scores}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
@@ -1103,7 +1078,7 @@ Surprise & 1.00 & 1.00 & 1.00 & 24\\ \hline
 
 \begin{figure}[ht]
 \includegraphics[width=6.5in]{pic/XK+_accuracy_and_loss.png}
-\caption{Model training and validation accuracy and loss on CK+ dataset. The graph on the left is the accuracy increase for 200 epochs and the graph on the right is the loss reduction for 200 epochs}
+\caption{\,\,\,\,\,\,\,\,\,\,Model training and validation accuracy and loss on CK+ dataset. The graph on the left is the accuracy increase for 200 epochs and the graph on the right is the loss reduction for 200 epochs}
 \label{ck+accuracy_loss}
 \end{figure}
 
@@ -1111,13 +1086,13 @@ For CK+ dataset, our model achieved $99\%$ test accuracy and $0.03941$ for test 
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/ck+_cm.png}
-\caption{Confusion matrix generated from CK+ dataset testing}
+\caption{\,\,\,\,\,\,\,\,\,\,Confusion matrix generated from CK+ dataset testing}
 \label{ck+_cm}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=5in]{pic/ck+similarity.jpg}
-\caption{Similarity samples of contempt and fear emotion expressed in the CK+ dataset. The top horizontal faces are fear emotions and the bottom horizontal emotions are contempt emotions.}
+\caption{\,\,\,\,\,\,\,\,\,\,Similarity samples of contempt and fear emotion expressed in the CK+ dataset. The top horizontal faces are fear emotions and the bottom horizontal emotions are contempt emotions.}
 \label{ck+_similarity}
 \end{figure}
 
@@ -1126,7 +1101,7 @@ The winner of the Kaggle competition Y. Tang\cite{tang2018} achieved 69.4\% accu
 
 \begin{figure}[ht]
 \includegraphics[width=6in]{pic/activity_diagram.pdf}
-\caption{Real-time Software Activity Diagram}
+\caption{\,\,\,\,\,\,\,\,\,\,Real-time Software Activity Diagram}
 \label{system_description}
 \end{figure}
 
@@ -1139,7 +1114,7 @@ Table \ref{table_comparison} shows the comparison summary of our proposed model 
 \begin{table}[ht]
 % increase table row spacing, adjust to taste
 \renewcommand{\arraystretch}{1.3}
-\caption{Comparative summary with other methods}
+\caption{\,\,\,\,\,Comparative summary with other methods}
 \label{table_comparison}
 \begin{center}
 % The array package and the MDW tools package offers better commands
@@ -1169,19 +1144,19 @@ In this chapter, we presented the evaluation metrics used to measure the propose
 
 \begin{figure}[ht]
 \includegraphics[width=6in]{pic/rt-interface.JPG}
-\caption{Application implementation interface in web browser}
+\caption{\,\,\,\,\,\,\,\,\,\,Application implementation interface in web browser}
 \label{rt_interface}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=6in]{pic/rt-1.JPG}
-\caption{Application implementation showing emotion results for uploaded images in web browser}
+\caption{\,\,\,\,\,\,\,\,\,\,Application implementation showing emotion results for uploaded images in web browser}
 \label{rt_uploaded}
 \end{figure}
 
 \begin{figure}[ht]
 \includegraphics[width=6in]{pic/rt-2.png}
-\caption{Real-time application implementation showing emotion results for multi-persons from live web cam}
+\caption{\,\,\,\,\,\,\,\,\,\,Real-time application implementation showing emotion results for multi-persons from live web cam}
 \label{rt_livecam}
 \end{figure}
 \chapter{\,\,\,\,\,\textbf{Real-Time Implementation}}
@@ -1206,7 +1181,7 @@ For the software system detecting emotions from uploaded images, we use used the
 We used \textit{TensorFlow.js converter}\footnote{https://github.com/tensorflow/tfjs-converter} to convert our Keras model to \textit{.json} file for loading and running Javascript inference. TensorFlow.js converter is an open source library to load a pretrained TensorFlow SavedModel, Frozen Model, Session Bundle or TensorFlow Hub module into the browser and run inference through TensorFlow.js. Figures \ref{} shows the web browser interface of the application.
 
 \section{Operating Environment}
-The software was ran and tested on a laptop with Windows 10, Python, Keras, CUDA (Compute Unified Device Architecture) and CuDNN (CUDA Deep Neural Netowrk) installed. The laptop has web cam support. The software dependencies includes:
+The software was ran and tested on a laptop with Windows 10, Python, Keras, CUDA (Compute Unified Device Architecture) and CuDNN (CUDA Deep Neural Netowrk) installed. The laptop must have web cam support or an external camera. The software dependencies includes:
 \begin{enumerate}
     \item Tensorflow: TensorFlow is an open source software library for numerical computation using data flow graphs.
     \item Keras: High level API (Application Program Interface) designed on top of Tensorflow for fast experiment and very user-friendly.
@@ -1258,7 +1233,7 @@ As demonstrated in Figure \ref{fig:implementation}, the software system is able 
 \label{fig:ex3-f}%
 \includegraphics[height=2in]{pic/sad.jpg}} %
 
-\caption[Real-time implementation of the model for FER on the 7 the basic emotions]{Real-time implementation of our model for FER on the 7 the basic emotions
+\caption{\,\,\,\,\,\,\,\,\,\,Real-time implementation of our model for FER on the 7 the basic emotions
 \subref{fig:ex3-a} shows angry emotion;
 \subref{fig:ex3-b} shows disgust emotion;
 \subref{fig:ex3-c} shows fear emotion;
@@ -1273,7 +1248,7 @@ In this chapter, we presented the real-time application details of our proposed 
 
 \chapter{\,\,\,\,\,\textbf{Conclusions}}
 \section{Conclusion Remarks}
-The accuracy and efficiency of CNN architectures for facial emotion recognition have very important significance to real world problems. In this thesis, we proposed a new and efficient `light weight' CNN model architecture based on depthwise separable 2D convolution for real-time emotion recognition. We implemented depthwise separable 2D convolution which reduced the network parameters drastically thereby accelerating the overall performance speed making it suitable for real-time application. We evaluated our model performance on FERC-2013 dataset provided on the Kaggle facial expression recognition competition, the Japanese Female Facial Expression (JAFFE) database and the Extended Cohn-Kanade Dataset (CK+). Our model containing only 474K parameters achieved very competitive results of 68\% and 69\% on FERC-2013 private test and public test respectively. For JAFFE dataset, our model achieved 88\% accuracy. The model achieved an outstanding accuracy of 99\% accuracy for the CK+ dataset. Thus, we drastically reduced model complexity and eventually speed up computation. We shown that with very minimum parameters our model is a better choice over state-of-the-art models for real-time applications. Finally, as shown in Figure \ref{fig:implementation}, we demonstrated that our model can meet real-time needs by connecting a live video stream to a face detector to feed images to our trained model. The model subsequently classifies facial expressions into one of the seven emotions (Anger, Disgust, Fear, Happy, Neutral, Sad, and Surprise).
+The accuracy and efficiency of CNN architectures for facial emotion recognition have very important significance to real world problems. In this thesis, we proposed a new and efficient `light weight' CNN model architecture based on depthwise separable 2D convolution for real-time emotion recognition. We implemented depthwise separable 2D convolution which reduced the network parameters drastically thereby accelerating the overall performance speed making it suitable for real-time application. We evaluated our model performance on FERC-2013 dataset provided on the Kaggle facial expression recognition competition, the Japanese Female Facial Expression (JAFFE) database and the Extended Cohn-Kanade Dataset (CK+). Our model containing only about 400K parameters achieved very competitive results of 68\% and 69\% on FERC-2013 private test and public test respectively. For JAFFE dataset, our model achieved 88\% accuracy. The model achieved an outstanding accuracy of 99\% accuracy for the CK+ dataset. Thus, we drastically reduced model complexity and eventually speed up computation. We shown that with very minimum parameters our model is a better choice over state-of-the-art models for real-time applications. Finally, as shown in Figure \ref{fig:implementation}, we demonstrated that our model can meet real-time needs by connecting a live video stream to a face detector to feed images to our trained model. The model subsequently classifies facial expressions into one of the seven emotions (Anger, Disgust, Fear, Happy, Neutral, Sad, and Surprise).
 
 \section{Future Work}
 The researches reported in this thesis have covered most important areas including the real-time application of CNN models and the accuracy improvement CNN models for facial emotion recognition. Nonetheless, due to the time limitation, there are still spaces for the future development of the real-time facial emotion recognition methods. 
@@ -1285,11 +1260,11 @@ Another future work is to improve the model accuracy. The model sometimes confus
 Finally, we can investigate how to build a model that will be more robust for continuous emotion recognition guided by some knowledge from specific domains like psychology, social science, etc. This will make models more useful into solving specific problems.
 
 \thesisacknowledgement
-First and foremost, I would like to give thanks to Almighty God for his grace and numerous blessing and to my supervisor Prof. Jiandong Guo of the School of Information and Software Engineering at University of Electronic Science and Technology of China for his time, patience and in depth training he gave me. Prof. Jiandong Guo and his wife have been very supportive, they have guided me immensely through out my study; in my course selections, research works and paper publication.\\
-I would also like to thank all my lab mates at the Intelligent Engineering LAB (IELAB) at University of Electronic Science and Technology for their support and warm reception. Special thanks goes to Miss Liyuan Lan, who helped in the thesis real-time testing.\\
+First and foremost, I would like to give thanks to Almighty God for his grace and numerous blessing and to my supervisor Prof. Jiandong Guo of the School of Information and Software Engineering at University of Electronic Science and Technology of China for his time, patience and in-depth training he gave me. Prof. Jiandong Guo and his wife have been very supportive, they have guided me immensely through out my study; in my course selections, research works and paper publication.\\
+I would also like to thank all my lab mates at the Intelligent Engineering LAB (IELAB) at University of Electronic Science and Technology for their support and warm reception. Special thanks goes to Miss Li Yu Lan, who helped in the thesis real-time testing and to Mr. Wang Yao, who wrote the Chinese abstract version of the thesis.\\
 Furthermore, I would like to acknowledge all professors who lectured me in my various courses. They exposed me to several research interests and laid a strong foundation for further research.\\
 Finally, I must express my profound gratitude to my parents, friends and colleagues for providing me with unfailing support and continuous encouragement throughout my years of study, researching and writing this thesis. This accomplishment would not have been possible without them. \\
-Thank you.
+Thank you all.
 
 
 % \thesisloadbibliography[nocite]{reference}
@@ -1304,444 +1279,9 @@ Thank you.
 %
 
 % \thesisappendix
-% \section{External listing highlighting}
-% \begin{python}
-% # import libraries
-% import itertools
-% import random as rn
-% import smtplib
-% import warnings
-% import matplotlib.pyplot as plt
-% import numpy as np
-% import tensorflow as tf
-% from keras import optimizers, Input, Model
-% from keras.callbacks import ModelCheckpoint, TensorBoard
-% from keras.layers import Activation, Dropout, Dense, GlobalAveragePooling2D, Conv2D, Flatten,
-%     ReLU, DepthwiseConv2D, MaxPool2D, AveragePooling2D
-% from keras.layers import MaxPooling2D, SeparableConv2D, BatchNormalization
-% from keras.models import Sequential
-% from keras.preprocessing.image import ImageDataGenerator
-% from sklearn.metrics import classification_report, confusion_matrix
-
-% # seed ramdomnly generated numbers
-% np.random.seed(42)
-% rn.seed(12345)
-% tf.set_random_seed(1234)
-
-% # ignore warnings
-% warnings.filterwarnings('ignore')
-
-% train_data_dir = './fer2013/Training'
-% validation_data_dir = './fer2013/PublicTest'
-% private_test_data_dir = './fer2013/PrivateTest'
-
-% epochs = 300
-% batch_size = 32
-% num_labels = 7
-% lr = 0.001
-% MODEL_PATH = './models/fer2013_model.h5'
-% class_label_names = ['Anger', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise']
-
-% img_width, img_height = 48, 48
-% image_shape = (img_width, img_height, 1)
-
-% def fer_model():
-%     kernel_height, kernel_width = 3, 3
-%     depth_multiplier = 3
-
-%     my_model = Sequential()
-
-%     #  1st layer
-%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-%                                  padding='same', strides=(1, 1), depth_multiplier=
-%                                  depth_multiplier, use_bias=True, data_format=
-%                                  'channels_last',input_shape=image_shape,activation='relu'))
-%     my_model.add(BatchNormalization())
-
-%     #  2nd layer
-%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-%                                  padding='same', strides=(1, 1), depth_multiplier=
-%                                  depth_multiplier, use_bias=True, data_format=
-%                                  'channels_last', activation='relu'))
-%     my_model.add(MaxPooling2D(2, 2))
-%     my_model.add(BatchNormalization())
-
-%     #  5th layer
-%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-%                                  padding='same', strides=(1, 1), depth_multiplier=
-%                                  depth_multiplier,use_bias=True, data_format=
-%                                  'channels_last', activation='relu'))
-%     my_model.add(BatchNormalization())
-
-%     #  6th layer
-%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-%                                  padding='same', strides=(1, 1), depth_multiplier=
-%                                  depth_multiplier,use_bias=True, data_format=
-%                                  'channels_last', activation='relu'))
-%     my_model.add(AveragePooling2D(2, 2))
-%     my_model.add(BatchNormalization())
-
-%     #  7th layer
-%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-%                                  padding='same', depth_multiplier=depth_multiplier,
-%                                  use_bias=True, data_format='channels_last',
-%                                  activation='relu'))
-%     my_model.add(BatchNormalization())
-
-%     #  8th layer
-%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-%                                  padding='same', depth_multiplier=depth_multiplier,
-%                                  use_bias=True,data_format='channels_last',activation='relu'))
-%     my_model.add(AveragePooling2D(2, 2))
-%     my_model.add(BatchNormalization())
-
-%     #  10th layer
-%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-%                                  padding='same', strides=(1, 1), depth_multiplier=
-%                                  depth_multiplier,use_bias=True, data_format='channels_last',
-%                                  activation='relu'))
-%     my_model.add(BatchNormalization())
-
-%     #  11th layer
-%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-%                                  padding='same', strides=(1, 1), depth_multiplier=
-%                                  depth_multiplier,use_bias=True, data_format=
-%                                  'channels_last', activation='relu'))
-%     my_model.add(AveragePooling2D(2, 2))
-%     my_model.add(BatchNormalization())
-
-%     my_model.add(Flatten())
-
-%     my_model.add(Dense(512, activation='relu'))
-%     my_model.add(BatchNormalization())
-%     my_model.add(Dropout(0.10))
-
-%     # softmax layer
-%     my_model.add(Dense(num_labels, activation='softmax'))
-
-%     return my_model
-
-
-% def small_fer_model():
-%     kernel_height, kernel_width = 3, 3
-%     depth_multiplier = 3
-
-%     my_model = Sequential()
-
-%     #  1st layer
-%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-%                                  padding='same', strides=(1, 1), depth_multiplier=
-%                                  depth_multiplier, use_bias=True, data_format=
-%                                  'channels_last',input_shape=image_shape,activation='relu'))
-%     my_model.add(BatchNormalization())
-
-%     #  2nd layer
-%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-%                                  padding='same', strides=(1, 1), depth_multiplier=
-%                                  depth_multiplier, use_bias=True, data_format=
-%                                  'channels_last', activation='relu'))
-%     my_model.add(MaxPooling2D(2, 2))
-%     my_model.add(BatchNormalization())
-
-%     #  5th layer
-%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-%                                  padding='same', strides=(1, 1), depth_multiplier=
-%                                  depth_multiplier,use_bias=True, data_format=
-%                                  'channels_last', activation='relu'))
-%     my_model.add(BatchNormalization())
-
-%     #  6th layer
-%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-%                                  padding='same', strides=(1, 1), depth_multiplier=
-%                                  depth_multiplier,use_bias=True, data_format=
-%                                  'channels_last', activation='relu'))
-%     my_model.add(AveragePooling2D(2, 2))
-%     my_model.add(BatchNormalization())
-
-%     #  7th layer
-%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-%                                  padding='same', depth_multiplier=depth_multiplier,
-%                                  use_bias=True, data_format='channels_last',
-%                                  activation='relu'))
-%     my_model.add(BatchNormalization())
-
-%     #  8th layer
-%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-%                                  padding='same', depth_multiplier=depth_multiplier,
-%                                  use_bias=True,data_format='channels_last',activation='relu'))
-%     my_model.add(AveragePooling2D(2, 2))
-%     my_model.add(BatchNormalization())
-
-%     #  10th layer
-%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-%                                  padding='same', strides=(1, 1), depth_multiplier=
-%                                  depth_multiplier,use_bias=True, data_format='channels_last',
-%                                  activation='relu'))
-%     my_model.add(BatchNormalization())
-
-%     #  11th layer
-%     my_model.add(SeparableConv2D(filters=32, kernel_size=(kernel_height, kernel_width),
-%                                  padding='same', strides=(1, 1), depth_multiplier=
-%                                  depth_multiplier,use_bias=True, data_format=
-%                                  'channels_last', activation='relu'))
-%     my_model.add(AveragePooling2D(2, 2))
-%     my_model.add(BatchNormalization())
-
-%     my_model.add(Flatten())
-
-%     my_model.add(Dense(512, activation='relu'))
-%     my_model.add(BatchNormalization())
-%     my_model.add(Dropout(0.10))
-
-%     # softmax layer
-%     my_model.add(Dense(num_labels, activation='softmax'))
-
-%     return my_model
-
-% def send_report():
-%     server = smtplib.SMTP(host='smtp-mail.outlook.com', port=587)
-%     server.starttls()
-%     server.login("baffour205@outlook.com", "**************")
-
-%     msg = "Training finished!"
-%     server.sendmail("baffour205@outlook.com", "asarebaffour700@gmail.com", msg)
-%     server.quit()
-
-% model = trial_model_best()
-% model.summary()
-% model.compile(loss='categorical_crossentropy',
-%               optimizer=optimizers.Adam(lr=lr),
-%               metrics=['accuracy'])
-
-% # this is the augmentation configuration we will use for training
-% train_datagen = ImageDataGenerator(
-%     rescale=1. / 255,
-%     shear_range=0.2,
-%     zoom_range=0.2,
-%     rotation_range=40,
-%     width_shift_range=0.2,
-%     height_shift_range=0.2,
-%     horizontal_flip=True)
-
-% # this is the augmentation configuration we will use for testing:
-% # only rescaling
-% test_datagen = ImageDataGenerator(rescale=1. / 255)
-
-% train_generator = train_datagen.flow_from_directory(
-%     train_data_dir,
-%     target_size=(img_width, img_height),
-%     batch_size=batch_size,
-%     color_mode='grayscale',
-%     class_mode='categorical')
-% number_of_train_samples = len(train_generator.filenames)
-
-% validation_generator = test_datagen.flow_from_directory(
-%     validation_data_dir,
-%     target_size=(img_width, img_height),
-%     batch_size=batch_size,
-%     color_mode='grayscale',
-%     class_mode='categorical')
-% number_of_test_samples = len(validation_generator.filenames)
-
-% private_test_generator = test_datagen.flow_from_directory(
-%     private_test_data_dir,
-%     target_size=(img_width, img_height),
-%     batch_size=batch_size,
-%     color_mode='grayscale',
-%     class_mode='categorical')
-% number_of_private_test_samples = len(private_test_generator.filenames)
-
-% # record model history
-% tensor_board = TensorBoard(log_dir='./logs', histogram_freq=0,
-%                             write_graph=True, write_images=True)
-% # save model
-% check_pointer = ModelCheckpoint(MODEL_PATH, monitor='val_loss', verbose=1,
-%                                 save_best_only=True)
-
-% history = model.fit_generator(train_generator, epochs=epochs, validation_data=
-%                             validation_generator,callbacks=[tensor_board,
-%                             check_pointer], validation_steps=112, verbose=1,
-%                             steps_per_epoch=897)
-% send_report()
-
-% # list all data in history
-% print(history.history.keys())
-
-% # summarize history for accuracy
-% plt.plot(history.history['acc'])
-% plt.plot(history.history['val_acc'])
-% plt.title('model accuracy')
-% plt.ylabel('accuracy')
-% plt.xlabel('epoch')
-% plt.legend(['train', 'test'], loc='upper left')
-% plt.show()
-
-% # summarize history for loss
-% plt.plot(history.history['loss'])
-% plt.plot(history.history['val_loss'])
-% plt.title('model loss')
-% plt.ylabel('loss')
-% plt.xlabel('epoch')
-% plt.legend(['train', 'test'], loc='upper left')
-% plt.show()
-
-% model.save(MODEL_PATH)
-
-% model_json = model.to_json()
-% with open("./models/fer2013_model_.json", "w") as json_file:
-%     json_file.write(model_json)
-
-% # evaluate model
-% scores = model.evaluate_generator(validation_generator, steps=112,
-%                                 workers=1, verbose=1)
-% print("Loss: " + str(scores[0]))
-% print("Accuracy: " + str(scores[1]))
-
-% # make predictions
-% test_labels = []
-% private_test_labels = []
-
-% number_of_generator_calls = np.math.ceil(
-%                             number_of_test_samples / (1.0 * batch_size))
-% for i in range(0, int(number_of_generator_calls)):
-%     test_labels.extend(np.array(validation_generator[i][1]))
-
-% number_of_private_test_generator_calls = np.math.ceil(
-%                             number_of_private_test_samples / (1.0 * batch_size))
-% for i in range(0, int(number_of_private_test_generator_calls)):
-%     private_test_labels.extend(np.array(private_test_generator[i][1]))
-
-% predictions = model.predict_generator(validation_generator,steps=112,verbose=0)
-% private_test_predictions = model.predict_generator(
-%                                 private_test_generator, steps=112, verbose=0)
-
-% y_pred = np.argmax(predictions, axis=1)
-% y_pred_private = np.argmax(private_test_predictions, axis=1)
-
-% # print recall, precision, and f1-score
-% print(classification_report(np.argmax(test_labels, axis=1), 
-%                             y_pred,target_names=class_label_names))
-% print(classification_report(np.argmax(private_test_labels, axis=1), 
-%                             y_pred_private, target_names=class_label_names))
-
-% # print confusion matrix
-% print(confusion_matrix(np.argmax(test_labels, axis=1), y_pred))
-% print(confusion_matrix(np.argmax(private_test_labels,axis=1),y_pred_private))
-
-% # define confusion matrix
-% def plot_confusion_matrix(cm, classes,
-%                           normalize=False,
-%                           title='Confusion matrix',
-%                           cmap=plt.cm.Blues):
-%     plt.imshow(cm, interpolation='nearest', cmap=cmap)
-%     plt.title(title)
-%     plt.colorbar()
-%     tick_marks = np.arange(len(classes))
-%     plt.xticks(tick_marks, classes, rotation=45)
-%     plt.yticks(tick_marks, classes)
-
-%     if normalize:
-%         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-%         cm = np.round(cm, 2)
-%         print("Normalized confusion matrix")
-%     else:
-%         print('Confusion matrix, without normalization')
-
-%     print(cm)
-
-%     thresh = cm.max() / 2.
-%     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-%         plt.text(j, i, cm[i, j],
-%                  horizontalalignment="center",
-%                  color="white" if cm[i, j] > thresh else "black")
-
-%     plt.tight_layout()
-%     plt.ylabel('True label')
-%     plt.xlabel('Predicted label')
-
-
-% # Compute confusion matrix
-% cnf_matrix = (confusion_matrix(np.argmax(test_labels, axis=1), y_pred))
-% np.set_printoptions(precision=2)
-% plt.figure()
-
-% # Plot non-normalized confusion matrix
-% plot_confusion_matrix(cnf_matrix, classes=class_label_names,
-%                         title='Public test Confusion matrix')
-% plt.figure()
-% plt.show()
-
-% # Plot non-normalized confusion matrix
-% plot_confusion_matrix(cnf_matrix, classes=class_label_names, normalize=True,
-%                       title='Public test normalized Confusion matrix')
-% plt.figure()
-% plt.show()
-
-% # Compute confusion matrix
-% cnf_matrix = (confusion_matrix(np.argmax(private_test_labels, axis=1), y_pred_private))
-% np.set_printoptions(precision=2)
-% plt.figure()
-
-% # Plot non-normalized confusion matrix
-% plot_confusion_matrix(cnf_matrix, classes=class_label_names,
-%                         title='Private Test Confusion matrix')
-% plt.figure()
-% plt.show()
-
-% # Plot non-normalized confusion matrix
-% plot_confusion_matrix(cnf_matrix, classes=class_label_names, normalize=True,
-%                       title='Private test Normalized Confusion matrix')
-% plt.figure()
-% plt.show()
-% \end{python}
-
-% Definition \pythoninline{class MyClass} means \dots
-
-% \begin{python}
-% import os
-% import cv2
-% import numpy as np
-% from keras.engine.saving import load_model
-
-% MODEL_PATH = os.getcwd() + '/models/jaffe_model.h5'
-% emotion_dict = {0: "Angry", 1: "Disgust", 2: "Fear", 3: "Happy", 4: "Sad",
-%                 5: "Surprise", 6: "Neutral"}
-
-% model = load_model(MODEL_PATH)
-
-% cap = cv2.VideoCapture(0)
-
-% while True:
-%     ret, frame = cap.read()
-
-%     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-%     face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-%     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-
-%     for (x, y, w, h) in faces:
-%         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 1)
-%         roi_gray = gray[y:y + h, x:x + w]
-%         cropped_img = np.expand_dims(np.expand_dims(cv2.resize(roi_gray, (48, 48)), -1), 0)
-%         cv2.normalize(cropped_img, cropped_img, alpha=0, beta=1, norm_type=cv2.NORM_L2,
-%         dtype=cv2.CV_32F)
-%         prediction = model.predict(cropped_img)
-%         cv2.putText(frame, emotion_dict[int(np.argmax(prediction))], (x, y),
-%         cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0),1, cv2.LINE_AA)
-
-%     cv2.imshow('frame', frame)
-%     if cv2.waitKey(1) & 0xFF == ord('q'):
-%         break
-
-% cap.release()
-% cv2.destroyAllWindows()
-% \end{python}
 
 % Definition \pythoninline{class MyClass} means \dots
 \printglossary
-
-% \chapter*{\textbf{Research Results Obtained During the Study for Master Degree}}
-% \bibliography{publications}
 
 \thesisloadachievement{publications}
 

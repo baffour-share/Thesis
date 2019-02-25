@@ -203,8 +203,8 @@
 \renewcommand{\bibname}{\textbf{References}}
 \renewcommand{\figurename}{Figure}
 \renewcommand{\tablename}{Table}
-\renewcommand{\listfigurename}{图目录}
-\renewcommand{\listtablename}{表目录}
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\listtablename}{List of Tables}
 
 % \newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
 % \addtocontents{lof}{\protect\noaddvspace}
@@ -213,9 +213,9 @@
 \pretocmd{\listoffigures}{
     \newpage
   \fancyhf{}
-  \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 图目录}
+  \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont List of Figures}
   \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
-  \renewcommand{\cftfigpresnum}{Figure}
+  \renewcommand{\cftfigpresnum}{Figure\,\,}
   \addtolength{\cftfignumwidth}{12pt}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}} 
 }{}{}
@@ -227,9 +227,9 @@
 \pretocmd{\listoftables}{
     \newpage
   \fancyhf{}
-  \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont 表目录}
+  \fancyhead[C]{\fontsize{10.5pt}{12.6pt}\selectfont List of Tables}
   \fancyfoot[CE,CO]{\fontsize{9pt}{10.8pt}\selectfont\Roman{pseudopage}}
-  \renewcommand{\cfttabpresnum}{Table}
+  \renewcommand{\cfttabpresnum}{Table\,\,}
   \addtolength{\cfttabnumwidth}{12pt}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
 }{}{}
